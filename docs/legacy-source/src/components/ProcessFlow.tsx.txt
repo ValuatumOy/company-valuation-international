@@ -1,0 +1,74 @@
+import { FileUp, FileBarChart, Settings2, FileCheck } from "lucide-react";
+
+const steps = [
+  {
+    number: 1,
+    title: "Upload PDF",
+    description: "Drop a financial statement PDF into our tool.",
+    icon: FileUp,
+  },
+  {
+    number: 2,
+    title: "Valuation Report with Forecasts",
+    description: "Our system generates forecasts and a valuation report automatically.",
+    icon: FileBarChart,
+  },
+  {
+    number: 3,
+    title: "Adjust Numbers",
+    description: "You can modify any figures manually to fit your scenario.",
+    icon: Settings2,
+  },
+  {
+    number: 4,
+    title: "Download Modified Report",
+    description: "Download the updated report with your adjusted numbers.",
+    icon: FileCheck,
+  },
+];
+
+const ProcessFlow = () => {
+  return (
+    <div className="my-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {steps.map((step, index) => (
+          <div
+            key={step.number}
+            className="relative bg-card border border-border rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow"
+          >
+            {/* Step number badge */}
+            <div className="absolute -top-3 -left-3 w-8 h-8 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold shadow-md">
+              {step.number}
+            </div>
+            
+            {/* Icon */}
+            <div className="mb-4 flex justify-center">
+              <div className="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center">
+                <step.icon className="w-7 h-7 text-primary" />
+              </div>
+            </div>
+            
+            {/* Content */}
+            <h3 className="text-lg font-semibold text-foreground text-center mb-2">
+              {step.title}
+            </h3>
+            <p className="text-sm text-muted-foreground text-center leading-relaxed">
+              {step.description}
+            </p>
+            
+            {/* Arrow connector (hidden on last item and on mobile) */}
+            {index < steps.length - 1 && (
+              <div className="hidden lg:block absolute top-1/2 -right-3 transform -translate-y-1/2 z-10">
+                <div className="w-6 h-6 bg-muted rounded-full flex items-center justify-center">
+                  <span className="text-muted-foreground text-xs">→</span>
+                </div>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default ProcessFlow;

@@ -1,0 +1,59 @@
+import { Helmet } from "react-helmet-async";
+import PageLayout from "@/components/layout/PageLayout";
+import { Link } from "react-router-dom";
+
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://company-valuation.com/" },
+    { "@type": "ListItem", position: 2, name: "Security & Data Handling", item: "https://company-valuation.com/security" },
+  ],
+};
+
+const Security = () => {
+  return (
+    <PageLayout>
+      <Helmet>
+        <title>Security & Data Handling | Valuatum Tools</title>
+        <meta name="description" content="How Valuatum Tools handles data in valuation workflows, including PDF statement uploads. See privacy policy and support contact." />
+        <link rel="canonical" href="https://company-valuation.com/security" />
+        <script type="application/ld+json">{JSON.stringify(breadcrumbJsonLd)}</script>
+      </Helmet>
+
+      <main className="content-area">
+        <div className="text-box">
+          <h1 className="page-heading">Security &amp; Data Handling</h1>
+
+          <p className="mb-6 text-muted-foreground">
+            This page explains how Valuatum Tools handles data in valuation workflows. For full details, see the{" "}
+            <Link to="/privacy-policy" className="text-primary underline">Privacy Policy</Link> or{" "}
+            <Link to="/support" className="text-primary underline">contact support</Link>.
+          </p>
+
+          <h2 className="block-heading">Data processed in valuation workflows</h2>
+          <ul className="list-disc pl-6 mb-6 space-y-2 text-muted-foreground">
+            <li>Account email address used for registration</li>
+            <li>Manually entered financial figures (income statement, balance sheet, cash flow)</li>
+            <li>PDF financial statements, if uploaded for automated analysis</li>
+            <li>Valuation assumptions such as growth rates, discount rates, and peer multiples</li>
+          </ul>
+
+          <p className="mb-6 text-muted-foreground">
+            Data is processed securely and is not shared with third parties. For a complete description of data handling practices, please review our{" "}
+            <Link to="/privacy-policy" className="text-primary underline">Privacy Policy</Link>.
+          </p>
+
+          <h2 className="block-heading">Questions?</h2>
+          <p className="text-muted-foreground">
+            Contact us at{" "}
+            <a href="mailto:estimator@valuatum.com" className="text-primary underline">estimator@valuatum.com</a>{" "}
+            or visit the <Link to="/support" className="text-primary underline">Support</Link> page.
+          </p>
+        </div>
+      </main>
+    </PageLayout>
+  );
+};
+
+export default Security;

@@ -1,0 +1,52 @@
+import { Helmet } from "react-helmet-async";
+import PageLayout from "@/components/layout/PageLayout";
+import { Link } from "react-router-dom";
+
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://company-valuation.com/" },
+    { "@type": "ListItem", position: 2, name: "Resources", item: "https://company-valuation.com/resources" },
+  ],
+};
+
+const Resources = () => {
+  return (
+    <PageLayout>
+      <Helmet>
+        <title>Resources | Company Valuation Guides | Valuatum Tools</title>
+        <meta name="description" content="Company valuation guides covering definitions and methods like DCF and multiples—built to help you estimate business value and understand reports." />
+        <link rel="canonical" href="https://company-valuation.com/resources" />
+        <script type="application/ld+json">{JSON.stringify(breadcrumbJsonLd)}</script>
+      </Helmet>
+
+      <article className="prose-content">
+        <nav className="text-sm text-muted-foreground mb-4">
+          <Link to="/" className="hover:text-link">Home</Link>
+          {" › "}
+          <span>Resources</span>
+        </nav>
+
+        <h1 className="page-title">Resources</h1>
+
+        <p className="mb-8">
+          Learn the basics of company valuation and valuation methods. These guides explain key concepts, walk through common approaches, and help you understand how to estimate business value.
+        </p>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <Link to="/resources/company-valuation/what-is-company-valuation" className="block bg-card border border-border rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
+            <h3 className="text-lg font-semibold text-foreground mb-2">What Is Company Valuation?</h3>
+            <p className="text-sm text-muted-foreground">Understand what company valuation means, why it matters, and how intrinsic value differs from market price. Includes examples and a video overview.</p>
+          </Link>
+          <Link to="/resources/company-valuation/methods" className="block bg-card border border-border rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
+            <h3 className="text-lg font-semibold text-foreground mb-2">Company Valuation Methods</h3>
+            <p className="text-sm text-muted-foreground">A detailed guide to DCF, multiples, book value, and market-based valuation approaches — including when to use each method.</p>
+          </Link>
+        </div>
+      </article>
+    </PageLayout>
+  );
+};
+
+export default Resources;

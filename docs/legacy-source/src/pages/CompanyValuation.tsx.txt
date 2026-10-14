@@ -1,0 +1,133 @@
+import { Helmet } from "react-helmet-async";
+import PageLayout from "@/components/layout/PageLayout";
+import { Link } from "react-router-dom";
+import ValuationFlowDiagram from "@/components/ValuationFlowDiagram";
+
+const CompanyValuation = () => {
+  return (
+    <PageLayout>
+      <Helmet>
+        <title>What Is Company Valuation? | Definition & Examples</title>
+        <meta name="description" content="Learn what company valuation is, how to estimate business value using methods like DCF and multiples, and how to generate a valuation report from financial data." />
+        <meta name="robots" content="noindex,follow" />
+        <link rel="canonical" href="https://company-valuation.com/resources/company-valuation/what-is-company-valuation" />
+      </Helmet>
+
+      <article className="prose-content">
+        <nav className="text-sm text-muted-foreground mb-4">
+          <Link to="/" className="hover:text-link">Home</Link>
+          {" › "}
+          <span>What Is Company Valuation?</span>
+        </nav>
+
+        <h1 className="page-title">What Is Company Valuation?</h1>
+
+        <div className="bg-accent border border-border rounded p-4 mb-6 text-sm">
+          Looking for the updated version? <Link to="/resources/company-valuation/what-is-company-valuation" className="underline font-medium">Read it in Resources</Link>.
+        </div>
+
+        <section className="content-section">
+          <p>
+            <strong>Company valuation</strong> is the analytical process of determining the economic worth of a business. Whether you're looking to calculate <strong>company value</strong> for a sale, investment, or strategic planning, understanding valuation fundamentals is essential. A proper <strong>business valuation</strong> establishes the intrinsic or true value of an enterprise — the price both buyer and seller would agree upon in an arm's-length transaction without negotiation premiums or discounts.
+          </p>
+
+          <p>
+            <strong>Company value</strong> is inherently subjective and depends on the perspective of the observer. Consider a simple example: one investor might value a technology company at €5 million based on current cash flows, while another might value it at €8 million based on synergies with their existing portfolio. This difference reflects varying assessments of future prospects, risk, and strategic fit. A robust <strong>company valuation calculator</strong> helps quantify these factors systematically.
+          </p>
+
+          <p>
+            It's important to distinguish between <em>value</em> and <em>price</em>. Price is the monetary amount actually paid in a transaction — it's more objective and observable. Value, however, reflects what a business is truly worth to a particular buyer or seller. In acquisitions and investments, the valuation process establishes an initial estimate of value, which then serves as a starting point for negotiations that ultimately determine the final price. Since the goal is to ensure value exceeds the price paid, accurate <strong>business valuation</strong> is critical.
+          </p>
+
+          <div className="bg-lime-light p-6 rounded my-6">
+            <p className="text-lg italic mb-0">
+              <strong>Company valuation</strong> is the process of determining the intrinsic worth of a business. This intrinsic <strong>company value</strong> represents the underlying "true" value of the enterprise and provides a rational starting point for negotiations, investment decisions, and strategic planning.
+            </p>
+          </div>
+
+          <p>
+            To learn how to value a business effectively, the video below provides a comprehensive overview. For hands-on experience with our <strong>company valuation software</strong>, you can{" "}
+            <a href="https://pdfanalysis.valuatum.com/Login.action" target="_blank" rel="noopener noreferrer">
+              register for free
+            </a>{" "}
+            and generate your own valuation report.
+          </p>
+
+          <div className="my-6 aspect-video">
+            <iframe
+              width="100%"
+              height="100%"
+              src="https://www.youtube.com/embed/3_R14_eFCOg"
+              title="How to Value a Company - Business Valuation Explained"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="rounded"
+              loading="lazy"
+            />
+          </div>
+        </section>
+
+        <section className="content-section">
+          <h2>Why Is Accurate Company Valuation Important?</h2>
+          <p>
+            Understanding <strong>company value</strong> is essential in many business situations:
+          </p>
+          <ul>
+            <li><strong>Buying or selling a business</strong> — Ensure you're paying or receiving a fair price</li>
+            <li><strong>Raising investment capital</strong> — Justify your valuation to potential investors</li>
+            <li><strong>Strategic planning</strong> — Track how business decisions affect company worth over time</li>
+            <li><strong>Ownership transitions</strong> — Fairly value shares for buyouts, succession, or divorce proceedings</li>
+            <li><strong>Securing financing</strong> — Demonstrate company value to lenders and creditors</li>
+          </ul>
+          <p>
+            A reliable <strong>company value calculator</strong> streamlines this process by automating the technical analysis while allowing you to adjust key assumptions based on your specific knowledge of the business.
+          </p>
+        </section>
+
+        <section className="content-section">
+          <h2>Selecting the Right Valuation Approach</h2>
+          <p>
+            The choice of <strong>business valuation</strong> method depends on the company's financial situation. The diagram below illustrates how different methods are selected based on whether a company has positive or negative earnings and operating profit. No single method captures the complete picture — professional valuations typically combine multiple approaches to arrive at a reasonable value range.
+          </p>
+          
+          <ValuationFlowDiagram />
+        </section>
+
+        <section className="content-section">
+          <h2>Company Valuation Methods</h2>
+          <p>
+            Our <strong>company valuation tool</strong> uses multiple approaches to ensure comprehensive and reliable results. The most common <strong>business valuation</strong> methods include:
+          </p>
+          <ul>
+            <li><strong>Discounted Cash Flow (DCF)</strong> — Values a company based on projected future cash flows, discounted to present value. This is considered the most theoretically rigorous approach for <strong>company valuation DCF</strong> analysis.</li>
+            <li><strong>Multiples Valuation (P/E, EV/EBITDA)</strong> — Compares the company to publicly traded peers using standardized ratios</li>
+            <li><strong>Book Value of Equity</strong> — Uses the accounting value of net assets as a baseline</li>
+            <li><strong>ROE vs. P/BV Method</strong> — Establishes a statistical relationship between return on equity and price-to-book ratios</li>
+            <li><strong>EBIT-% vs. P/Sales Method</strong> — Useful for valuing unprofitable companies based on revenue and margin expectations</li>
+          </ul>
+          <p>
+            To learn more about these methods and how they are applied in our <strong>company valuation software</strong>, visit our{" "}
+            <Link to="/resources/company-valuation/methods">Company Valuation Methods</Link> page.
+          </p>
+        </section>
+
+        <section className="content-section">
+          <h2>Get Started with Company Valuation</h2>
+          <p>
+            Ready to calculate your <strong>company value</strong>? Our <strong>company valuation calculator</strong> makes the process straightforward:
+          </p>
+          <div className="flex flex-wrap gap-3 mt-4">
+            <Link to="/solutions/manual-data-input-company-valuation" className="btn btn-primary">
+              Try Free Valuation Tool
+            </Link>
+            <Link to="/solutions/pdf-based-company-valuation" className="btn btn-secondary">
+              PDF-Based Valuation
+            </Link>
+          </div>
+        </section>
+      </article>
+    </PageLayout>
+  );
+};
+
+export default CompanyValuation;

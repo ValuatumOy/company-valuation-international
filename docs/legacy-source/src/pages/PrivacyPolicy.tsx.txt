@@ -1,0 +1,113 @@
+import { Helmet } from "react-helmet-async";
+import PageLayout from "@/components/layout/PageLayout";
+import { Link } from "react-router-dom";
+
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://company-valuation.com/" },
+    { "@type": "ListItem", position: 2, name: "Privacy Policy", item: "https://company-valuation.com/privacy-policy" },
+  ],
+};
+
+const PrivacyPolicy = () => {
+  return (
+    <PageLayout>
+      <Helmet>
+        <title>Privacy Policy | Valuatum Tools</title>
+        <meta name="description" content="Read how Valuatum Oy collects and uses account data, usage data, and financial information entered for valuations." />
+        <script type="application/ld+json">{JSON.stringify(breadcrumbJsonLd)}</script>
+      </Helmet>
+
+      <article className="prose-content">
+        <nav className="text-sm text-muted-foreground mb-4">
+          <Link to="/" className="hover:text-link">Home</Link>
+          {" › "}
+          <span>Privacy Policy</span>
+        </nav>
+
+        <h1 className="page-title">Privacy Policy</h1>
+
+        <section className="content-section">
+          <h2>Introduction</h2>
+          <p>
+            This privacy policy explains how Valuatum Oy ("we", "us", or "our") collects, uses, and protects your personal information when you use our Valuatum Estimator service.
+          </p>
+        </section>
+
+        <section className="content-section">
+          <h2>Information We Collect</h2>
+          <p>We may collect the following types of information:</p>
+          <ul>
+            <li><strong>Account Information:</strong> Name, email address, phone number (optional), and company information when you register for our service.</li>
+            <li><strong>Financial Data:</strong> Company financial statements and related data that you enter into the system for valuation purposes.</li>
+            <li><strong>Usage Data:</strong> Information about how you use our service, including pages visited and features used.</li>
+            <li><strong>Technical Data:</strong> IP address, browser type, device information, and cookies.</li>
+          </ul>
+        </section>
+
+        <section className="content-section">
+          <h2>How We Use Your Information</h2>
+          <p>We use your information to:</p>
+          <ul>
+            <li>Provide and maintain our valuation service</li>
+            <li>Generate valuation reports based on your financial data</li>
+            <li>Communicate with you about your account and our services</li>
+            <li>Improve our service and develop new features</li>
+            <li>Comply with legal obligations</li>
+          </ul>
+        </section>
+
+        <section className="content-section">
+          <h2>Data Protection</h2>
+          <p>
+            We implement appropriate technical and organizational measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction.
+          </p>
+          <p>
+            Valuatum does not give any user data, including contact information and financial data, to third parties. We may contact you with issues regarding the system (e.g. problems and important issues) via email.
+          </p>
+        </section>
+
+        <section className="content-section">
+          <h2>Cookies</h2>
+          <p>
+            This website uses cookies for statistical and analytical purposes and for improving the user experience of the site. Cookies are small text files stored on your device.
+          </p>
+          <h3>Necessary Cookies</h3>
+          <p>
+            Necessary cookies are absolutely essential for the website to function properly. This category only includes cookies that ensures basic functionalities and security features of the website. These cookies do not store any personal information.
+          </p>
+          <h3>Non-necessary Cookies</h3>
+          <p>
+            Any cookies that may not be particularly necessary for the website to function and is used specifically to collect user personal data via analytics, ads, other embedded contents are termed as non-necessary cookies. It is mandatory to procure user consent prior to running these cookies on your website.
+          </p>
+        </section>
+
+        <section className="content-section">
+          <h2>Your Rights</h2>
+          <p>You have the right to:</p>
+          <ul>
+            <li>Access your personal data</li>
+            <li>Correct inaccurate data</li>
+            <li>Request deletion of your data</li>
+            <li>Object to processing of your data</li>
+            <li>Request data portability</li>
+          </ul>
+        </section>
+
+        <section className="content-section">
+          <h2>Contact Us</h2>
+          <p>
+            If you have any questions about this privacy policy or our data practices, please contact us at:
+          </p>
+          <p>
+            <a href="mailto:company-valuation@valuatum.com">company-valuation@valuatum.com</a>
+          </p>
+        </section>
+      </article>
+    </PageLayout>
+  );
+};
+
+export default PrivacyPolicy;

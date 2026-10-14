@@ -1,0 +1,175 @@
+import { Helmet } from "react-helmet-async";
+import PageLayout from "@/components/layout/PageLayout";
+import { Link } from "react-router-dom";
+
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://company-valuation.com/" },
+    { "@type": "ListItem", position: 2, name: "Why Company Valuation", item: "https://company-valuation.com/solutions/why-do-you-need-company-valuation" },
+  ],
+};
+
+const WhyCompanyValuation = () => {
+  return (
+    <PageLayout>
+      <Helmet>
+        <title>Why Company Valuation Matters | Valuatum Tools</title>
+        <meta name="description" content="Learn when you need a business valuation—selling, fundraising, planning, or financing—and what inputs affect the estimate." />
+        <script type="application/ld+json">{JSON.stringify(breadcrumbJsonLd)}</script>
+      </Helmet>
+
+      <article className="prose-content">
+        <nav className="text-sm text-muted-foreground mb-4">
+          <Link to="/" className="hover:text-link">Home</Link>
+          {" › "}
+          <span>Solutions</span>
+          {" › "}
+          <span>Why Do You Need Company Valuation?</span>
+        </nav>
+
+        <h1 className="page-title">Why Do You Need Company Valuation?</h1>
+
+        {/* Introduction */}
+        <section className="content-section">
+          <p>
+            <strong>Company valuation</strong> is more than just a number — it provides a comprehensive lens through which business owners, investors, and advisors understand the true worth of an enterprise. Whether you're navigating a transaction, planning for the future, or simply seeking clarity about where your business stands, knowing your <strong>company value</strong> provides the foundation for sound decision-making.
+          </p>
+          <p>
+            A reliable <strong>business valuation</strong> answers fundamental questions: What is this company worth today? How does it compare to peers? What drives its value, and what risks might erode it? These insights matter not only during major events like sales or fundraising, but also as part of ongoing strategic management. A proper <strong>company valuation calculator</strong> makes this analysis accessible to businesses of all sizes.
+          </p>
+          <p className="mt-4"><strong>Company valuation</strong> is useful in many different situations, for example:</p>
+          <ul className="custom-list my-3">
+            <li>To understand the true <strong>company value</strong> and growth potential of your business</li>
+            <li>To buy or sell a business at a fair price</li>
+            <li>For partner investments or buyouts</li>
+            <li>When planning changes in ownership or succession</li>
+            <li>When considering funding opportunities or bank financing</li>
+          </ul>
+          <p className="text-sm text-muted-foreground">
+            If you wish to learn more, visit our{" "}
+            <Link to="/resources/company-valuation/what-is-company-valuation" className="text-link">"What Is Company Valuation?"</Link> guide or explore the specific <Link to="/resources/company-valuation/methods" className="text-link">valuation methods</Link> we use.
+          </p>
+          <div className="video-placeholder mt-6">
+            <iframe
+              src="https://www.youtube.com/embed/vHu7WsCF-5Y"
+              title="Company valuation explained – Valuatum Tools"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              loading="lazy"
+            ></iframe>
+          </div>
+        </section>
+
+        <hr className="section-divider" />
+
+        <section className="content-section">
+          <h2 className="block-heading">Common Use Cases for Business Valuation</h2>
+          
+          <h3 className="block-subheading">Business Sales & Acquisitions</h3>
+          <p>
+            Whether you are buying or selling a business, an accurate <strong>company valuation</strong> is essential for fair negotiations and informed decision-making. Sellers need to know their floor price — the minimum they should accept — while buyers need confidence that they are not overpaying. A well-supported <strong>business valuation</strong> creates a common ground for both parties and reduces the friction that often derails transactions.
+          </p>
+          <p>
+            Consider a business owner preparing to exit after decades of building a company. Without a clear understanding of <strong>company value</strong>, they might accept an offer far below what the business is truly worth. Conversely, an acquirer evaluating multiple targets relies on consistent <strong>company valuation</strong> analysis to compare opportunities and allocate capital wisely.
+          </p>
+
+          <h3 className="block-subheading">Investment Decisions & Fundraising</h3>
+          <p>
+            Investors need reliable <strong>business valuations</strong> to assess opportunities, negotiate terms, and structure deals appropriately. For founders seeking capital, presenting a credible <strong>company valuation</strong> demonstrates professionalism and builds investor confidence. It shows that you understand your own business and can articulate why it deserves the valuation you are proposing.
+          </p>
+          <p>
+            A startup seeking seed funding, for example, must justify its pre-money <strong>company value</strong> to prospective investors. An established company exploring growth equity faces similar scrutiny. In both cases, a transparent, well-documented valuation — one that shows the assumptions, forecasts, and methods used — is far more persuasive than a single unsupported number.
+          </p>
+
+          <h3 className="block-subheading">Strategic Planning & Performance Tracking</h3>
+          <p>
+            Understanding your <strong>company value</strong> helps with long-term planning, identifying growth opportunities, and measuring progress. <strong>Business valuation</strong> is not just a one-time exercise for transactions; it is a strategic tool for management. By tracking how <strong>company valuation</strong> evolves over time, leadership teams can see whether their decisions are creating or destroying value.
+          </p>
+          <p>
+            For instance, a company investing heavily in R&D might not see immediate profit gains, but a <strong>company valuation</strong> framework can reveal whether these investments are increasing the enterprise's long-term worth. Similarly, if a business unit is underperforming, valuation analysis can quantify the drag on overall <strong>company value</strong> and inform restructuring decisions.
+          </p>
+
+          <h3 className="block-subheading">Ownership Changes & Shareholder Transitions</h3>
+          <p>
+            When ownership structures change — whether through partner buyouts, inheritance, divorce settlements, or employee share schemes — a fair and independent <strong>company valuation</strong> protects all parties involved. It ensures that no shareholder is disadvantaged and that transactions reflect the true worth of the equity being transferred.
+          </p>
+          <p>
+            A family business transitioning to the next generation, for example, benefits from a clear <strong>business valuation</strong> to ensure equitable treatment among heirs. Similarly, when a co-founder exits a partnership, both sides need an objective basis for pricing the departing stake based on accurate <strong>company value</strong>.
+          </p>
+
+          <h3 className="block-subheading">Financing & Lending</h3>
+          <p>
+            Banks and lenders often require <strong>company valuations</strong> when considering loans or credit facilities. A robust <strong>business valuation</strong> gives lenders confidence in the collateral value of the business and supports more favorable borrowing terms. It also helps business owners understand how much debt their company can reasonably support.
+          </p>
+          <p>
+            Beyond securing loans, <strong>company valuation</strong> analysis can reveal whether a company's capital structure is optimal. If the business is under-leveraged, it might be leaving growth capital on the table. If over-leveraged, refinancing or equity infusion might be prudent.
+          </p>
+        </section>
+
+        <hr className="section-divider" />
+
+        <section className="content-section">
+          <h2 className="block-heading">Company Valuation Supports Better Decisions</h2>
+          <p>
+            While some <strong>business valuations</strong> are required for regulatory, tax, or legal reasons, the greatest value comes from using the analysis as a decision-making tool. A good <strong>company valuation</strong> does not just tell you what the business is worth — it reveals what drives that worth. Understanding the key value drivers allows management to focus on the levers that matter most.
+          </p>
+          <p>
+            Are margins expanding or contracting? Is revenue growth accelerating? How sensitive is the <strong>company value</strong> to changes in discount rates or terminal assumptions? Answering these questions transforms <strong>business valuation</strong> from a static report into a dynamic management instrument.
+          </p>
+        </section>
+
+        <hr className="section-divider" />
+
+        <section className="content-section">
+          <h2 className="block-heading">How Often Should a Company Be Valued?</h2>
+          <p>
+            There is no universal rule, but most well-managed companies benefit from periodic <strong>company valuation</strong> updates — at minimum annually, and more frequently if the business is growing rapidly, undergoing strategic shifts, or operating in volatile markets. Regular <strong>business valuations</strong> create a historical baseline, making it easier to spot trends and react proactively.
+          </p>
+          <p>
+            Beyond scheduled reviews, certain events should trigger a fresh <strong>company valuation</strong>: receiving an acquisition offer, launching a fundraising round, onboarding a new partner, or experiencing a significant change in financial performance. In these moments, relying on outdated <strong>company value</strong> numbers can lead to costly missteps.
+          </p>
+        </section>
+
+        <hr className="section-divider" />
+
+        <section className="content-section">
+          <h2 className="block-heading">How a Company Valuation Tool Helps</h2>
+          <p>
+            Traditionally, <strong>company valuation</strong> required either expensive advisory engagements or time-consuming spreadsheet modeling. A <strong>company valuation calculator</strong> changes this equation by automating the technical work — data extraction, standardization, and calculation — while leaving strategic judgment in your hands.
+          </p>
+          <p>
+            With modern <strong>company valuation software</strong>, you can upload financial statements, review the extracted figures, adjust assumptions to reflect your market knowledge, and generate professional <strong>business valuation</strong> reports in a fraction of the time. This accessibility means that calculating <strong>company value</strong> is no longer reserved for major transactions; it becomes a routine part of good business management.
+          </p>
+          <p>
+            Crucially, the best <strong>company valuation tools</strong> prioritize transparency. Every input is visible and editable, so you understand exactly how the final <strong>company value</strong> was derived. This openness builds trust — whether you are presenting to investors, negotiating with buyers, or reporting to a board.
+          </p>
+        </section>
+
+        <hr className="section-divider" />
+
+        <section className="content-section">
+          <h2 className="block-heading">Get Started with Company Valuation</h2>
+          <p>
+            Ready to calculate your <strong>company value</strong>? Explore our <strong>business valuation</strong> solutions:
+          </p>
+          <div className="flex flex-wrap gap-3 mt-4">
+            <Link to="/solutions/manual-data-input-company-valuation" className="btn btn-secondary">
+              Manual Data Input (Free)
+            </Link>
+            <Link to="/solutions/pdf-based-company-valuation" className="btn btn-secondary">
+              PDF Statement Valuation
+            </Link>
+          </div>
+          <p className="mt-4 text-sm text-muted-foreground">
+            Have questions? Check our <Link to="/support/faq" className="text-link">FAQ</Link>.
+          </p>
+        </section>
+      </article>
+    </PageLayout>
+  );
+};
+
+export default WhyCompanyValuation;

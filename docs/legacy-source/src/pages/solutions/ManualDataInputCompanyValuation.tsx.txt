@@ -1,0 +1,245 @@
+import { Helmet } from "react-helmet-async";
+import PageLayout from "@/components/layout/PageLayout";
+import { Link } from "react-router-dom";
+import sampleReportImage from "@/assets/manual-input-sample-report.png";
+import demoEnvironmentImage from "@/assets/manual-input-demo-environment.png";
+
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://company-valuation.com/" },
+    { "@type": "ListItem", position: 2, name: "Manual Data Input Valuation", item: "https://company-valuation.com/solutions/manual-data-input-company-valuation" },
+  ],
+};
+
+const softwareJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "Manual Data Input Valuation",
+  applicationCategory: "FinanceApplication",
+  operatingSystem: "Web",
+  url: "https://company-valuation.com/solutions/manual-data-input-company-valuation",
+  description: "Enter financial figures manually to estimate business value. Review assumptions, run scenarios, and export a valuation report.",
+  isAccessibleForFree: true,
+  offers: { "@type": "Offer", price: "0", priceCurrency: "EUR", description: "Free manual data input valuation" },
+  publisher: {
+    "@type": "Organization",
+    name: "Valuatum Oy",
+    url: "https://company-valuation.com/",
+    logo: "https://company-valuation.com/favicon.png",
+    email: "estimator@valuatum.com",
+  },
+};
+
+const ManualDataInputCompanyValuation = () => {
+  return (
+    <PageLayout>
+      <Helmet>
+        <title>Manual Data Input Valuation (Free) | Valuatum Tools</title>
+        <meta name="description" content="Enter financial figures manually to estimate business value. Review assumptions, run scenarios, and export a valuation report." />
+        <script type="application/ld+json">{JSON.stringify(breadcrumbJsonLd)}</script>
+        <script type="application/ld+json">{JSON.stringify(softwareJsonLd)}</script>
+      </Helmet>
+
+      <article className="prose-content">
+        <nav className="text-sm text-muted-foreground mb-4">
+          <Link to="/" className="hover:text-link">Home</Link>
+          {" › "}
+          <span>Solutions</span>
+          {" › "}
+          <span>Manual Data Input Company Valuation</span>
+        </nav>
+
+        <h1 className="page-title">Manual Data Input Company Valuation</h1>
+
+        <section className="content-section">
+          <p>
+            Our <strong>company valuation calculator</strong> allows you to input financial figures manually and receive a comprehensive <strong>business valuation</strong> report instantly. This free <strong>company valuation tool</strong> is ideal if you already have your financial data ready and want to calculate <strong>company value</strong> quickly and accurately. New to the topic? Read about <Link to="/resources/company-valuation/what-is-company-valuation" className="text-link">what company valuation means</Link>.
+          </p>
+
+          <p>
+            With our <strong>company valuation software</strong>, you can generate valuation reports in seconds and modify any financial estimates, including sales, EBIT, and investments. The system is specifically tailored for small business valuation and uses multiple <Link to="/resources/company-valuation/methods" className="text-link">valuation methods</Link> including <strong>DCF valuation</strong> to ensure reliable results. If you prefer not to enter data yourself, you can also <Link to="/solutions/pdf-based-company-valuation" className="text-link">upload a PDF financial statement</Link> instead.
+          </p>
+          <p>This <strong>company value calculator</strong> provides the following features:</p>
+          <ul className="custom-list my-3">
+            <li>Automatic <strong>company valuation</strong> using multiple methods including DCF, P/E, and EV/EBITDA</li>
+            <li>Easy-to-use tools for analyzing and creating your own valuation scenarios</li>
+            <li>Professional <strong>business valuation</strong> reports with detailed methodology explanations</li>
+            <li>Industry comparisons with up to 200,000 peer companies</li>
+          </ul>
+
+          <div className="my-6">
+          <a 
+            href="https://estimator.valuatum.com/AspAndUserCreation.action?templateAspQueryKey=PPVTemplate&userType=&popup=true" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="btn btn-primary text-white"
+          >
+            Register Free
+          </a>
+          </div>
+        </section>
+
+        <hr className="section-divider my-[40px]" />
+
+        {/* Test the system and see a sample report */}
+        <section className="content-section">
+          <h2 className="block-heading">Test Our Company Valuation Tool</h2>
+          <p>
+            Explore the <strong>company valuation software</strong> in our demo environment and review a sample <strong>business valuation</strong> report:
+          </p>
+          <div className="two-columns">
+            <div className="column-card text-center">
+              <h3 className="block-subheading text-center">Demo Environment</h3>
+              <a 
+                href="https://estimator-demo.valuatum.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block"
+              >
+                <div className="placeholder-image hover:border-primary transition-colors mx-auto overflow-hidden p-0 bg-transparent border-0">
+                  <img 
+                    src={demoEnvironmentImage} 
+                    alt="Company valuation calculator demo environment" 
+                    className="w-full h-full object-cover object-top"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+              </a>
+              <p>
+                Try our <strong>company value calculator</strong> in a demo environment and see how <strong>business valuations</strong> work in practice.
+              </p>
+              <p className="text-center">
+                <a
+                  href="https://estimator-demo.valuatum.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-secondary"
+                >
+                  Open Demo
+                </a>
+              </p>
+            </div>
+            <div className="column-card text-center">
+              <h3 className="block-subheading text-center">Sample Report (PDF)</h3>
+              <a 
+                href="https://www.valuatum.com/wp-content/uploads/sites/10/2025/11/DemoCompanyValuationReport.pdf?_gl=1%2A1tmztsh%2A_ga%2AOTAzNTY2OTEzLjE3NjQzMTgwODg.%2A_ga_KGVF9NMD79%2AczE3NjU1MjM3MjUkbzIkZzEkdDE3NjU1MjQ0MzgkajYwJGwwJGgw"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block"
+              >
+                <div className="placeholder-image hover:border-primary transition-colors mx-auto overflow-hidden p-0 bg-transparent border-0">
+                  <img 
+                    src={sampleReportImage} 
+                    alt="Sample company valuation report" 
+                    className="w-full h-full object-cover object-top"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+              </a>
+              <p>
+                Download a sample <strong>company valuation</strong> report to see the structure, contents, and level of detail.
+              </p>
+              <p className="text-center">
+              <a
+                  href="https://www.valuatum.com/wp-content/uploads/sites/10/2025/11/DemoCompanyValuationReport.pdf?_gl=1%2A1tmztsh%2A_ga%2AOTAzNTY2OTEzLjE3NjQzMTgwODg.%2A_ga_KGVF9NMD79%2AczE3NjU1MjM3MjUkbzIkZzEkdDE3NjU1MjQ0MzgkajYwJGwwJGgw"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-secondary"
+                >
+                  View Sample Report
+                </a>
+              </p>
+            </div>
+          </div>
+        </section>
+
+
+        <hr className="section-divider my-[40px]" />
+
+        {/* Estimator Premium */}
+        <section className="content-section">
+          <h2 id="estimator-premium" className="block-heading">Valuatum Estimator Premium</h2>
+          <p>
+            While the basic version of our <strong>company valuation tool</strong> is completely free, we also offer a premium version. With premium you get your company logo on <strong>business valuation</strong> reports and the option to decide which tables, figures, and graphs to display. You can also create additional user credentials and allow your customers access to the system.
+          </p>
+          <p>
+            For premium customers we can also build customized report templates at a reasonable one-time fee.
+          </p>
+          <p>
+            Our premium plans start at just 50 EUR / month (yearly subscription).
+          </p>
+          <p>
+            If you are interested to hear more, please contact us at{" "}
+            <a href="mailto:contact@valuatum.com">contact@valuatum.com</a>.
+          </p>
+
+          <h3 className="text-center mb-8 mt-8">Premium Plans Starting At</h3>
+          
+          <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+            <div className="border-2 border-border rounded-lg p-6 text-center hover:border-primary transition-colors">
+              <h4 className="text-lg font-semibold mb-4">Monthly Subscription</h4>
+              <div className="text-4xl font-bold text-primary mb-2">100 EUR</div>
+              <div className="text-muted-foreground">per month</div>
+            </div>
+
+            <div className="border-2 border-border rounded-lg p-6 text-center hover:border-primary transition-colors">
+              <h4 className="text-lg font-semibold mb-4">3-Month Subscription</h4>
+              <div className="text-4xl font-bold text-primary mb-2">240 EUR</div>
+              <div className="text-muted-foreground">80 EUR / month</div>
+            </div>
+
+            <div className="border-2 border-primary bg-lime-light rounded-lg p-6 text-center relative">
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground px-3 py-1 text-xs font-semibold rounded">
+                BEST VALUE
+              </div>
+              <h4 className="text-lg font-semibold mb-4">Annual Subscription</h4>
+              <div className="text-4xl font-bold text-primary mb-2">600 EUR</div>
+              <div className="text-muted-foreground">50 EUR / month</div>
+            </div>
+          </div>
+
+          <h3 className="mt-8">Premium Features Include</h3>
+          <ul className="custom-list">
+            <li><strong>Custom Branding:</strong> Your company logo on all <strong>company valuation</strong> reports</li>
+            <li><strong>Customizable Views:</strong> Choose which tables, figures, and graphs appear</li>
+            <li><strong>Multiple Users:</strong> Create additional user credentials for team members or clients</li>
+            <li><strong>Client Access:</strong> Allow your own customers access to the <strong>company valuation software</strong></li>
+            <li><strong>Custom Report Templates:</strong> Available for an additional one-time fee</li>
+            <li><strong>Priority Support:</strong> Get faster response times from our support team</li>
+          </ul>
+
+          <div className="text-center mt-8">
+            <h3>Ready to Upgrade?</h3>
+            <p className="mb-6">
+              Contact us to learn more about premium features for your <strong>business valuation</strong> needs.
+            </p>
+            <a
+              href="/support"
+              className="btn btn-primary text-white"
+            >
+              Contact Us
+            </a>
+          </div>
+        </section>
+
+        <hr className="section-divider my-[40px]" />
+
+        <section className="content-section">
+          <h2>More Resources</h2>
+          <ul className="custom-list">
+            <li><Link to="/solutions/manual-data-input-company-valuation/key-features">Key Features</Link></li>
+            <li><Link to="/solutions/manual-data-input-company-valuation/user-manual">User Manual</Link></li>
+            <li><Link to="/resources/company-valuation/methods">Company Valuation Methods</Link></li>
+            <li><Link to="/support/faq">Common Questions (FAQ)</Link></li>
+          </ul>
+        </section>
+      </article>
+    </PageLayout>
+  );
+};
+
+export default ManualDataInputCompanyValuation;

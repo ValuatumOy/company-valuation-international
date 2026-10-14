@@ -1,0 +1,96 @@
+import { Helmet } from "react-helmet-async";
+import PageLayout from "@/components/layout/PageLayout";
+import { Link } from "react-router-dom";
+
+const KeyFeatures = () => {
+  return (
+    <PageLayout>
+      <Helmet>
+        <title>Key Features | Manual Input Valuation | Valuatum Tools</title>
+        <meta name="description" content="Explore key features like editable assumptions, scenarios, peer comparisons, and valuation report export." />
+        <meta name="robots" content="noindex,follow" />
+      </Helmet>
+
+      <article className="prose-content">
+        <nav className="text-sm text-muted-foreground mb-4">
+          <Link to="/" className="hover:text-link">Home</Link>
+          {" › "}
+          <span>Key Features</span>
+        </nav>
+
+        <h1 className="page-title">Key Features</h1>
+
+        <section className="content-section">
+          <p>
+            Valuatum provides you Valuatum Estimator Freemium, a powerful business valuation tool for valuing and analyzing your company. The key features listed below combined with continuous support and development ensure that you receive a business valuation effortlessly. You can also watch a preview video of Valuatum Estimator below.
+          </p>
+
+          <ul className="my-6">
+            <li>Create automatic valuation reports and estimates</li>
+            <li>Compare your business with up to 200,000 peer companies</li>
+            <li>Create and modify your own scenarios with easy-to-use tools</li>
+            <li>Discover the value of your company using a wide selection of valuation methods</li>
+          </ul>
+
+          <div className="my-6 aspect-video">
+            <iframe
+              width="100%"
+              height="100%"
+              src="https://www.youtube.com/embed/RCqo-1ph-Gs"
+              title="Valuatum Estimator Key Features"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="rounded"
+              loading="lazy"
+            />
+          </div>
+
+          <div className="my-6 text-center">
+            <a
+              href="https://pdfanalysis.valuatum.com/Login.action"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block bg-primary text-primary-foreground px-8 py-3 font-semibold hover:bg-lime-dark transition-colors"
+            >
+              Register
+            </a>
+          </div>
+        </section>
+
+        <section className="content-section">
+          <h2>How Does The System Work?</h2>
+          <p>
+            Our business valuation and analysis system is one of the most reliable and agile solutions in the market and therefore suitable for both professional organizations and individual users. The process of obtaining a valuation estimate is designed to be as simple and reliable as possible.
+          </p>
+
+          <ul>
+            <li>Enter your company's financials through our online data form and save to Valuatum database</li>
+            <li>Valuatum system creates a valuation estimate using several multiples valuation methods.</li>
+            <li>Access your data through the web interface
+              <ul className="mt-2">
+                <li>View key figures and detailed financial statement data</li>
+                <li>Generate automatic estimates and customise them based on your own analysis</li>
+                <li>Generate a detailed valuation report</li>
+              </ul>
+            </li>
+          </ul>
+
+          <div className="my-6">
+            <img 
+              src="https://s3-eu-west-1.amazonaws.com/valu-wordpress/wp-content/uploads/sites/4/2016/10/05070325/ProductFeatures_kuuva-1024x519.png" 
+              alt="Business valuation tool workflow"
+              className="w-full rounded"
+            />
+          </div>
+
+          <p>
+            Our business valuation tool utilises many commonly used valuation methods to calculate the value of the company. Historical figures, industry data and future estimates are combined to ensure the reliability of the valuation. The specific methods and their weights in the final valuation are determined dynamically based on the financial situation of the company. The use of the various methods is thoroughly explained in the generated report. For further information about company valuation, please see the{" "}
+            <Link to="/valuation-methods">Valuation methods</Link> page.
+          </p>
+        </section>
+      </article>
+    </PageLayout>
+  );
+};
+
+export default KeyFeatures;

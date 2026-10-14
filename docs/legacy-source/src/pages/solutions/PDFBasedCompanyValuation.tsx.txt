@@ -1,0 +1,176 @@
+import { Helmet } from "react-helmet-async";
+import PageLayout from "@/components/layout/PageLayout";
+import { Link } from "react-router-dom";
+import ProcessFlow from "@/components/ProcessFlow";
+import pdfImportUpload from "@/assets/pdf-import-upload.png";
+import pdfImportProcessing from "@/assets/pdf-import-processing.png";
+import pdfImportResults from "@/assets/pdf-import-results.jpg";
+import pdfImportReport from "@/assets/pdf-import-report.png";
+
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://company-valuation.com/" },
+    { "@type": "ListItem", position: 2, name: "PDF Statement Valuation", item: "https://company-valuation.com/solutions/pdf-based-company-valuation" },
+  ],
+};
+
+const softwareJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  name: "PDF Statement Valuation",
+  applicationCategory: "FinanceApplication",
+  operatingSystem: "Web",
+  url: "https://company-valuation.com/solutions/pdf-based-company-valuation",
+  description: "Upload a PDF financial statement to extract key figures and estimate company value. Edit assumptions and generate a valuation report.",
+  offers: { "@type": "Offer", description: "First one free" },
+  publisher: {
+    "@type": "Organization",
+    name: "Valuatum Oy",
+    url: "https://company-valuation.com/",
+    logo: "https://company-valuation.com/favicon.png",
+    email: "estimator@valuatum.com",
+  },
+};
+
+const PDFBasedCompanyValuation = () => {
+  return (
+    <PageLayout>
+      <Helmet>
+        <title>PDF Statement Valuation (First One Free) | Valuatum Tools</title>
+        <meta name="description" content="Upload a PDF financial statement to extract key figures and estimate company value. Edit assumptions and generate a valuation report." />
+        <script type="application/ld+json">{JSON.stringify(breadcrumbJsonLd)}</script>
+        <script type="application/ld+json">{JSON.stringify(softwareJsonLd)}</script>
+      </Helmet>
+
+      <article className="prose-content">
+        <nav className="text-sm text-muted-foreground mb-4">
+          <Link to="/" className="hover:text-link">Home</Link>
+          {" › "}
+          <span>Solutions</span>
+          {" › "}
+          <span>PDF-Based Company Valuation</span>
+        </nav>
+
+        <h1 className="page-title">PDF-Based Company Valuation</h1>
+
+        <section className="content-section">
+          <p>
+            Our AI-powered <strong>company valuation tool</strong> lets you upload PDF financial statements and receive instant <strong>business valuation</strong> reports. This innovative approach to calculating <strong>company value</strong> eliminates manual data entry and delivers professional results in minutes. If you prefer entering figures yourself, see the <Link to="/solutions/manual-data-input-company-valuation" className="text-link">manual data input option</Link>.
+          </p>
+
+          <h2>How This Company Valuation Software Helps</h2>
+          <ul className="custom-list my-3">
+            <li><strong>Eliminates manual data entry:</strong> Our <strong>company valuation calculator</strong> automatically extracts financial data from PDFs, generates forecasts, and creates ready-to-use reports.</li>
+            <li><strong>Full control over assumptions:</strong> Customize forecasts and scenarios after the baseline <strong>business valuation</strong> is created.</li>
+            <li><strong>Multiple valuation methods:</strong> Including <strong>company valuation DCF</strong>, multiples analysis, and market-based approaches.</li>
+          </ul>
+
+          <h2>Key Benefits of Our Company Value Calculator</h2>
+          <ul className="custom-list my-3">
+            <li>Works for companies anywhere in the world (listed or unlisted) — just provide a PDF statement</li>
+            <li>Comprehensive <strong>company valuation</strong> using five valuation methods where applicable</li>
+            <li>Key financial metrics and credit risk analysis included</li>
+            <li>Industry comparisons and peer benchmarking</li>
+            <li>Freemium/credit-based access with free monthly credits plus paid packs for additional reports</li>
+          </ul>
+
+          <div className="my-6">
+            <a 
+              href="https://valuation.valuatum.com/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="btn btn-primary"
+            >
+              Get Started Free
+            </a>
+          </div>
+        </section>
+
+        <hr className="section-divider my-[50px]" />
+
+        {/* AI-powered valuation tools */}
+        <section className="content-section">
+          <h2 className="block-heading">AI-Powered Company Valuation for Businesses of All Sizes</h2>
+          <p>
+            Our <strong>company valuation software</strong> offers multiple ways to analyze and value companies quickly and professionally. From AI-powered PDF extraction to manual data input and ready-made financial data for selected countries, the system reads financial figures, builds forward-looking forecasts, and produces clear visual reports that support better <strong>business valuation</strong> decisions.
+          </p>
+
+          <ProcessFlow />
+
+          <p>
+            Explore each <strong>company valuation tool</strong> in more detail and choose the method that works best for calculating your <strong>company value</strong> from our <Link to="/">solutions overview</Link>.
+          </p>
+        </section>
+
+        <hr className="section-divider my-[50px]" />
+
+        <section className="content-section">
+          <h2>How Our Company Valuation Calculator Works</h2>
+          <div className="space-y-[50px] my-6">
+            <div className="flex flex-col md:flex-row gap-6 items-center">
+              <p className="flex-1 text-muted-foreground">Upload any PDF financial statement (from 2 pages to full annual reports) to start your <strong>company valuation</strong></p>
+              <img src={pdfImportUpload} alt="PDF upload for company valuation" className="w-full md:w-1/2 rounded-lg object-cover" loading="lazy" decoding="async" />
+            </div>
+            <div className="flex flex-col md:flex-row gap-6 items-center">
+              <img src={pdfImportProcessing} alt="Automated extraction of financial data from a PDF statement" className="w-full md:w-1/2 rounded-lg object-cover" loading="lazy" decoding="async" />
+              <p className="flex-1 text-muted-foreground">Our AI-powered <strong>company valuation software</strong> extracts and processes the financial data automatically</p>
+            </div>
+            <div className="flex flex-col md:flex-row gap-6 items-center">
+              <p className="flex-1 text-muted-foreground">The <strong>company value calculator</strong> generates forecasts and calculates valuations using multiple methods including DCF</p>
+              <img src={pdfImportResults} alt="Company value calculation results" className="w-full md:w-1/2 rounded-lg object-cover" loading="lazy" decoding="async" />
+            </div>
+            <div className="flex flex-col md:flex-row gap-6 items-center">
+              <img src={pdfImportReport} alt="Professional company valuation report" className="w-full md:w-[35%] rounded-lg object-cover" loading="lazy" decoding="async" />
+              <p className="md:w-1/2 md:ml-auto text-muted-foreground">Download your professional <strong>business valuation</strong> and credit risk report</p>
+            </div>
+          </div>
+
+          <div className="my-8 aspect-video">
+            <iframe
+              width="100%"
+              height="100%"
+              src="https://www.youtube.com/embed/TkujkI6Riu4"
+              title="How PDF-based company valuation works"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="rounded-lg"
+              loading="lazy"
+            />
+          </div>
+        </section>
+
+        <hr className="section-divider my-[50px]" />
+
+        <section className="content-section">
+          <h2>Why Choose Our Company Valuation Tool?</h2>
+          <ul className="custom-list my-3">
+            <li><strong>Instant AI-powered analysis:</strong> Calculate <strong>company value</strong> in minutes, not hours</li>
+            <li><strong>Customizable forecasts:</strong> Adjust assumptions to reflect your specific <strong>business valuation</strong> needs</li>
+            <li><strong>Comprehensive methodology:</strong> <strong>Company valuation DCF</strong>, multiples, and market-based approaches combined</li>
+            <li><strong>Credit risk assessment:</strong> Credit score and default probability included</li>
+            <li><strong>Professional PDF reports:</strong> Ready for presentations, negotiations, or documentation</li>
+          </ul>
+          <p className="mt-4">
+            Learn more about the valuation approaches used in our <strong>company valuation software</strong> on our{" "}
+            <Link to="/resources/company-valuation/methods">DCF and multiples methods</Link> page. You can also read our introduction to <Link to="/resources/company-valuation/what-is-company-valuation" className="text-link">what company valuation is</Link>.
+          </p>
+        </section>
+
+        <hr className="section-divider my-[50px]" />
+
+        <section className="content-section">
+          <h2>Related Pages</h2>
+          <ul className="custom-list my-3">
+            <li><Link to="/support/faq" className="text-link">Frequently Asked Questions</Link></li>
+            <li><Link to="/solutions/finnish-company-valuation" className="text-link">Finnish Company Valuation</Link></li>
+            <li><Link to="/solutions/danish-company-valuation" className="text-link">Danish Company Valuation</Link></li>
+          </ul>
+        </section>
+      </article>
+    </PageLayout>
+  );
+};
+
+export default PDFBasedCompanyValuation;

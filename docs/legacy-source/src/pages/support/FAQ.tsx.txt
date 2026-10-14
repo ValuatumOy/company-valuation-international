@@ -1,0 +1,196 @@
+import { Helmet } from "react-helmet-async";
+import PageLayout from "@/components/layout/PageLayout";
+import { Link } from "react-router-dom";
+
+const faqData = [
+  { q: "What information do I need to value a company?", a: "You can start with basic financial figures via manual input, or upload a PDF financial statement to extract figures. The more complete the inputs and assumptions are, the easier it is to interpret the result." },
+  { q: "Which valuation workflow should I choose?", a: "Choose Manual Input if you already have key figures and want a fast estimate. Choose PDF Statement if you have statements in a PDF and want to reduce manual data entry. Choose Denmark/Finland workflows if you want reports using existing company data where available." },
+  { q: "Can I calculate company value from a PDF financial statement?", a: "Yes. The PDF workflow is designed to import a PDF statement and convert it into structured figures you can review before generating a valuation report." },
+  { q: "My PDF results look wrong—what should I check first?", a: "First, verify the key extracted figures (revenue, operating profit/margins, balance sheet items). If a PDF is image-based/scanned, extraction may require extra review. Correcting a few critical lines usually fixes the output quickly." },
+  { q: "Do I need all three statements (income statement, balance sheet, cash flow)?", a: "Not always to start. You can begin with partial inputs, then refine the valuation as more complete data is added. More complete statements generally lead to a clearer model and report." },
+  { q: "What valuation methods does the tool support?", a: "The tool supports common valuation approaches such as Discounted Cash Flow (DCF) and benchmarking methods (e.g., multiples-based comparisons). Different methods can be useful depending on profitability and data quality." },
+  { q: "What's the difference between DCF and multiples valuation?", a: "DCF estimates value from expected future cash flows, discounted to today. Multiples estimate value by comparing a company's metrics (like earnings or revenue) to market references. Many analyses compare both to understand a reasonable range." },
+  { q: "Can I edit assumptions like growth rates, margins, and discount rates?", a: "Yes. You can review and adjust key assumptions and re-run the valuation to test scenarios (e.g., conservative vs optimistic)." },
+  { q: "Why did the valuation change a lot after adjusting one input?", a: "Valuation outputs can be highly sensitive to a few drivers—especially growth assumptions and discount-rate inputs. A small change in these can produce a large change in the estimated value." },
+  { q: "What do I get at the end—just a number or a valuation report?", a: "You get a valuation report that documents the inputs and assumptions behind the estimate. This helps you explain the result to stakeholders." },
+  { q: "Can I run multiple scenarios and generate updated reports?", a: "Yes. Scenario testing is often the fastest way to understand a valuation result—run an upside/downside case by changing a few key assumptions and compare outputs." },
+  { q: "What is free vs paid on Valuatum Tools?", a: "Free: Manual data input valuation (and Danish company valuation reports). Try free: PDF-based valuation (first one free). Paid workflow: Finnish company valuation (listed as €30). Coming soon: International company valuation (listed as €50–100)." },
+  { q: "How does Danish company valuation work if I don't have financial statements?", a: "The Danish workflow is designed for cases where you start from existing company information rather than uploading your own statements." },
+  { q: "What's included in Finnish company valuation?", a: "The Finnish workflow is designed to generate valuation reports for Finnish companies with editable assumptions and report output." },
+  { q: "When will international company valuation be available?", a: "The international workflow is marked as Coming soon. If you need coverage outside Denmark and Finland, use the international contact page." },
+  { q: "The tool won't open / I'm stuck on login—what should I try?", a: "Try a hard refresh, disable browser extensions that block pop-ups/scripts, and test in another browser. If the issue persists, email support with your workflow, browser, and screenshots." },
+  { q: "Is an online company valuation accurate?", a: "A valuation is an estimate, not a guaranteed price. The usefulness depends on whether the inputs and assumptions reflect the business reality and are explained clearly." },
+  { q: "How is my data handled?", a: "For privacy and data handling details, refer to the Privacy Policy. If you have a specific compliance question (e.g., what data is stored), email support and specify which workflow you used." },
+];
+
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://company-valuation.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Support", "item": "https://company-valuation.com/support" },
+    { "@type": "ListItem", "position": 3, "name": "FAQ", "item": "https://company-valuation.com/support/faq" }
+  ]
+};
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqData.map(({ q, a }) => ({
+    "@type": "Question",
+    "name": q,
+    "acceptedAnswer": { "@type": "Answer", "text": a }
+  }))
+};
+
+const SupportFAQ = () => {
+  return (
+    <PageLayout>
+      <Helmet>
+        <title>Company Valuation Tool FAQ | Valuatum Tools</title>
+        <meta name="description" content="Answers about inputs, PDF uploads, DCF vs multiples, editable assumptions, valuation reports, and pricing for Valuatum Tools." />
+        <link rel="canonical" href="https://company-valuation.com/support/faq" />
+        <script type="application/ld+json">{JSON.stringify(breadcrumbJsonLd)}</script>
+        <script type="application/ld+json">{JSON.stringify(faqJsonLd)}</script>
+      </Helmet>
+
+      <article className="prose-content">
+        <nav className="text-sm text-muted-foreground mb-4">
+          <Link to="/" className="hover:text-link">Home</Link>
+          {" › "}
+          <Link to="/support" className="hover:text-link">Support</Link>
+          {" › "}
+          <span>FAQ</span>
+        </nav>
+
+        <h1 className="page-title">Company Valuation Tool FAQ</h1>
+
+        <section className="content-section">
+          <p>These are the most common questions about valuing a company using Valuatum Tools—manual entry, PDF financial statements, and country-specific workflows.</p>
+        </section>
+
+        <section className="content-section bg-muted/40 p-4 rounded-lg">
+          <p className="font-medium">
+            Valuatum Tools is a company valuation tool that helps you estimate company value from manual inputs, PDF financial statements, or existing company data where available. You can review and edit assumptions, compare methods like DCF and benchmarking, and generate a valuation report. Results depend on your inputs and assumptions.
+          </p>
+        </section>
+
+        {/* Getting started */}
+        <section className="content-section">
+          <h2>Getting started</h2>
+
+          <h3>What information do I need to value a company?</h3>
+          <p>You can start with basic financial figures via manual input, or upload a PDF financial statement to extract figures. The more complete the inputs and assumptions are, the easier it is to interpret the result.</p>
+          <p className="text-sm">
+            <Link to="/solutions/manual-data-input-company-valuation">Manual input workflow</Link>
+            {" · "}
+            <Link to="/solutions/pdf-based-company-valuation">PDF workflow</Link>
+          </p>
+
+          <h3>Which valuation workflow should I choose?</h3>
+          <ul>
+            <li>Choose <strong>Manual Input</strong> if you already have key figures and want a fast estimate.</li>
+            <li>Choose <strong>PDF Statement</strong> if you have statements in a PDF and want to reduce manual data entry.</li>
+            <li>Choose <strong>Denmark/Finland workflows</strong> if you want reports using existing company data where available.</li>
+          </ul>
+          <p className="text-sm">
+            <Link to="/solutions/danish-company-valuation">Denmark</Link>
+            {" · "}
+            <Link to="/solutions/finnish-company-valuation">Finland</Link>
+          </p>
+        </section>
+
+        {/* PDF uploads & inputs */}
+        <section className="content-section">
+          <h2>PDF uploads &amp; inputs</h2>
+
+          <h3>Can I calculate company value from a PDF financial statement?</h3>
+          <p>Yes. The PDF workflow is designed to import a PDF statement and convert it into structured figures you can review before generating a valuation report.</p>
+          <p className="text-sm"><Link to="/solutions/pdf-based-company-valuation">PDF workflow</Link></p>
+
+          <h3>My PDF results look wrong—what should I check first?</h3>
+          <p>First, verify the key extracted figures (revenue, operating profit/margins, balance sheet items). If a PDF is image-based/scanned, extraction may require extra review. Correcting a few critical lines usually fixes the output quickly.</p>
+
+          <h3>Do I need all three statements (income statement, balance sheet, cash flow)?</h3>
+          <p>Not always to start. You can begin with partial inputs, then refine the valuation as more complete data is added. More complete statements generally lead to a clearer model and report.</p>
+        </section>
+
+        {/* Methods & assumptions */}
+        <section className="content-section">
+          <h2>Methods &amp; assumptions</h2>
+
+          <h3>What valuation methods does the tool support?</h3>
+          <p>The tool supports common valuation approaches such as Discounted Cash Flow (DCF) and benchmarking methods (e.g., multiples-based comparisons). Different methods can be useful depending on profitability and data quality.</p>
+          <p className="text-sm"><Link to="/resources/company-valuation/methods">Valuation methods</Link></p>
+
+          <h3>What's the difference between DCF and multiples valuation?</h3>
+          <ul>
+            <li><strong>DCF</strong> estimates value from expected future cash flows, discounted to today.</li>
+            <li><strong>Multiples</strong> estimate value by comparing a company's metrics (like earnings or revenue) to market references.</li>
+          </ul>
+          <p>Many analyses compare both to understand a reasonable range.</p>
+
+          <h3>Can I edit assumptions like growth rates, margins, and discount rates?</h3>
+          <p>Yes. You can review and adjust key assumptions and re-run the valuation to test scenarios (e.g., conservative vs optimistic).</p>
+
+          <h3>Why did the valuation change a lot after adjusting one input?</h3>
+          <p>Valuation outputs can be highly sensitive to a few drivers—especially growth assumptions and discount-rate inputs. A small change in these can produce a large change in the estimated value.</p>
+        </section>
+
+        {/* Reports & outputs */}
+        <section className="content-section">
+          <h2>Reports &amp; outputs</h2>
+
+          <h3>What do I get at the end—just a number or a valuation report?</h3>
+          <p>You get a valuation report that documents the inputs and assumptions behind the estimate. This helps you explain the result to stakeholders.</p>
+
+          <h3>Can I run multiple scenarios and generate updated reports?</h3>
+          <p>Yes. Scenario testing is often the fastest way to understand a valuation result—run an upside/downside case by changing a few key assumptions and compare outputs.</p>
+        </section>
+
+        {/* Pricing & access */}
+        <section className="content-section">
+          <h2>Pricing &amp; access</h2>
+
+          <h3>What is free vs paid on Valuatum Tools?</h3>
+          <ul>
+            <li><strong>Free:</strong> Manual data input valuation (and Danish company valuation reports)</li>
+            <li><strong>Try free:</strong> PDF-based valuation (first one free)</li>
+            <li><strong>Paid workflow:</strong> Finnish company valuation (listed as €30)</li>
+            <li><strong>Coming soon:</strong> International company valuation (listed as €50–100)</li>
+          </ul>
+
+          <h3>How does Danish company valuation work if I don't have financial statements?</h3>
+          <p>The Danish workflow is designed for cases where you start from existing company information rather than uploading your own statements.</p>
+          <p className="text-sm"><Link to="/solutions/danish-company-valuation">Danish company valuation</Link></p>
+
+          <h3>What's included in Finnish company valuation?</h3>
+          <p>The Finnish workflow is designed to generate valuation reports for Finnish companies with editable assumptions and report output.</p>
+          <p className="text-sm"><Link to="/solutions/finnish-company-valuation">Finnish company valuation</Link></p>
+
+          <h3>When will international company valuation be available?</h3>
+          <p>The international workflow is marked as Coming soon. If you need coverage outside Denmark and Finland, use the international contact page.</p>
+          <p className="text-sm"><Link to="/contact-international">International contact</Link></p>
+        </section>
+
+        {/* Troubleshooting & privacy */}
+        <section className="content-section">
+          <h2>Troubleshooting &amp; privacy</h2>
+
+          <h3>The tool won't open / I'm stuck on login—what should I try?</h3>
+          <p>Try a hard refresh, disable browser extensions that block pop-ups/scripts, and test in another browser. If the issue persists, email support with your workflow, browser, and screenshots.</p>
+          <p className="text-sm"><a href="mailto:estimator@valuatum.com">estimator@valuatum.com</a></p>
+
+          <h3>Is an online company valuation accurate?</h3>
+          <p>A valuation is an estimate, not a guaranteed price. The usefulness depends on whether the inputs and assumptions reflect the business reality and are explained clearly.</p>
+
+          <h3>How is my data handled?</h3>
+          <p>For privacy and data handling details, refer to the Privacy Policy. If you have a specific compliance question (e.g., what data is stored), email support and specify which workflow you used.</p>
+          <p className="text-sm"><Link to="/privacy-policy">Privacy Policy</Link></p>
+        </section>
+      </article>
+    </PageLayout>
+  );
+};
+
+export default SupportFAQ;

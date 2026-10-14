@@ -1,0 +1,142 @@
+import { Helmet } from "react-helmet-async";
+import PageLayout from "@/components/layout/PageLayout";
+import { Link } from "react-router-dom";
+
+const AboutUs = () => {
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://company-valuation.com/" },
+      { "@type": "ListItem", "position": 2, "name": "About Us", "item": "https://company-valuation.com/about-us" }
+    ]
+  };
+
+  return (
+    <PageLayout>
+      <Helmet>
+        <title>About Valuatum Tools | Company Background</title>
+        <meta name="description" content="Valuatum is a financial software company founded in 2000, building valuation, credit risk, and equity research solutions for customers worldwide." />
+        <link rel="canonical" href="https://company-valuation.com/about-us" />
+        <script type="application/ld+json">{JSON.stringify(breadcrumbJsonLd)}</script>
+      </Helmet>
+
+      <article className="prose-content">
+        <nav className="text-sm text-muted-foreground mb-4">
+          <Link to="/" className="hover:text-link">Home</Link>
+          {" › "}
+          <span>About Us</span>
+        </nav>
+
+        <h1 className="page-title">About Us</h1>
+
+        <p className="text-lg text-muted-foreground mb-6">
+          Valuatum is a financial software company founded in 2000, specialising in valuation, credit risk, and equity research solutions. Valuatum Tools is our suite of company valuation applications built for analysts, advisors, and business owners worldwide.
+        </p>
+
+        <section className="content-section">
+          <h2>What We Do</h2>
+          <ul className="list-disc pl-6 space-y-1 mb-4">
+            <li>Company valuation software for manual input and PDF-based workflows</li>
+            <li>Credit risk analysis and equity research platforms</li>
+            <li>SaaS delivery with continuous development and maintenance</li>
+            <li>Serving credit institutions, investment banks, and asset managers globally</li>
+          </ul>
+          <p>
+            Working with a wide customer base—from credit institutions to investment banks and asset managers around the world—gives us unique insights into their different needs.
+          </p>
+          <p>
+            The company was established in 2000 by former equity research and credit risk analysts. Through our years of experience, we have established a deep knowledge and understanding of financial markets and company valuation. We operate with the Software as a Service (SaaS) model, meaning that in addition to applications and tools we also offer our customers maintenance and continuous development services. Further information about us and our other products can be found at{" "}
+            <a href="http://www.valuatum.com/" target="_blank" rel="noopener noreferrer">
+              our home page
+            </a>.
+          </p>
+        </section>
+
+        <section className="content-section">
+          <h2>Other Solutions</h2>
+          <p>
+            In addition to Company Valuation Tool, Valuatum offers many other solutions to both large and small customers. Valuatum offers equity research and credit risk solutions to larger customers. To learn more about these solutions, visit the{" "}
+            <a href="http://www.valuatum.com/" target="_blank" rel="noopener noreferrer">
+              Valuatum home page
+            </a>.
+          </p>
+          <p>
+            Another solution, Valuatum Aarre is aimed for Finnish SMEs and accounting firms. It is a valuation service for Finnish customers with Finnish company data (from Bisnode) and only in Finnish. Click{" "}
+            <a href="https://pro-aarre.valuatum.com/" target="_blank" rel="noopener noreferrer">
+              here
+            </a>
+            {" "}to visit Valuatum Aarre.
+          </p>
+        </section>
+
+        <section className="content-section">
+          <h2>References</h2>
+          <p>
+            Valuatum has served a variety of clients in the finance sector on five different continents. Below, you can see some of our reference customers.
+          </p>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-6 my-8 items-center">
+            <div className="flex items-center justify-center p-4 bg-muted rounded">
+              <img
+                src="https://company-valuation.com/wp-content/uploads/sites/4/2020/05/EVLI-LOGO-1-1.png"
+                alt="Evli"
+                className="max-h-12 w-auto"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div className="flex items-center justify-center p-4 bg-muted rounded">
+              <img
+                src="https://research.enlightresearch.net/mount/siteimages/130/logo_primary?v=-1"
+                alt="Enlight Research"
+                className="max-h-12 w-auto"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div className="flex items-center justify-center p-4 bg-muted rounded">
+              <img
+                src="https://www.porssisaatio.fi/app/uploads/2023/12/Vaaka2.png"
+                alt="Pörssisäätiö"
+                className="max-h-12 w-auto"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          </div>
+        </section>
+
+        <section className="content-section">
+          <h2>Company Information</h2>
+          <div className="bg-muted p-6 rounded">
+            <p className="mb-2"><strong>Valuatum Oy</strong></p>
+            <p className="mb-2">Established: 2000</p>
+            <p className="mb-2">Headquarters: Finland</p>
+            <p className="mb-2">Industry: Financial Software / SaaS</p>
+            <p className="mb-0">
+              Website:{" "}
+              <a href="http://www.valuatum.com/" target="_blank" rel="noopener noreferrer">
+                www.valuatum.com
+              </a>
+            </p>
+          </div>
+        </section>
+
+        <section className="content-section text-center">
+          <h2>Get in Touch</h2>
+          <p className="mb-6">
+            Interested in learning more about our solutions? Contact us today.
+          </p>
+          <Link
+            to="/support"
+            className="btn btn-primary px-8 py-3 font-semibold"
+          >
+            Contact Support
+          </Link>
+        </section>
+      </article>
+    </PageLayout>
+  );
+};
+
+export default AboutUs;

@@ -1,0 +1,27 @@
+import { Helmet } from "react-helmet-async";
+import { useLocation } from "react-router-dom";
+
+const BASE_URL = "https://company-valuation.com";
+
+/**
+ * Component that sets the canonical URL for the current page.
+ * Ensures each page has its own canonical tag pointing to the correct URL (without trailing slash).
+ */
+const CanonicalUrl = () => {
+  const location = useLocation();
+  
+  // Build the canonical URL without trailing slash
+  const pathname = location.pathname.endsWith("/") && location.pathname.length > 1
+    ? location.pathname.slice(0, -1)
+    : location.pathname;
+  
+  const canonicalUrl = `${BASE_URL}${pathname}`;
+
+  return (
+    <Helmet>
+      <link rel="canonical" href={canonicalUrl} />
+    </Helmet>
+  );
+};
+
+export default CanonicalUrl;

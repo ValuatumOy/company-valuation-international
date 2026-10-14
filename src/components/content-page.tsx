@@ -1,0 +1,191 @@
+import Link from "next/link";
+import Image from "next/image";
+import { contentPages, type ContentPage } from "@/content/pages";
+import { Arrow } from "./icon";
+import { ContactForm } from "./contact-form";
+import { JsonLd } from "./json-ld";
+import { siteUrl, serviceLinks } from "@/lib/site";
+import imageSizes from "@/content/image-sizes.json";
+
+const actions: Record<string, { label: string; href: string }> = {
+  "/solutions/pdf-based-company-valuation": {
+    label: "Upload a financial statement",
+    href: serviceLinks.pdf,
+  },
+  "/solutions/manual-data-input-company-valuation": {
+    label: "Open manual valuation",
+    href: "https://estimator.valuatum.com/",
+  },
+  "/solutions/finnish-company-valuation": {
+    label: "Open Finnish valuation",
+    href: "https://valuation-finland.valuatum.com/PPVCompanySearch.action?",
+  },
+  "/solutions/danish-company-valuation": {
+    label: "Find a Danish company",
+    href: "https://companies.creditreports.dk/en/",
+  },
+  "/solutions/international-company-valuation": {
+    label: "Ask about your country",
+    href: "/contact-international",
+  },
+};
+
+export function ContentPageView({ page }: { page: ContentPage }) {
+  const action = actions[page.path];
+  const related = page.related
+    ?.map((path) => contentPages.find((item) => item.path === path))
+    .filter((item): item is ContentPage => !!item);
+  const isContact = page.path.startsWith("/contact-");
+  const sizes = imageSizes as Record<string, { width: number; height: number }>;
+  const faqSections = page.sections.filter(
+    (section) => section.title.endsWith("?") && section.paragraphs?.length,
+  );
+  return (
+    <main id="main">
+      <div className="page-hero">
+        <nav className="breadcrumb" aria-label="Breadcrumb">
+          <Link href="/">Home</Link>
+          <Arrow />
+          <span>{page.eyebrow}</span>
+        </nav>
+        <p className="eyebrow">{page.eyebrow}</p>
+        <h1>{page.title}</h1>
+        <p className="intro">{page.intro}</p>
+        {action && (
+          <div className="actions">
+            <a className="button" href={action.href}>
+              {action.label}
+              <Arrow diagonal />
+            </a>
+            {page.kind === "solution" && (
+              <Link className="button button-outline" href="/sample-report">
+                Explore a sample report <Arrow />
+              </Link>
+            )}
+          </div>
+        )}
+      </div>
+      <div className="content-shell">
+        <aside className="page-toc">
+          <h2>On this page</h2>
+          <nav aria-label="Page contents">
+            {page.sections.map((section) => (
+              <a href={`#${section.id}`} key={section.id}>
+                {section.title}
+              </a>
+            ))}
+          </nav>
+          <Link className="toc-cta" href="/#solutions">
+            Find your valuation →
+          </Link>
+        </aside>
+        <article className="article-content">
+          {isContact && (
+            <ContactForm finland={page.path === "/contact-finland"} />
+          )}
+          {page.sections.map((section) => (
+            <section
+              className="article-section"
+              key={section.id}
+              id={section.id}
+            >
+              <h2>{section.title}</h2>
+              {section.paragraphs?.map((text, i) => (
+                <p key={i}>{text}</p>
+              ))}
+              {section.bullets && (
+                <ul>
+                  {section.bullets.map((text, i) => (
+                    <li key={i}>{text}</li>
+                  ))}
+                </ul>
+              )}
+              {section.image && (
+                <figure className="legacy-figure">
+                  <Image
+                    src={section.image.src}
+                    alt={section.image.alt}
+                    width={sizes[section.image.src]?.width || 1000}
+                    height={sizes[section.image.src]?.height || 650}
+                    sizes="(max-width: 800px) 90vw, 760px"
+                    style={{ width: "100%", height: "auto" }}
+                  />
+                  <figcaption>
+                    Historical service illustration retained from the previous
+                    website. The current interface and report may differ.
+                  </figcaption>
+                </figure>
+              )}
+              {section.links && (
+                <div className="article-links">
+                  {section.links.map((link, i) => (
+                    <a href={link.href} key={i}>
+                      {link.label}
+                      <Arrow diagonal={link.href.startsWith("http")} />
+                    </a>
+                  ))}
+                </div>
+              )}
+            </section>
+          ))}
+          {related?.length ? (
+            <div className="related-pages">
+              <h2>Keep exploring</h2>
+              {related.map((item) => (
+                <Link key={item.path} href={item.path}>
+                  {item.title}
+                  <Arrow />
+                </Link>
+              ))}
+            </div>
+          ) : null}
+        </article>
+      </div>
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
+            {
+              "@type": "ListItem",
+              position: 2,
+              name: page.title,
+              item: `${siteUrl}${page.path}`,
+            },
+          ],
+        }}
+      />
+      {page.kind === "guide" && (
+        <JsonLd
+          data={{
+            "@context": "https://schema.org",
+            "@type": "Article",
+            headline: page.title,
+            description: page.description,
+            inLanguage: "en",
+            mainEntityOfPage: `${siteUrl}${page.path}`,
+            author: { "@id": `${siteUrl}/#organization` },
+            publisher: { "@id": `${siteUrl}/#organization` },
+          }}
+        />
+      )}
+      {faqSections.length > 0 && (
+        <JsonLd
+          data={{
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: faqSections.map((section) => ({
+              "@type": "Question",
+              name: section.title,
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: section.paragraphs!.join(" "),
+              },
+            })),
+          }}
+        />
+      )}
+    </main>
+  );
+}

@@ -1,0 +1,116 @@
+import { Helmet } from "react-helmet-async";
+import PageLayout from "@/components/layout/PageLayout";
+import { Link } from "react-router-dom";
+
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://company-valuation.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Support", "item": "https://company-valuation.com/support" }
+  ]
+};
+
+const quickLinks = [
+  { to: "/support/faq", label: "FAQ (Start here)", description: "Answers to the most common questions about inputs, PDF upload, assumptions, methods, reports, and pricing.", isInternal: true },
+  { to: "/resources", label: "Learn valuation basics", description: "Definitions and valuation methods explained in plain English.", isInternal: true },
+  { to: "/contact-international", label: "International coverage", description: "Questions about company valuation outside Denmark and Finland.", isInternal: true },
+  { to: "mailto:estimator@valuatum.com", label: "Email support", description: "Include your workflow (manual/PDF/Denmark/Finland) and what you were trying to do.", isInternal: false },
+];
+
+const commonTopics = [
+  { label: "Manual input valuation", to: "/solutions/manual-data-input-company-valuation" },
+  { label: "PDF-statement valuation", to: "/solutions/pdf-based-company-valuation" },
+  { label: "Danish company valuation (no financial statements needed)", to: "/solutions/danish-company-valuation" },
+  { label: "Finnish company valuation", to: "/solutions/finnish-company-valuation" },
+  { label: "What is company valuation?", to: "/resources/company-valuation/what-is-company-valuation" },
+  { label: "Company valuation methods", to: "/resources/company-valuation/methods" },
+  { label: "Privacy", to: "/privacy-policy" },
+];
+
+const Support = () => {
+  return (
+    <PageLayout>
+      <Helmet>
+        <title>Company Valuation Tool Support | Valuatum Tools</title>
+        <meta name="description" content="Help using Valuatum Tools: choose the right workflow, upload or enter data, edit assumptions, and export valuation reports." />
+        <link rel="canonical" href="https://company-valuation.com/support" />
+        <script type="application/ld+json">{JSON.stringify(breadcrumbJsonLd)}</script>
+      </Helmet>
+
+      <article className="prose-content">
+        <nav className="text-sm text-muted-foreground mb-4">
+          <Link to="/" className="hover:text-link">Home</Link>
+          {" › "}
+          <span>Support</span>
+        </nav>
+
+        <h1 className="page-title">Support</h1>
+
+        <section className="content-section">
+          <p>
+            Find help for using Valuatum Tools—from choosing the right valuation workflow to generating a valuation report. If you don't find what you need, email us and include a short description of your issue.
+          </p>
+        </section>
+
+        {/* Quick links */}
+        <section className="content-section">
+          <div className="grid gap-4 sm:grid-cols-2">
+            {quickLinks.map((link) => (
+              <div key={link.label} className="border border-border rounded-lg p-4 hover:bg-muted/40 transition-colors">
+                {link.isInternal ? (
+                  <Link to={link.to} className="font-semibold text-link hover:underline">{link.label}</Link>
+                ) : (
+                  <a href={link.to} className="font-semibold text-link hover:underline">{link.label}</a>
+                )}
+                <p className="text-sm text-muted-foreground mt-1">{link.description}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Common topics */}
+        <section className="content-section">
+          <h2>Common topics</h2>
+          <ul>
+            {commonTopics.map((topic) => (
+              <li key={topic.to}>
+                <Link to={topic.to}>{topic.label}</Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        {/* Before you contact support */}
+        <section className="content-section">
+          <h2>Before you contact support</h2>
+          <p>
+            A valuation is an estimate that depends on the inputs and assumptions used. If your result looks off, the fastest fixes are usually:
+          </p>
+          <ul>
+            <li>confirm the input figures (especially if importing from a PDF),</li>
+            <li>review growth, margin, and discount-rate assumptions,</li>
+            <li>compare results across methods (DCF vs benchmarking).</li>
+          </ul>
+        </section>
+
+        {/* Contact */}
+        <section className="content-section">
+          <h2>Contact</h2>
+          <p>
+            Email: <a href="mailto:estimator@valuatum.com">estimator@valuatum.com</a>
+          </p>
+          <p>Please include:</p>
+          <ul>
+            <li>which workflow you used (Manual / PDF / Denmark / Finland),</li>
+            <li>what you uploaded/entered (e.g., "2023 annual report PDF"),</li>
+            <li>what you expected vs what happened,</li>
+            <li>screenshots if relevant.</li>
+          </ul>
+        </section>
+      </article>
+    </PageLayout>
+  );
+};
+
+export default Support;

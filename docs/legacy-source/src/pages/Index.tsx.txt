@@ -1,0 +1,480 @@
+import { Helmet } from "react-helmet-async";
+import PageLayout from "@/components/layout/PageLayout";
+import { Link } from "react-router-dom";
+import { Button } from "@/components/ui/button";
+import heroBackground from "@/assets/hero-background.png";
+import contentBackground from "@/assets/content-background.png";
+import CreditRiskCTA from "@/components/CreditRiskCTA";
+
+/* ── FAQ data (drives both JSON-LD and rendered section) ── */
+const faqs = [
+  { q: "What is a company valuation tool?", a: "A company valuation tool is software that estimates the economic worth of a business using financial data, forecast models, and established valuation methods such as DCF and multiples." },
+  { q: "How does the company value calculator work?", a: "You upload a PDF financial statement or enter figures manually. The tool structures the data, generates forecasts, and calculates a valuation using multiple methods — all in minutes." },
+  { q: "Which valuation methods are supported?", a: "The tool supports Discounted Cash Flow (DCF), EBITDA and revenue multiples, comparable company analysis, and asset-based valuation. Results from each method are shown side by side." },
+  { q: "Can I edit the assumptions after generating a valuation?", a: "Yes. Every forecast, growth rate, discount rate, and peer multiple is fully visible and editable. Changes update the valuation in real time." },
+  { q: "Is the company valuation tool free to use?", a: "Manual data input valuation is free with no time limit. The first PDF-based valuation is also free. Country-specific solutions have separate pricing." },
+  { q: "What financial data do I need to get started?", a: "At minimum you need an income statement and balance sheet. A cash flow statement improves accuracy. You can enter figures manually or upload a PDF statement." },
+  { q: "How accurate is an automated company valuation?", a: "Accuracy depends on the quality of input data and the assumptions you set. The tool provides a transparent framework — you control every input and can run scenarios to test sensitivity." },
+  { q: "Can I download or share the valuation report?", a: "Yes. The tool generates a professional PDF report that includes financials, forecasts, valuation results, and industry comparisons. You can download and share it immediately." },
+  { q: "Is my financial data secure?", a: "Data is processed securely and is not shared with third parties. See our privacy policy for full details." },
+  { q: "Who uses company valuation tools?", a: "Business owners, buyers and sellers, financial advisors, investors, and accountants all use valuation tools to support decisions around transactions, fundraising, and strategic planning." },
+];
+
+/* ── JSON-LD schemas ── */
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://company-valuation.com/" },
+  ],
+};
+
+const jsonLd = {
+  organization: {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Valuatum Oy",
+    url: "https://company-valuation.com/",
+    logo: "https://company-valuation.com/logo.png",
+    email: "estimator@valuatum.com",
+  },
+  website: {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Valuatum Tools",
+    url: "https://company-valuation.com/",
+  },
+  software: {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: "Company Valuation Tool",
+    applicationCategory: "FinanceApplication",
+    operatingSystem: "Web",
+    offers: [
+      { "@type": "Offer", price: "0", priceCurrency: "EUR", description: "Free manual data input valuation" },
+      { "@type": "Offer", price: "0", priceCurrency: "EUR", description: "First PDF-based valuation free" },
+    ],
+    description: "Estimate company value from manual inputs, PDF statements, or existing company data. Edit assumptions, compare methods, and generate a valuation report.",
+  },
+  faq: {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
+  },
+};
+
+const Index = () => {
+  return (
+    <PageLayout>
+      <Helmet>
+        <title>Company Valuation Tool & Calculator | Valuatum Tools</title>
+        <meta name="description" content="Estimate company value from manual inputs, PDF statements, or existing company data. Edit assumptions, compare methods, and generate a valuation report." />
+        <link rel="canonical" href="https://company-valuation.com/" />
+        <link rel="preload" as="image" href={heroBackground} />
+        <script type="application/ld+json">{JSON.stringify(breadcrumbJsonLd)}</script>
+        <script type="application/ld+json">{JSON.stringify(jsonLd.organization)}</script>
+        <script type="application/ld+json">{JSON.stringify(jsonLd.website)}</script>
+        <script type="application/ld+json">{JSON.stringify(jsonLd.software)}</script>
+        <script type="application/ld+json">{JSON.stringify(jsonLd.faq)}</script>
+      </Helmet>
+
+      {/* ══════════════════════════════════════════
+          HERO
+      ══════════════════════════════════════════ */}
+      <div
+        className="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] -mt-5 min-h-[400px] md:min-h-[500px] overflow-hidden mb-10"
+        style={{ backgroundImage: `url(${heroBackground})`, backgroundSize: "cover", backgroundPosition: "center", backgroundRepeat: "no-repeat" }}
+      >
+        <div className="absolute inset-0 bg-white/40" />
+        <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between h-full min-h-[400px] md:min-h-[500px] px-8 md:px-16 lg:px-24 py-12 max-w-[1400px] mx-auto gap-10">
+          {/* Left: hero copy */}
+          <div className="flex flex-col items-start lg:max-w-[52%]">
+            <h1 className="text-xl md:text-2xl lg:text-3xl font-heading font-bold text-slate-800 mb-4 max-w-2xl">
+              Company Valuation Tool for Financial Statements
+            </h1>
+            <p className="text-base md:text-lg leading-relaxed font-body text-slate-700 mb-6 max-w-xl">
+              Estimate company value from manual inputs, PDF financial statements, or existing company data — and generate a professional valuation report in minutes.
+            </p>
+
+            <ul className="space-y-3 mb-8 max-w-xl">
+              <li className="flex items-start gap-3 text-slate-700">
+                <span className="text-primary font-bold text-lg leading-none mt-0.5">✓</span>
+                <span className="text-sm md:text-base font-body">Automatic valuation using multiple methods, including DCF</span>
+              </li>
+              <li className="flex items-start gap-3 text-slate-700">
+                <span className="text-primary font-bold text-lg leading-none mt-0.5">✓</span>
+                <span className="text-sm md:text-base font-body">Editable forecasts and key assumptions — update valuation in seconds</span>
+              </li>
+              <li className="flex items-start gap-3 text-slate-700">
+                <span className="text-primary font-bold text-lg leading-none mt-0.5">✓</span>
+                <span className="text-sm md:text-base font-body">Professional reports with industry comparisons</span>
+              </li>
+            </ul>
+
+            <div className="flex flex-wrap gap-4">
+              <Button asChild size="lg">
+                <a href="https://valuation.valuatum.com/" target="_blank" rel="noopener noreferrer">
+                  Start a free valuation
+                </a>
+              </Button>
+              <Button variant="outline" size="lg" asChild>
+                <a href="https://www.valuatum.com/democompanyvaluationreport/" target="_blank" rel="noopener noreferrer">
+                  View a demo report
+                </a>
+              </Button>
+            </div>
+          </div>
+
+          {/* Right: credit risk CTA */}
+          <div className="hidden lg:flex lg:max-w-[42%] w-full">
+            <CreditRiskCTA compact />
+          </div>
+        </div>
+      </div>
+
+      {/* Content wrapper with background */}
+      <div
+        className="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] content-bg-wrap"
+        style={{ backgroundImage: `url(${contentBackground})`, backgroundSize: "cover", backgroundPosition: "center top", backgroundRepeat: "no-repeat" }}
+      >
+        <div className="absolute inset-0 bg-white/60" />
+        <div className="relative max-w-[1400px] mx-auto px-8">
+
+          {/* ══════════════════════════════════════════
+              CHOOSE YOUR STARTING POINT
+          ══════════════════════════════════════════ */}
+          <section className="mb-10">
+            <div className="hero-box-inner">
+              <div className="mb-10">
+                <h2 className="text-xl font-semibold text-foreground mb-2 text-center">Choose Your Starting Point</h2>
+                <p className="text-sm text-muted-foreground text-center mb-8">Pick the option that matches the data you have — all paths lead to a full valuation report.</p>
+
+                <div className="flex flex-col lg:flex-row lg:items-stretch gap-8">
+                  {/* Group 1 */}
+                  <div className="lg:flex-[2] flex flex-col">
+                    <div className="border-b border-border pb-2 mb-4">
+                      <h3 className="text-sm font-semibold text-foreground text-center">If you already have financial data</h3>
+                    </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 flex-1">
+                      <div className="solution-card-row flex flex-col">
+                        <a href="https://estimator.valuatum.com/AspAndUserCreation.action?templateAspQueryKey=PPVTemplate&userType=&popup=true" target="_blank" rel="noopener noreferrer" className="flex-1">
+                          <h3>Manual Data Input Valuation (Free)</h3>
+                          <p className="text-xs">Input financial figures and our system converts the figures and calculates a full valuation report.</p>
+                        </a>
+                        <div className="flex gap-1 mt-3">
+                          <Button variant="outline" size="sm" className="text-[10px] h-5 px-1.5" asChild><Link to="/solutions/manual-data-input">More info</Link></Button>
+                          <Button variant="outline" size="sm" className="text-[10px] h-5 px-1.5" asChild><a href="https://www.valuatum.com/democompanyvaluationreport/" target="_blank" rel="noopener noreferrer">Demo report</a></Button>
+                          <Button variant="outline" size="sm" className="text-[10px] h-5 px-1.5 bg-blue-100 hover:bg-blue-200" asChild><a href="https://estimator.valuatum.com/AspAndUserCreation.action?templateAspQueryKey=PPVTemplate&userType=&popup=true" target="_blank" rel="noopener noreferrer">Try now</a></Button>
+                        </div>
+                      </div>
+                      <div className="solution-card-row flex flex-col">
+                        <a href="https://valuation.valuatum.com" target="_blank" rel="noopener noreferrer" className="flex-1">
+                          <h3>PDF-Statement Input Valuation (First One Free)</h3>
+                          <p className="text-xs">Import any PDF and convert it into valuation and credit risk reports in just a few minutes.</p>
+                        </a>
+                        <div className="flex gap-1 mt-3">
+                          <Button variant="outline" size="sm" className="text-[10px] h-5 px-1.5" asChild><Link to="/solutions/pdf-based-valuation">More info</Link></Button>
+                          <Button variant="outline" size="sm" className="text-[10px] h-5 px-1.5" asChild><a href="https://www.valuatum.com/democompanyvaluationreport/" target="_blank" rel="noopener noreferrer">Demo report</a></Button>
+                          <Button variant="outline" size="sm" className="text-[10px] h-5 px-1.5 bg-blue-100 hover:bg-blue-200" asChild><a href="https://valuation.valuatum.com" target="_blank" rel="noopener noreferrer">Try now</a></Button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Group 2 */}
+                  <div className="lg:flex-[3] flex flex-col">
+                    <div className="border-b border-border pb-2 mb-4">
+                      <h3 className="text-sm font-semibold text-foreground text-center">If you don't have financial data</h3>
+                    </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 flex-1">
+                      <div className="solution-card-row flex flex-col">
+                        <a href="https://companies.creditreports.dk/en/" target="_blank" rel="noopener noreferrer" className="flex-1">
+                          <h3>Danish Company Valuation (Free)</h3>
+                          <p className="text-xs">Search for a company and download free credit risk and valuation reports.</p>
+                        </a>
+                        <div className="flex gap-1 mt-3">
+                          <Button variant="outline" size="sm" className="text-[10px] h-5 px-1.5" asChild><Link to="/solutions/danish-company-valuation">More info</Link></Button>
+                          <Button variant="outline" size="sm" className="text-[10px] h-5 px-1.5" asChild><a href="https://www.valuatum.com/jysk_companyvaluation/" target="_blank" rel="noopener noreferrer">Demo report</a></Button>
+                          <Button variant="outline" size="sm" className="text-[10px] h-5 px-1.5 bg-blue-100 hover:bg-blue-200" asChild><a href="https://companies.creditreports.dk/en/" target="_blank" rel="noopener noreferrer">Try now</a></Button>
+                        </div>
+                      </div>
+                      <div className="solution-card-row flex flex-col">
+                        <Link to="/solutions/finnish-company-valuation" className="flex-1">
+                          <h3>Finnish Company Valuation (€30)</h3>
+                          <p className="text-xs">Access valuations for over 200,000 Finnish companies. Import financial data, adjust forecasts and generate professional valuation reports.</p>
+                        </Link>
+                        <div className="flex gap-1 mt-3">
+                          <Button variant="outline" size="sm" className="text-[10px] h-5 px-1.5" asChild><Link to="/solutions/finnish-company-valuation">More info</Link></Button>
+                          <Button variant="outline" size="sm" className="text-[10px] h-5 px-1.5" asChild><a href="https://www.valuatum.com/nokiavaluationreport/" target="_blank" rel="noopener noreferrer">Demo report</a></Button>
+                          <Button variant="outline" size="sm" className="text-[10px] h-5 px-1.5 bg-blue-100 hover:bg-blue-200" asChild><a href="https://valuation-finland.valuatum.com/AspAndUserCreation.action?templateAspQueryKey=CVFinland&popup=true" target="_blank" rel="noopener noreferrer">Buy now</a></Button>
+                        </div>
+                      </div>
+                      <div className="solution-card-row solution-card-coming-soon flex flex-col">
+                        <div className="coming-soon-badge">Coming Soon</div>
+                        <Link to="/solutions/international-company-valuation" className="flex-1">
+                          <h3>International Company Valuation (€50–100)</h3>
+                          <p className="text-xs">Get valuation reports for companies outside Denmark and Finland.</p>
+                        </Link>
+                        <div className="flex gap-1 mt-3">
+                          <Button variant="outline" size="sm" className="text-[10px] h-5 px-1.5" asChild><Link to="/solutions/international-company-valuation">More info</Link></Button>
+                          <Button variant="outline" size="sm" className="text-[10px] h-5 px-1.5" asChild><a href="https://www.valuatum.com/amazonvaluationreport/" target="_blank" rel="noopener noreferrer">Demo report</a></Button>
+                          <Button variant="outline" size="sm" className="text-[10px] h-5 px-1.5 bg-blue-100 hover:bg-blue-200" asChild><Link to="/solutions/international-company-valuation">Try now</Link></Button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <hr className="section-divider" />
+
+          {/* ══════════════════════════════════════════
+              HOW IT WORKS
+          ══════════════════════════════════════════ */}
+          <section className="block mb-10">
+            <div className="text-box">
+              <h2 className="block-heading">How It Works</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
+                {[
+                  { n: 1, title: "Upload or enter data", desc: "Upload a PDF financial statement or type figures into the manual input form." },
+                  { n: 2, title: "Automatic forecasts", desc: "The tool builds revenue, cost, and cash-flow forecasts from historical data." },
+                  { n: 3, title: "Adjust assumptions", desc: "Modify growth rates, discount rates, multiples, or any forecast line to match your view." },
+                  { n: 4, title: "Download report", desc: "Generate a professional valuation report with charts, comparisons, and scenario results." },
+                ].map((s) => (
+                  <div key={s.n} className="relative bg-card border border-border rounded-xl p-6 shadow-sm">
+                    <div className="absolute -top-3 -left-3 w-8 h-8 bg-primary text-primary-foreground rounded-full flex items-center justify-center text-sm font-bold shadow-md">{s.n}</div>
+                    <h3 className="text-base font-semibold text-foreground mb-2 mt-2">{s.title}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          <hr className="section-divider" />
+
+          {/* ══════════════════════════════════════════
+              KEY BENEFITS
+          ══════════════════════════════════════════ */}
+          <section className="block mb-10">
+            <div className="text-box">
+              <h2 className="block-heading">Key Benefits</h2>
+              <ul className="custom-list mt-4 space-y-3">
+                <li><strong>Full transparency:</strong> Every extracted figure, forecast, and assumption is visible and editable — no black-box results.</li>
+                <li><strong>Scenario testing:</strong> Change growth rates, discount rates, or multiples and see the valuation update instantly.</li>
+                <li><strong>Professional report output:</strong> Download a PDF report with financials, valuation results, and industry comparisons.</li>
+                <li><strong>Flexible inputs:</strong> Start from a PDF statement, manual data entry, or pre-loaded company data — whichever suits your situation.</li>
+              </ul>
+            </div>
+          </section>
+
+          <hr className="section-divider" />
+
+          {/* ══════════════════════════════════════════
+              FEATURES
+          ══════════════════════════════════════════ */}
+          <section className="block mb-10">
+            <div className="text-box">
+              <h2 className="block-heading">Features</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-6">
+                <div>
+                  <h3 className="text-base font-semibold text-foreground mb-2">Inputs</h3>
+                  <ul className="custom-list text-sm space-y-1">
+                    <li>PDF financial statement import with automatic data extraction</li>
+                    <li>Manual input form for income statement, balance sheet, and cash flow</li>
+                    <li>Pre-loaded company data for Denmark, Finland, and more</li>
+                  </ul>
+                </div>
+                <div>
+                  <h3 className="text-base font-semibold text-foreground mb-2">Valuation Methods</h3>
+                  <ul className="custom-list text-sm space-y-1">
+                    <li>Discounted Cash Flow (DCF)</li>
+                    <li>EBITDA and revenue multiples</li>
+                    <li>Comparable company analysis</li>
+                    <li>Asset-based valuation</li>
+                  </ul>
+                </div>
+                <div>
+                  <h3 className="text-base font-semibold text-foreground mb-2">Scenario Controls</h3>
+                  <ul className="custom-list text-sm space-y-1">
+                    <li>Edit every forecast line and assumption</li>
+                    <li>Adjust discount rates, growth rates, and peer multiples</li>
+                    <li>Compare base, optimistic, and pessimistic scenarios</li>
+                  </ul>
+                </div>
+                <div>
+                  <h3 className="text-base font-semibold text-foreground mb-2">Reporting</h3>
+                  <ul className="custom-list text-sm space-y-1">
+                    <li>Downloadable PDF valuation report</li>
+                    <li>Industry comparison benchmarks</li>
+                    <li>Charts and summary tables</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <hr className="section-divider" />
+
+          {/* ══════════════════════════════════════════
+              TRUST
+          ══════════════════════════════════════════ */}
+          <section className="block mb-10">
+            <div className="text-box">
+              <h2 className="block-heading">Transparency &amp; Trust</h2>
+              <p>
+                Valuation results depend on the quality of input data and the assumptions you set. The tool provides a structured, transparent framework — every figure is visible and editable so you can validate the output before sharing it. We do not guarantee any specific valuation outcome.
+              </p>
+              <p className="mt-3 text-sm text-muted-foreground">
+                Need help? Visit our <Link to="/support" className="underline">Support page</Link>. Learn more <Link to="/about-us" className="underline">about us</Link> or read our <Link to="/privacy-policy" className="underline">privacy policy</Link>.
+              </p>
+            </div>
+          </section>
+
+          <hr className="section-divider" />
+
+          {/* ══════════════════════════════════════════
+              USE CASES
+          ══════════════════════════════════════════ */}
+          <section className="block mb-10">
+            <div className="text-box">
+              <h2 className="block-heading">Who Uses This Tool?</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mt-6">
+                {[
+                  { title: "Founders & CEOs", desc: "Understand your company's worth for fundraising, exit planning, or strategic decisions." },
+                  { title: "Buyers & Sellers", desc: "Get an independent valuation estimate before entering negotiations." },
+                  { title: "Financial Advisors", desc: "Produce client-ready valuation reports quickly and transparently." },
+                  { title: "Investors", desc: "Screen potential investments with standardized valuation models." },
+                  { title: "Accountants", desc: "Support audit, tax, and compliance work with documented valuations." },
+                ].map((uc) => (
+                  <div key={uc.title} className="bg-card border border-border rounded-lg p-5 shadow-sm">
+                    <h3 className="text-sm font-semibold text-foreground mb-1">{uc.title}</h3>
+                    <p className="text-sm text-muted-foreground">{uc.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          <hr className="section-divider" />
+
+          {/* ══════════════════════════════════════════
+              METHODOLOGY
+          ══════════════════════════════════════════ */}
+          <section className="block mb-10">
+            <div className="text-box">
+              <h2 className="block-heading">Valuation Methodology</h2>
+              <p>
+                The tool combines several widely accepted valuation approaches. <strong>DCF (Discounted Cash Flow)</strong> estimates present value based on projected future cash flows. <strong>Multiples-based methods</strong> use industry ratios applied to metrics like EBITDA or revenue. <strong>Comparable company analysis</strong> benchmarks against similar businesses. Each method provides a different perspective; together they produce a defensible value range.
+              </p>
+              <p className="mt-3">
+                For a detailed explanation of each method, see <Link to="/resources/company-valuation/methods" className="underline font-medium">Company valuation methods</Link>.
+              </p>
+            </div>
+          </section>
+
+          <hr className="section-divider" />
+
+          {/* ══════════════════════════════════════════
+              PRICING TEASER
+          ══════════════════════════════════════════ */}
+          <section className="block mb-10">
+            <div className="text-box">
+              <h2 className="block-heading">Pricing</h2>
+              <ul className="custom-list mt-4 space-y-2">
+                <li><strong>Manual data input:</strong> Free — unlimited use.</li>
+                <li><strong>PDF-based valuation:</strong> First valuation free, paid plans for additional reports.</li>
+                <li><strong>Danish company valuation:</strong> Free — powered by <a href="https://companies.creditreports.dk/en/" target="_blank" rel="noopener noreferrer">creditreports.dk</a>.</li>
+                <li><strong>Finnish company valuation:</strong> €30 per report.</li>
+                <li><strong>International company valuation:</strong> Coming soon — estimated €50–100 per report.</li>
+                <li><strong>Premium subscription:</strong> Advanced customization and professional features. <a href="https://company-valuation.com/solutions/manual-data-input#estimator-premium" target="_blank" rel="noopener noreferrer" className="underline">Learn more</a>.</li>
+              </ul>
+            </div>
+          </section>
+
+          <hr className="section-divider" />
+
+          {/* ══════════════════════════════════════════
+              FAQ
+          ══════════════════════════════════════════ */}
+          <section className="block mb-10">
+            <div className="text-box">
+              <h2 className="block-heading">Frequently Asked Questions</h2>
+              <div className="mt-6 space-y-6">
+                {faqs.map((f, i) => (
+                  <div key={i}>
+                    <h3 className="text-base font-semibold text-foreground mb-1">{f.q}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{f.a}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          <hr className="section-divider" />
+
+          {/* ══════════════════════════════════════════
+              CREDIT RISK CTA
+          ══════════════════════════════════════════ */}
+          <section className="block mb-10">
+            <CreditRiskCTA />
+          </section>
+
+          <hr className="section-divider" />
+
+          {/* ══════════════════════════════════════════
+              FINAL CTA
+          ══════════════════════════════════════════ */}
+          <section className="block mb-10">
+            <div className="text-box text-center">
+              <h2 className="block-heading">Ready to Value a Company?</h2>
+              <p className="mb-6 text-muted-foreground">Start with a free valuation — no signup required.</p>
+              <div className="flex flex-wrap justify-center gap-4">
+                <Button asChild size="lg">
+                  <a href="https://valuation.valuatum.com/" target="_blank" rel="noopener noreferrer">
+                    Start a free valuation
+                  </a>
+                </Button>
+                <Button variant="outline" size="lg" asChild>
+                  <a href="https://www.valuatum.com/democompanyvaluationreport/" target="_blank" rel="noopener noreferrer">
+                    View a demo report
+                  </a>
+                </Button>
+              </div>
+            </div>
+          </section>
+
+          {/* ══════════════════════════════════════════
+              CONTACT
+          ══════════════════════════════════════════ */}
+          <section className="block">
+            <div className="text-box">
+              <h2 className="block-heading">Contact Us</h2>
+              <p>If you have any questions, comments or feedback, please send us a message by e-mail. We will answer as soon as possible.</p>
+              <div className="mt-4">
+                <div className="kicker">Useful links</div>
+                <ul className="custom-list">
+                  <li><strong>Support:</strong> <Link to="/support">Support page</Link></li>
+                  <li><strong>International Company Valuation:</strong> <Link to="/contact-international">Learn more</Link></li>
+                </ul>
+              </div>
+              <div className="mt-4">
+                <div className="kicker">E-mail</div>
+                <p><a href="mailto:estimator@valuatum.com">estimator@valuatum.com</a></p>
+              </div>
+            </div>
+          </section>
+
+        </div>
+      </div>
+    </PageLayout>
+  );
+};
+
+export default Index;

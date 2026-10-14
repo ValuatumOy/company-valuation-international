@@ -1,0 +1,260 @@
+import { Helmet } from "react-helmet-async";
+import PageLayout from "@/components/layout/PageLayout";
+import { Link } from "react-router-dom";
+
+const UserManual = () => {
+  return (
+    <PageLayout>
+      <Helmet>
+        <title>User Manual | Manual Input Valuation | Valuatum Tools</title>
+        <meta name="description" content="Step-by-step instructions for entering data, editing assumptions, and creating valuation reports in Valuatum Tools." />
+        <meta name="robots" content="noindex,follow" />
+      </Helmet>
+
+      <article className="prose-content">
+        <nav className="text-sm text-muted-foreground mb-4">
+          <Link to="/" className="hover:text-link">Home</Link>
+          {" › "}
+          <Link to="/support" className="hover:text-link">Support</Link>
+          {" › "}
+          <span>User Manual</span>
+        </nav>
+
+        <h1 className="page-title">User Manual</h1>
+
+        <section className="content-section">
+          <p>
+            In this page you will find information on the key features of Valuatum Estimator and instructions on how to use the features. If you can't find the information you're looking for or have any other comments or questions, please send us a message using the contact form. Our customer service answers your messages during regular European business hours.
+          </p>
+
+          <div className="bg-lime-light p-4 rounded my-4">
+            <h4 className="font-bold">Notice that the data can be entered in one minute!</h4>
+            <p className="mb-0">
+              Although we describe in detail how to enter data and use the Valuatum Estimator, getting a valuation report is very quick and easy. Registration information and financial data can be entered even in one minute. To speed up data entry, you can enter a summary of items only for one of the subitem.
+            </p>
+          </div>
+          <p>See more in "Entering your own data" section.</p>
+        </section>
+
+        <section className="content-section">
+          <h2>Basics</h2>
+
+          <h4>Log into the system</h4>
+          <p>
+            After ordering the product you will receive username and password. Just insert these to the boxes and log in. In case you have forgotten the username and/or password, click 'I forgot my password' and follow the given instructions.
+          </p>
+          <img 
+            src="https://s3-eu-west-1.amazonaws.com/valu-wordpress/wp-content/uploads/sites/4/2017/09/05055558/kirjautuminen.png" 
+            alt="Valuatum Estimator login screen"
+            className="max-w-md"
+            loading="lazy"
+            decoding="async"
+          />
+
+          <h4>Personal Info</h4>
+          <p>
+            By clicking 'Personal Info' on the ribbon you can access and modify your own user account's basic information. The most important part of own information is the email address: in case you forget your password, we'll send instructions on how to restore it to this address. The fields marked with a red asterisk are required; e.g. phone number and address are optional. Valuatum does not give any user data, including contact information, to third parties. Valuatum may contact you with issues regarding the system (e.g. problems and important issues) via email.
+          </p>
+          <img 
+            src="https://s3-eu-west-1.amazonaws.com/valu-wordpress/wp-content/uploads/sites/4/2017/09/05055551/basic-information.png" 
+            alt="Personal information form in Valuatum Estimator"
+            className="max-w-md"
+            loading="lazy"
+            decoding="async"
+          />
+
+          <h4>Changing the Password</h4>
+          <p>
+            Under the 'Personal Info' tab you can find a separate tab 'Password'. Here you can change the password associated with your user account; the old password is needed for doing this. Simply insert your old password, the new password twice and click update, and the password is changed. There are no requirements for the type and number of characters in the password, but we do recommend avoiding short and easy-to-guess passwords. In case you have forgotten the password, click 'I forgot my password' in the log-in page and follow the instructions.
+          </p>
+          <img 
+            src="https://s3-eu-west-1.amazonaws.com/valu-wordpress/wp-content/uploads/sites/4/2017/09/05055559/password.png" 
+            alt="Password change form in Valuatum Estimator"
+            className="max-w-md"
+            loading="lazy"
+            decoding="async"
+          />
+        </section>
+
+        <section className="content-section">
+          <h2>Entering your own data</h2>
+          <img 
+            src="https://s3-eu-west-1.amazonaws.com/valu-wordpress/wp-content/uploads/sites/4/2017/06/31055923/estimator_data_entry.png" 
+            alt="Financial data entry form with income statement and balance sheet fields"
+            className="w-full my-4"
+            loading="lazy"
+            decoding="async"
+          />
+
+          <p>
+            Go to the tab 'Data entry' to enter your own financial data. At the top of the page you will find instructions for using the page. If input of a cell is incorrect, the cell will be colored red. When the input value in financial data cells has an unexpected sign (e.g. negative net sales), the cell will be colored pink – the model can still be saved. By hovering the cursor above the cell, a note that the value has usually the opposite sign is shown. When entering data, check the following aspects below. If there are any incorrect inputs, the data will not be saved, and you are asked to correct the data.
+          </p>
+
+          <h4>Summary</h4>
+          <ul>
+            <li>Fill in the company information.</li>
+            <li>Fill in the latest fiscal year in column Y-1. Other columns can be empty.</li>
+            <li>Make sure that the fiscal year dates do not overlap.</li>
+            <li>Make sure that total assets are equal to total equity + liabilities.</li>
+            <li>Save the model by pressing Save. This saves your financial figures into database; you can view them in the 'Company Views' page.</li>
+          </ul>
+
+          <h4>The data can be entered in one minute!</h4>
+          <p>
+            To speed up data entry, you can enter a summary of items only for one of the subitem. For example, you can enter the value of Intangible Assets total for the item of Other capitalised longterm expenditures. The data entered in this way does not effect on the outcome because it gives a sufficiently comprehensive estimate of the company's valuation.
+          </p>
+          <p>
+            If you want the report to be even more accurate, you can always return to the 'Data entry' page and complete the rest of the financial information.
+          </p>
+          <img 
+            src="https://s3-eu-west-1.amazonaws.com/valu-wordpress/wp-content/uploads/sites/4/2017/06/05103157/Screenshot-Estimaattorin-tutoriaaliin.jpg" 
+            alt="Example of entering summary figures for a quick valuation"
+            className="w-full my-4"
+            loading="lazy"
+            decoding="async"
+          />
+        </section>
+
+        <section className="content-section">
+          <h2>Company Views</h2>
+          <p>
+            After entering your data, the figures are accessible in the 'Company Views' page. This page displays the inserted data and different calculations based on them. Here you can also generate financial estimates for the company and generate automated valuation reports based on the data. These features are discussed in more detail below.
+          </p>
+
+          <h4>Generate Estimates</h4>
+          <img 
+            src="https://s3-eu-west-1.amazonaws.com/valu-wordpress/wp-content/uploads/sites/4/2017/09/05055554/CV-overview.png" 
+            alt="Company Views page showing financial data, estimates, and report generation"
+            className="w-full my-4"
+            loading="lazy"
+            decoding="async"
+          />
+          <p>
+            The power of Valuatum system is within the automatic estimate generation and the ability to change them. It is essential to generate the estimates before generating the valuation report. The estimate generation uses the financial figures entered through the 'Data entry' page and creates forecasts for the following years based on a set of predetermined rules. The forecast years are marked with an e next to them. Under the year, the ending of the fiscal year is marked (e.g. 2014/12 means that the fiscal year ended in December 2014). Clicking the arrows allows user to move forwards and backwards in the table.
+          </p>
+
+          <h4>Changing the Estimates</h4>
+          <p>
+            After generating the estimates, you can make changes to them by clicking 'Change estimates'. All the numbers displayed in blue font can be changed. Click the number, insert the new value and click the update button or press Enter. Some numbers are shown in black – these cannot be changed directly, as they are calculated from other values (e.g. net earnings, balance sheet total).
+          </p>
+          <p>
+            It is possible to change the value of single income statement or balance sheet items, but using estimate parameters is usually much more efficient. Estimate parameters are in the section 'Estimate Parameters' on this page. Changing the estimates is not mandatory; the system works perfectly fine with the automatic estimates.
+          </p>
+          <img 
+            src="https://s3-eu-west-1.amazonaws.com/valu-wordpress/wp-content/uploads/sites/4/2017/09/05055552/change-estimates_1.png" 
+            alt="Editing forecast estimates with editable blue-highlighted cells"
+            className="w-full my-4"
+            loading="lazy"
+            decoding="async"
+          />
+
+          <h4>Generate Valuation Report</h4>
+          <p>
+            You can create a valuation report at any point after generating the estimates. Simply click 'Generate Valuation Report' button and a PDF valuation report of your company will be created based on the actualized financial data and estimates.
+          </p>
+          <img 
+            src="https://s3-eu-west-1.amazonaws.com/valu-wordpress/wp-content/uploads/sites/4/2017/09/05055557/geenrate-valuation-report.png" 
+            alt="Generate Valuation Report button in Valuatum Estimator"
+            className="max-w-md my-4"
+            loading="lazy"
+            decoding="async"
+          />
+
+          <h4>Formula Window</h4>
+          <p>
+            The Company Views page displays many financial ratios and key figures that can be calculated in more than one way. In the Valuatum system, you can access the formulas easily: click the name of a variable to open a new window. In this window, the calculations are presented in detail. The name of the variable is in the top left corner.
+          </p>
+          <img 
+            src="https://s3-eu-west-1.amazonaws.com/valu-wordpress/wp-content/uploads/sites/4/2017/09/05055556/formulas-for-variable.png" 
+            alt="Formula detail window showing how a financial variable is calculated"
+            className="w-full my-4"
+            loading="lazy"
+            decoding="async"
+          />
+
+          <h4>Formulas Used in Variables</h4>
+          <p>Most of the variables are calculated using only basic arithmetic operators (+, -, /, *, ^). However, some variables require more complicated calculations. The table below explains the various functions used in the more complicated formulas.</p>
+          
+          <table className="w-full my-4">
+            <thead>
+              <tr>
+                <th>Function</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>abs(x)</td><td>Gives the absolute value of x</td></tr>
+              <tr><td>ceil(x)</td><td>Rounds the number up to the closest integer</td></tr>
+              <tr><td>exp(x), e^x</td><td>Calculates e to the power of x</td></tr>
+              <tr><td>floor(x)</td><td>Rounds the number down to the closest integer</td></tr>
+              <tr><td>if(c,x,y)</td><td>If c is true, returns x, otherwise returns y</td></tr>
+              <tr><td>log(x), ln(x)</td><td>Calculates the natural logarithm of the number</td></tr>
+              <tr><td>max(x,y)</td><td>Returns whichever of x and y is larger</td></tr>
+              <tr><td>min(x,y)</td><td>Returns whichever of x and y is smaller</td></tr>
+              <tr><td>round(x)</td><td>Rounds x to the closest integer using conventional rounding rules</td></tr>
+              <tr><td>sqrt(x)</td><td>Calculates the square root of x</td></tr>
+            </tbody>
+          </table>
+        </section>
+
+        <section className="content-section">
+          <h2>Estimate Parameters</h2>
+          <p>
+            Single row items in the balance sheet and income statement can be changed directly, but often the easier way is to use the estimate parameters that can be found in the 'Financial Statements' tab below the income statement and balance sheet. Parameter values can be changed using the process outlined in section 'Company Views' under the headline 'Changing the Estimates'.
+          </p>
+          <img 
+            src="https://s3-eu-west-1.amazonaws.com/valu-wordpress/wp-content/uploads/sites/4/2017/09/05055555/estimate-parameters.png" 
+            alt="Estimate parameters table with growth, EBIT, depreciation, and tax rate fields"
+            className="w-full my-4"
+          />
+
+          <h4>Income statement estimate parameters</h4>
+          <p>
+            There are four estimate parameters that directly affect the income statement: net sales growth, EBIT %, Depreciation % and Tax rate %.
+          </p>
+          <ul>
+            <li><strong>Net sales growth</strong> calculates net sales from the previous year's value.</li>
+            <li><strong>EBIT %</strong> is calculated as EBIT / net sales.</li>
+            <li><strong>Depreciation %</strong> has an effect on both balance sheet and income statement.</li>
+            <li><strong>Tax rate %</strong> affects paid income taxes.</li>
+          </ul>
+        </section>
+
+        <section className="content-section">
+          <h2>Valuation method used by Valuatum</h2>
+          <img 
+            src="https://s3-eu-west-1.amazonaws.com/valu-wordpress/wp-content/uploads/sites/4/2017/06/20124107/valuaatiopolku_valuatum_en1.png" 
+            alt="Valuation method selection flow diagram showing paths for profitable and unprofitable companies"
+            className="w-full my-4"
+          />
+          <p>
+            The picture above is a representation of the valuation paths used in the Valuatum system. Depending on the current and estimated financial situation of a company, different valuation methods are used.
+          </p>
+          <p>
+            More information on the individual methods can be found on the{" "}
+            <Link to="/valuation-methods">Valuation Methods</Link> page.
+          </p>
+        </section>
+
+        <section className="content-section">
+          <h2>Balancing Assets and Equity/Liabilities</h2>
+          <p>
+            A company's balance sheet assets must always be equal to the sum of equity and liabilities. When balance sheet estimates are changed, there is a temporary difference between the two sides; however, the Valuatum system evens them out automatically.
+          </p>
+          
+          <h4>Assets {">"} liabilities</h4>
+          <p>
+            In case there are more assets on the balance sheet than there are equity and liabilities, the system generates additional liabilities to balance the sides of the balance sheet. The difference is added to current and non-current loans from credit institutions.
+          </p>
+
+          <h4>Equity and liabilities {">"} assets</h4>
+          <p>
+            This case is significantly simpler: the difference between the sides of the balance sheet is added to the item 'Cash (generated)'.
+          </p>
+        </section>
+      </article>
+    </PageLayout>
+  );
+};
+
+export default UserManual;

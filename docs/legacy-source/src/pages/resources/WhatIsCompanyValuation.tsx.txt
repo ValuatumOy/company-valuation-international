@@ -1,0 +1,205 @@
+import { Helmet } from "react-helmet-async";
+import PageLayout from "@/components/layout/PageLayout";
+import { Link } from "react-router-dom";
+import ValuationFlowDiagram from "@/components/ValuationFlowDiagram";
+
+const faqs = [
+  { q: "What does company valuation mean?", a: "Company valuation is the process of estimating the economic worth of a business using financial data, forecasts, and established methods such as DCF and multiples." },
+  { q: "Why is company valuation important?", a: "It helps buyers, sellers, investors, and business owners make informed decisions about transactions, fundraising, and strategic planning." },
+  { q: "What is the difference between value and price?", a: "Value is an estimate of what a business is worth based on analysis. Price is the amount actually paid in a transaction — it may differ from value due to negotiation, timing, or strategic factors." },
+  { q: "How do I calculate company value?", a: "You can use a company valuation tool that applies methods like DCF, multiples, and comparable analysis to your financial data. The tool generates forecasts and a valuation range." },
+  { q: "Can I value a company for free?", a: "Yes. Our manual data input valuation tool is free with no time limit. The first PDF-based valuation is also free." },
+];
+
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://company-valuation.com/" },
+    { "@type": "ListItem", position: 2, name: "Resources", item: "https://company-valuation.com/resources" },
+    { "@type": "ListItem", position: 3, name: "What is company valuation?", item: "https://company-valuation.com/resources/company-valuation/what-is-company-valuation" },
+  ],
+};
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+
+const articleJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: "What Is Company Valuation?",
+  description: "Learn what company valuation is, how to estimate business value using methods like DCF and multiples, and how to generate a valuation report from financial data.",
+  mainEntityOfPage: "https://company-valuation.com/resources/company-valuation/what-is-company-valuation",
+  author: {
+    "@type": "Organization",
+    name: "Valuatum Oy",
+    url: "https://company-valuation.com/",
+  },
+  publisher: {
+    "@type": "Organization",
+    name: "Valuatum Oy",
+    url: "https://company-valuation.com/",
+    logo: { "@type": "ImageObject", url: "https://company-valuation.com/favicon.png" },
+  },
+};
+
+const WhatIsCompanyValuation = () => {
+  return (
+    <PageLayout>
+      <Helmet>
+        <title>What Is Company Valuation? | Definition & Examples</title>
+        <meta name="description" content="Learn what company valuation is, how to estimate business value using methods like DCF and multiples, and how to generate a valuation report from financial data." />
+        <link rel="canonical" href="https://company-valuation.com/resources/company-valuation/what-is-company-valuation" />
+        <script type="application/ld+json">{JSON.stringify(breadcrumbJsonLd)}</script>
+        <script type="application/ld+json">{JSON.stringify(faqJsonLd)}</script>
+        <script type="application/ld+json">{JSON.stringify(articleJsonLd)}</script>
+      </Helmet>
+
+      <article className="prose-content">
+        <nav className="text-sm text-muted-foreground mb-4">
+          <Link to="/" className="hover:text-link">Home</Link>
+          {" › "}
+          <Link to="/resources" className="hover:text-link">Resources</Link>
+          {" › "}
+          <span>What is company valuation?</span>
+        </nav>
+
+        <h1 className="page-title">What Is Company Valuation?</h1>
+
+        {/* Definition block for AI snippets */}
+        <div className="bg-lime-light p-6 rounded my-6">
+          <p className="text-lg italic mb-0">
+            <strong>Company valuation</strong> is the analytical process of estimating the economic worth of a business. It uses financial data, forecast models, and established methods — such as discounted cash flow (DCF) and multiples analysis — to determine a company's intrinsic value. This value serves as a rational starting point for negotiations, investment decisions, and strategic planning.
+          </p>
+        </div>
+
+        {/* Key takeaways */}
+        <section className="content-section">
+          <h2>Key Takeaways</h2>
+          <ul>
+            <li>Company valuation estimates what a business is worth based on its financials and future prospects.</li>
+            <li>Multiple methods (DCF, multiples, book value) are typically combined for a reliable value range.</li>
+            <li>Value is subjective and depends on the observer's assumptions — price is what is actually paid.</li>
+            <li>Accurate valuation is essential for buying, selling, raising capital, and strategic planning.</li>
+          </ul>
+        </section>
+
+        <section className="content-section">
+          <p>
+            <strong>Company valuation</strong> is the analytical process of determining the economic worth of a business. Whether you're looking to calculate <strong>company value</strong> for a sale, investment, or strategic planning, understanding valuation fundamentals is essential. A proper <strong>business valuation</strong> establishes the intrinsic or true value of an enterprise — the price both buyer and seller would agree upon in an arm's-length transaction without negotiation premiums or discounts.
+          </p>
+
+          <p>
+            <strong>Company value</strong> is inherently subjective and depends on the perspective of the observer. Consider a simple example: one investor might value a technology company at €5 million based on current cash flows, while another might value it at €8 million based on synergies with their existing portfolio. This difference reflects varying assessments of future prospects, risk, and strategic fit. A robust <strong>company valuation calculator</strong> helps quantify these factors systematically.
+          </p>
+
+          <p>
+            It's important to distinguish between <em>value</em> and <em>price</em>. Price is the monetary amount actually paid in a transaction — it's more objective and observable. Value, however, reflects what a business is truly worth to a particular buyer or seller. In acquisitions and investments, the valuation process establishes an initial estimate of value, which then serves as a starting point for negotiations that ultimately determine the final price. Since the goal is to ensure value exceeds the price paid, accurate <strong>business valuation</strong> is critical.
+          </p>
+
+          <p>
+            To learn how to value a business effectively, the video below provides a comprehensive overview. For hands-on experience with our <strong>company valuation software</strong>, you can{" "}
+            <a href="https://pdfanalysis.valuatum.com/Login.action" target="_blank" rel="noopener noreferrer">
+              register for free
+            </a>{" "}
+            and generate your own valuation report.
+          </p>
+
+          <div className="my-6 aspect-video">
+            <iframe
+              width="100%"
+              height="100%"
+              src="https://www.youtube.com/embed/3_R14_eFCOg"
+              title="How to Value a Company - Business Valuation Explained"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="rounded"
+              loading="lazy"
+            />
+          </div>
+        </section>
+
+        <section className="content-section">
+          <h2>Why Is Accurate Company Valuation Important?</h2>
+          <p>
+            Understanding <strong>company value</strong> is essential in many business situations:
+          </p>
+          <ul>
+            <li><strong>Buying or selling a business</strong> — Ensure you're paying or receiving a fair price</li>
+            <li><strong>Raising investment capital</strong> — Justify your valuation to potential investors</li>
+            <li><strong>Strategic planning</strong> — Track how business decisions affect company worth over time</li>
+            <li><strong>Ownership transitions</strong> — Fairly value shares for buyouts, succession, or divorce proceedings</li>
+            <li><strong>Securing financing</strong> — Demonstrate company value to lenders and creditors</li>
+          </ul>
+          <p>
+            A reliable <strong>company value calculator</strong> streamlines this process by automating the technical analysis while allowing you to adjust key assumptions based on your specific knowledge of the business.
+          </p>
+        </section>
+
+        <section className="content-section">
+          <h2>Selecting the Right Valuation Approach</h2>
+          <p>
+            The choice of <strong>business valuation</strong> method depends on the company's financial situation. The diagram below illustrates how different methods are selected based on whether a company has positive or negative earnings and operating profit. No single method captures the complete picture — professional valuations typically combine multiple approaches to arrive at a reasonable value range.
+          </p>
+          
+          <ValuationFlowDiagram />
+        </section>
+
+        <section className="content-section">
+          <h2>Company Valuation Methods</h2>
+          <p>
+            Our <strong>company valuation tool</strong> uses multiple approaches to ensure comprehensive and reliable results. The most common <strong>business valuation</strong> methods include:
+          </p>
+          <ul>
+            <li><strong>Discounted Cash Flow (DCF)</strong> — Values a company based on projected future cash flows, discounted to present value. This is considered the most theoretically rigorous approach for <strong>company valuation DCF</strong> analysis.</li>
+            <li><strong>Multiples Valuation (P/E, EV/EBITDA)</strong> — Compares the company to publicly traded peers using standardized ratios</li>
+            <li><strong>Book Value of Equity</strong> — Uses the accounting value of net assets as a baseline</li>
+            <li><strong>ROE vs. P/BV Method</strong> — Establishes a statistical relationship between return on equity and price-to-book ratios</li>
+            <li><strong>EBIT-% vs. P/Sales Method</strong> — Useful for valuing unprofitable companies based on revenue and margin expectations</li>
+          </ul>
+          <p>
+            To learn more about these methods and how they are applied in our <strong>company valuation software</strong>, visit our{" "}
+            <Link to="/resources/company-valuation/methods">Company Valuation Methods</Link> page.
+          </p>
+        </section>
+
+        <section className="content-section">
+          <h2>Get Started with Company Valuation</h2>
+          <p>
+            Ready to calculate your <strong>company value</strong>? Our <strong>company valuation calculator</strong> makes the process straightforward:
+          </p>
+          <div className="flex flex-wrap gap-3 mt-4">
+            <Link to="/solutions/manual-data-input-company-valuation" className="btn btn-primary">
+              Try Free Valuation Tool
+            </Link>
+            <Link to="/solutions/pdf-based-company-valuation" className="btn btn-secondary">
+              PDF-Based Valuation
+            </Link>
+          </div>
+        </section>
+
+        {/* FAQ */}
+        <section className="content-section">
+          <h2>Frequently Asked Questions</h2>
+          <div className="mt-4 space-y-6">
+            {faqs.map((f, i) => (
+              <div key={i}>
+                <h3 className="text-base font-semibold text-foreground mb-1">{f.q}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{f.a}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+      </article>
+    </PageLayout>
+  );
+};
+
+export default WhatIsCompanyValuation;

@@ -1,0 +1,268 @@
+import { Helmet } from "react-helmet-async";
+import PageLayout from "@/components/layout/PageLayout";
+import { Link } from "react-router-dom";
+import ValuationMethodsDiagram from "@/components/ValuationMethodsDiagram";
+import ValuationFlowDiagram from "@/components/ValuationFlowDiagram";
+
+const ValuationMethods = () => {
+  return (
+    <PageLayout>
+      <Helmet>
+        <title>Company Valuation Methods | DCF, Multiples, Book Value</title>
+        <meta name="description" content="Detailed guide to company valuation methods including DCF, EBITDA multiples, comparable analysis, and book value. Learn when to use each method." />
+        <meta name="robots" content="noindex,follow" />
+        <link rel="canonical" href="https://company-valuation.com/resources/company-valuation/methods" />
+      </Helmet>
+
+      <article className="prose-content">
+        <nav className="text-sm text-muted-foreground mb-4">
+          <Link to="/" className="hover:text-link">Home</Link>
+          {" › "}
+          <Link to="/what-is-valuation" className="hover:text-link">What is Valuation?</Link>
+          {" › "}
+          <span>Valuation Methods</span>
+        </nav>
+
+        <h1 className="page-title">Company Valuation Methods</h1>
+
+        <div className="bg-accent border border-border rounded p-4 mb-6 text-sm">
+          Looking for the updated version? <Link to="/resources/company-valuation/methods" className="underline font-medium">Read it in Resources</Link>.
+        </div>
+
+        {/* Introduction Section */}
+        <section className="content-section">
+          <h2>Understanding Business Valuation Approaches</h2>
+          <p>
+            No single valuation method can capture the complete picture of a company's worth. Different company valuation methods exist because businesses vary widely in their characteristics, financial performance, and growth potential. A profitable, established manufacturing company requires different analytical approaches than an early-stage technology startup with negative earnings but strong growth prospects.
+          </p>
+          <p>
+            Most professional valuations combine multiple methods to arrive at a reasonable value range. This triangulation approach helps validate findings and accounts for the inherent uncertainty in any forward-looking financial analysis. The weight given to each method depends on factors such as the company's profitability, industry characteristics, data availability, and the purpose of the valuation.
+          </p>
+          <p>
+            The valuation tool automatically selects and weights appropriate methods based on the company's financial state, using historical data and automatically generated forecasts. Users can review these assumptions and adjust them based on their specific knowledge of the business.
+          </p>
+
+          <ValuationMethodsDiagram />
+        </section>
+
+        {/* Income-Based Methods */}
+        <section className="content-section">
+          <h2>Income-Based Valuation Models</h2>
+          <p>
+            Income-based methods value a company based on its ability to generate future earnings or cash flows. These approaches are considered the most theoretically sound because they directly measure what investors ultimately receive: returns on their investment.
+          </p>
+
+          <h3>Discounted Cash Flow (DCF)</h3>
+          <p>
+            DCF valuation is widely regarded as the most rigorous business valuation method. It estimates a company's value by projecting all future free cash flows and discounting them to their present value, based on the time value of money principle.
+          </p>
+          
+          <h4 className="method-subheading">When DCF Works Best</h4>
+          <p>
+            DCF valuation is most reliable for established companies with predictable cash flows and stable operations. It excels when valuing businesses where future performance can be reasonably forecasted, such as mature companies in stable industries, utilities, or businesses with long-term contracts.
+          </p>
+          
+          <h4 className="method-subheading">Key Assumptions</h4>
+          <p>
+            The accuracy of a DCF model depends entirely on the quality of its inputs. The tool uses the following default assumptions, which users can adjust:
+          </p>
+          <ul>
+            <li>Revenue growth settles to GDP growth rate (approximately 3%) in the long term</li>
+            <li>Operating margins (EBIT %) remain at the weighted average of the past four years</li>
+          </ul>
+          <p>
+            The discount rate—the weighted average cost of capital (WACC)—has an outsized impact on the final valuation. The required return on equity is estimated using the Capital Asset Pricing Model (CAPM), while the cost of debt reflects the company's actual borrowing costs.
+          </p>
+
+          <div className="bg-muted p-4 rounded my-4">
+            <p className="font-semibold mb-2">Example:</p>
+            <p>
+              A manufacturing company generates €1 million in free cash flow annually. If growth is expected at 3% per year and the discount rate (WACC) is 10%, the company's value can be estimated as €1M ÷ (10% - 3%) = approximately €14.3 million. This represents what a buyer would pay today for all future cash flows.
+            </p>
+          </div>
+          
+          <h4 className="method-subheading">Limitations</h4>
+          <p>
+            DCF valuations are highly sensitive to assumptions about growth rates, margins, and discount rates. Small changes in these inputs can lead to significantly different valuations. The method is less suitable for early-stage companies, turnaround situations, or businesses with highly volatile cash flows.
+          </p>
+        </section>
+
+        {/* Market-Based Methods */}
+        <section className="content-section">
+          <h2>Market-Based Valuation Methods</h2>
+          <p>
+            Market-based approaches derive value by comparing a company to similar businesses that have been valued by the market. These methods are grounded in the principle that similar assets should trade at similar prices.
+          </p>
+
+          <h3>Multiples Valuation</h3>
+          <p>
+            In multiples valuation, a company's value is estimated by comparing it to publicly traded peers in the same industry. A key financial metric—such as earnings, EBITDA, or revenue—is multiplied by the average ratio at which comparable companies trade.
+          </p>
+          
+          <h4 className="method-subheading">How It Works</h4>
+          <p>
+            Reference companies are typically publicly traded firms with available market prices. The target company's financial figure is multiplied by the average multiple from the peer group, and a private company discount may be applied to account for reduced liquidity.
+          </p>
+          <div className="bg-muted p-4 rounded my-4">
+            <p className="font-semibold mb-2">Example:</p>
+            <p>
+              Companies A and B operate in the same industry. Company A is publicly traded with a net profit of €10 and a market value of €200, giving it a P/E ratio of 20. Company B, a private firm, has a net profit of €5. If both companies are similar, the estimated value of B would be 20 × €5 = €100.
+            </p>
+          </div>
+
+          <h4 className="method-subheading">When Multiples Work Best</h4>
+          <p>
+            Multiples valuation is particularly useful when there are sufficient comparable public companies, when market conditions are stable, and when the target company has reliable financial metrics. It is commonly used in M&A transactions for quick valuation benchmarks.
+          </p>
+          
+          <h4 className="method-subheading">Common Multiples</h4>
+          <ul>
+            <li><strong>P/E (Price-to-Earnings):</strong> Suitable for profitable companies; compares market value to net income</li>
+            <li><strong>EV/EBITDA:</strong> Useful when comparing companies with different capital structures; focuses on operating performance</li>
+          </ul>
+          
+          <h4 className="method-subheading">Limitations</h4>
+          <p>
+            Multiples do not account for company-specific factors such as unique growth prospects, management quality, or competitive advantages. They reflect only the average market valuation of an industry at a given time.
+          </p>
+
+          <h3>ROE vs. P/BV</h3>
+          <p>
+            This method establishes a statistical relationship between a company's return on equity (ROE) and its price-to-book ratio (P/BV). Companies generating higher returns on their equity capital typically command higher market valuations relative to their book value.
+          </p>
+          
+          <h4 className="method-subheading">When This Method Works Best</h4>
+          <p>
+            The ROE vs. P/BV approach is effective for companies with stable and predictable returns on equity, particularly in industries where book value is a meaningful measure of invested capital, such as financial services and manufacturing.
+          </p>
+          
+          <h4 className="method-subheading">How It Is Applied</h4>
+          <p>
+            If the difference between the current year's and last year's ROE is within 10 percentage points, a weighted average is used. Otherwise, the current year's ROE is applied. The relationship between ROE and P/BV is then estimated statistically from empirical market data.
+          </p>
+
+          <div className="bg-muted p-4 rounded my-4">
+            <p className="font-semibold mb-2">Example:</p>
+            <p>
+              A company has €500,000 in book value and generates a 15% return on equity. Statistical analysis of comparable companies shows that firms with 15% ROE typically trade at 1.8× book value. The estimated company value would be €500,000 × 1.8 = €900,000.
+            </p>
+          </div>
+          
+          <h4 className="method-subheading">Limitations</h4>
+          <p>
+            This method is less reliable for companies with highly volatile profitability or those undergoing significant operational changes that affect ROE.
+          </p>
+
+          <h3>EBIT-% vs. P/Sales</h3>
+          <p>
+            For companies that are not currently profitable, traditional earnings-based multiples cannot be applied. This method uses the statistical relationship between operating margin (EBIT-%) and price-to-sales ratio among publicly traded companies.
+          </p>
+          
+          <h4 className="method-subheading">When This Method Works Best</h4>
+          <p>
+            This approach is specifically designed for unprofitable companies that have revenue but negative earnings. It is commonly applied to growth-stage companies, startups, or businesses undergoing restructuring.
+          </p>
+          
+          <h4 className="method-subheading">Key Assumption</h4>
+          <p>
+            The method assumes that the company will eventually achieve the average operating margin of its industry. The current price-to-sales ratio reflects the market's expectation of future profitability.
+          </p>
+
+          <div className="bg-muted p-4 rounded my-4">
+            <p className="font-semibold mb-2">Example:</p>
+            <p>
+              A startup has €2 million in revenue but is currently unprofitable with a -5% EBIT margin. Statistical analysis shows that companies in its industry with similar margin profiles trade at 0.8× revenue. The estimated value would be €2M × 0.8 = €1.6 million, reflecting the market's expectation of future profitability.
+            </p>
+          </div>
+          
+          <h4 className="method-subheading">Limitations</h4>
+          <p>
+            This method is only applicable to loss-making companies and relies heavily on the assumption that profitability will eventually be achieved.
+          </p>
+        </section>
+
+        {/* Asset-Based Methods */}
+        <section className="content-section">
+          <h2>Asset-Based Valuation</h2>
+          <p>
+            Asset-based methods value a company based on the worth of its underlying assets rather than its earnings potential. These approaches are most relevant when a company's assets have significant standalone value.
+          </p>
+
+          <h3>Book Value of Equity</h3>
+          <p>
+            Book value of equity represents the accounting value of a company's share capital, retained earnings, reserves, and similar items. It can be understood as the value remaining for shareholders after all liabilities are subtracted from assets—essentially the theoretical liquidation value.
+          </p>
+          
+          <h4 className="method-subheading">When Book Value Works Best</h4>
+          <p>
+            Book value is most relevant for asset-intensive businesses, holding companies, financial institutions, or companies facing liquidation. It provides a floor value in situations where other methods produce unreliable results.
+          </p>
+
+          <div className="bg-muted p-4 rounded my-4">
+            <p className="font-semibold mb-2">Example:</p>
+            <p>
+              A real estate holding company owns properties worth €10 million on its balance sheet, with €6 million in debt. The book value of equity is €10M - €6M = €4 million. For such asset-heavy businesses, this provides a meaningful baseline valuation.
+            </p>
+          </div>
+          
+          <h4 className="method-subheading">Limitations</h4>
+          <p>
+            For most operating businesses, book value is not a meaningful indicator of market value. Companies with strong earnings, competitive advantages, or growth potential are typically worth far more than their book value. Conversely, distressed companies may have book values that overstate their actual worth due to impaired assets.
+          </p>
+        </section>
+
+        {/* Valuation Paths Section */}
+        <section className="content-section">
+          <h2>Selecting the Right Valuation Approach</h2>
+          <p>
+            The appropriate combination of valuation methods depends on a company's financial situation. Three key financial indicators—net income, EBITDA, and DCF valuation—determine which methods are applicable.
+          </p>
+
+          <ValuationFlowDiagram />
+
+          <h3>Profitable Companies (Green Path)</h3>
+          <p>
+            When a company has positive net income, all major valuation methods are available. In practice, the most statistically accurate results come from combining four approaches: ROE vs. P/BV, Discounted Cash Flow, EV/EBITDA multiples, and P/E multiples. These methods are weighted to produce a final valuation.
+          </p>
+          <p>
+            This is the most common scenario and allows for the most robust valuation, as multiple independent methods can cross-validate each other.
+          </p>
+
+          <h3>Negative Earnings, Positive Operating Profit (Yellow Path)</h3>
+          <p>
+            When net income is negative but EBITDA remains positive, valuation options become more limited. The P/E multiple cannot be used (as it would produce a negative value), but EV/EBITDA remains applicable since operating profit is positive.
+          </p>
+          <p>
+            If DCF valuation also produces a negative result, it is excluded from the final calculation, and the valuation relies primarily on EV/EBITDA.
+          </p>
+
+          <h3>Deeply Unprofitable Companies (Purple Path)</h3>
+          <p>
+            When both net income and EBITDA are negative, valuation options are highly constrained. Only two methods remain applicable: book value of equity and EBIT-% vs. P/Sales.
+          </p>
+          <p>
+            If DCF produces a positive value despite current losses (reflecting expected future profitability), it can be included in the final valuation.
+          </p>
+
+          <h3>The Challenge of Valuing Loss-Making Companies</h3>
+          <p>
+            Valuations of unprofitable companies carry significantly more uncertainty than those of profitable ones. The estimates rely heavily on assumptions about future performance and recovery, which are inherently speculative. Statistical accuracy for these valuations is lower, and the results should be interpreted with appropriate caution.
+          </p>
+        </section>
+
+        {/* How the Tool Helps */}
+        <section className="content-section">
+          <h2>Applying Multiple Valuation Methods</h2>
+          <p>
+            The valuation tool automatically applies the appropriate methods based on the company's financial profile, saving time while ensuring methodological rigor. It calculates values using each applicable method and combines them using statistically derived weights.
+          </p>
+          <p>
+            Users retain full control over key assumptions. Revenue growth rates, operating margins, discount rates, and other parameters can be reviewed and adjusted to reflect specific knowledge about the business or different scenarios. This flexibility allows the tool to serve both as a quick screening mechanism and as the foundation for detailed analysis.
+          </p>
+        </section>
+      </article>
+    </PageLayout>
+  );
+};
+
+export default ValuationMethods;

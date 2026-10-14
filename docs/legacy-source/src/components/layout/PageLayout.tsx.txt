@@ -1,0 +1,32 @@
+import Header from "./Header";
+import Footer from "./Footer";
+import heroBackground from "@/assets/hero-background.png";
+
+interface PageLayoutProps {
+  children: React.ReactNode;
+}
+
+const PageLayout = ({ children }: PageLayoutProps) => {
+  return (
+    <div
+      style={{
+        backgroundImage: `url(${heroBackground})`,
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+      }}
+      className="min-h-screen flex flex-col page-bg-wrap"
+    >
+      {/* Light overlay for better readability */}
+      <div className="min-h-screen flex flex-col bg-white/50">
+        <Header />
+        <main className="flex-1 max-w-[1400px] mx-auto w-full px-8 py-5 pb-12">
+          {children}
+        </main>
+        <Footer />
+      </div>
+    </div>
+  );
+};
+
+export default PageLayout;

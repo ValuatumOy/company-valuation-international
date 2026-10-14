@@ -1,0 +1,92 @@
+import { Toaster } from "@/components/ui/toaster";
+import { Toaster as Sonner } from "@/components/ui/sonner";
+import { TooltipProvider } from "@/components/ui/tooltip";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { HelmetProvider } from "react-helmet-async";
+import TrailingSlashRedirect from "@/components/seo/TrailingSlashRedirect";
+import CanonicalUrl from "@/components/seo/CanonicalUrl";
+import Index from "./pages/Index";
+import Support from "./pages/Support";
+import SupportFAQ from "./pages/support/FAQ";
+import AboutUs from "./pages/AboutUs";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import ContactFinland from "./pages/ContactFinland";
+import ContactInternational from "./pages/ContactInternational";
+import NotFound from "./pages/NotFound";
+import Security from "./pages/Security";
+
+// Resource pages
+import Resources from "./pages/resources/Index";
+import ResourceWhatIsCompanyValuation from "./pages/resources/WhatIsCompanyValuation";
+import ResourceCompanyValuationMethods from "./pages/resources/CompanyValuationMethods";
+
+// Solution pages
+import ManualDataInputCompanyValuation from "./pages/solutions/ManualDataInputCompanyValuation";
+import PDFBasedCompanyValuation from "./pages/solutions/PDFBasedCompanyValuation";
+import DanishCompanyValuation from "./pages/solutions/DanishCompanyValuation";
+import FinnishCompanyValuation from "./pages/solutions/FinnishCompanyValuation";
+import InternationalCompanyValuation from "./pages/solutions/InternationalCompanyValuation";
+import WhyCompanyValuation from "./pages/solutions/WhyCompanyValuation";
+import SolutionKeyFeatures from "./pages/solutions/KeyFeatures";
+import SolutionUserManual from "./pages/solutions/UserManual";
+
+const queryClient = new QueryClient();
+
+const App = () => (
+  <QueryClientProvider client={queryClient}>
+    <HelmetProvider>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <TrailingSlashRedirect />
+          <CanonicalUrl />
+          <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/company-valuation" element={<Navigate replace to="/resources/company-valuation/what-is-company-valuation" />} />
+            <Route path="/company-valuation-methods" element={<Navigate replace to="/resources/company-valuation/methods" />} />
+            
+            <Route path="/support" element={<Support />} />
+            <Route path="/support/faq" element={<SupportFAQ />} />
+            <Route path="/about-us" element={<AboutUs />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/security" element={<Security />} />
+            <Route path="/contact-finland" element={<ContactFinland />} />
+            <Route path="/contact-international" element={<ContactInternational />} />
+            
+            {/* Resource routes */}
+            <Route path="/resources" element={<Resources />} />
+            <Route path="/resources/company-valuation/what-is-company-valuation" element={<ResourceWhatIsCompanyValuation />} />
+            <Route path="/resources/company-valuation/methods" element={<ResourceCompanyValuationMethods />} />
+            
+            {/* Solution routes */}
+            <Route path="/solutions/manual-data-input-company-valuation" element={<ManualDataInputCompanyValuation />} />
+            <Route path="/solutions/manual-data-input-company-valuation/key-features" element={<SolutionKeyFeatures />} />
+            <Route path="/solutions/manual-data-input-company-valuation/user-manual" element={<SolutionUserManual />} />
+            <Route path="/solutions/pdf-based-company-valuation" element={<PDFBasedCompanyValuation />} />
+            <Route path="/solutions/danish-company-valuation" element={<DanishCompanyValuation />} />
+            <Route path="/solutions/finnish-company-valuation" element={<FinnishCompanyValuation />} />
+            <Route path="/solutions/international-company-valuation" element={<InternationalCompanyValuation />} />
+            <Route path="/solutions/why-do-you-need-company-valuation" element={<WhyCompanyValuation />} />
+            
+            {/* Legacy redirects for old URLs */}
+            <Route path="/what-is-valuation" element={<Navigate to="/resources/company-valuation/what-is-company-valuation" replace />} />
+            <Route path="/valuation-methods" element={<Navigate to="/resources/company-valuation/methods" replace />} />
+            <Route path="/solutions/manual-data-input" element={<Navigate to="/solutions/manual-data-input-company-valuation" replace />} />
+            <Route path="/solutions/manual-data-input/key-features" element={<Navigate to="/solutions/manual-data-input-company-valuation/key-features" replace />} />
+            <Route path="/solutions/manual-data-input/user-manual" element={<Navigate to="/solutions/manual-data-input-company-valuation/user-manual" replace />} />
+            <Route path="/solutions/pdf-based-valuation" element={<Navigate to="/solutions/pdf-based-company-valuation" replace />} />
+            <Route path="/solutions/why-do-you-need-valuation" element={<Navigate to="/solutions/why-do-you-need-company-valuation" replace />} />
+            <Route path="/key-features" element={<Navigate to="/solutions/manual-data-input-company-valuation/key-features" replace />} />
+            <Route path="/user-manual" element={<Navigate to="/solutions/manual-data-input-company-valuation/user-manual" replace />} />
+            
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </TooltipProvider>
+    </HelmetProvider>
+  </QueryClientProvider>
+);
+
+export default App;

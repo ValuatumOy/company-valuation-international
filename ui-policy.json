@@ -1,0 +1,76 @@
+{
+  "fonts": ["Manrope", "Arial", "sans-serif"],
+  "fontSizes": [
+    9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 28, 30,
+    32, 33, 34, 35, 36, 38, 40, 42, 43, 44, 48, 50, 52, 60, 63, 64, 65, 68, 78
+  ],
+  "typeRules": [
+    {
+      "selector": "[aria-hidden=\"true\"]",
+      "sizes": [
+        5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 17, 18, 20, 24, 28, 30, 43, 48,
+        60, 65
+      ]
+    },
+    {
+      "sizes": [
+        7, 8, 9, 10, 11, 12, 13, 14, 15, 17, 18, 20, 24, 28, 30, 40, 43
+      ],
+      "selector": ".report-stage"
+    }
+  ],
+  "minControlSize": 24,
+  "controlSizeRules": [
+    {
+      "minSize": 44,
+      "selector": ".button,.menu-toggle,.faq-list summary,.report-tabs button"
+    }
+  ],
+  "minControlGap": 8,
+  "minControlInset": 8,
+  "controlContainers": ["[data-ui-container]"],
+  "minLayoutGap": 8,
+  "bannedCopy": ["unlock your potential", "seamlessly", "game-changing"],
+  "viewports": [
+    {
+      "width": 375,
+      "height": 812
+    },
+    {
+      "width": 768,
+      "height": 1024
+    },
+    {
+      "width": 1440,
+      "height": 900
+    }
+  ],
+  "colorSchemes": ["light"],
+  "exceptions": [
+    {
+      "selector": "h1,h2,.footer-wordmark",
+      "rules": ["font-size"],
+      "reason": "Display headings use bounded fluid clamp sizes; responsive layout and contrast remain checked."
+    },
+    {
+      "selector": "[aria-hidden=\"true\"],[aria-hidden=\"true\"] *",
+      "rules": ["font-size", "text-contrast"],
+      "reason": "Decorative illustrations and glyphs contain no unique information. Real copy and interactive report content are checked separately."
+    },
+    {
+      "selector": ".menu-toggle",
+      "rules": ["icon-button-tooltip"],
+      "reason": "Standard mobile navigation button has an accessible action name and title; touch users use the familiar menu symbol."
+    },
+    {
+      "rules": ["content-clipping"],
+      "reason": "Skip navigation link is intentionally visually clipped until keyboard focus reveals its full 44px target.",
+      "selector": ".skip-link:not(:focus)"
+    },
+    {
+      "reason": "Table captions are visually hidden for compact presentation and remain available to assistive technology.",
+      "rules": ["content-clipping"],
+      "selector": ".sr-only"
+    }
+  ]
+}

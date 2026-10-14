@@ -1,0 +1,86 @@
+import { ArrowRight } from "lucide-react";
+
+const ValuationMethodsDiagram = () => {
+  const historyMethods = [
+    "Book value of equity",
+    "EBIT-% vs P/sales",
+    "ROE-% vs P/BV",
+    "Other multiple valuation methods",
+  ];
+
+  return (
+    <div className="my-8 p-6 bg-card rounded-lg border border-border">
+      {/* Top row - Titles aligned */}
+      <div className="flex flex-col lg:flex-row justify-between gap-8 mb-4">
+        <div className="flex-1">
+          <h3 className="text-lg font-semibold text-foreground">Based on history</h3>
+        </div>
+        <div className="w-[180px] hidden lg:block"></div>
+        <div className="flex-1">
+          <h3 className="text-lg font-semibold text-foreground">Based on future estimates</h3>
+        </div>
+      </div>
+
+      {/* Content row */}
+      <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
+        {/* Left side - History methods */}
+        <div className="flex-1">
+          <div className="space-y-3">
+            {historyMethods.map((method, index) => (
+              <div
+                key={index}
+                className="bg-muted border border-border rounded-md px-4 py-2 text-sm text-foreground"
+              >
+                {method}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Middle - Arrow with text */}
+        <div className="flex flex-col items-center gap-2 self-center">
+          <ArrowRight className="w-32 h-6 text-primary" />
+          <p className="text-sm text-muted-foreground text-center max-w-[180px]">
+            Automatically generated future estimates.
+          </p>
+        </div>
+
+        {/* Right side - Future estimates */}
+        <div className="flex-1">
+          <div className="bg-muted border border-border rounded-md px-4 py-2 text-sm text-foreground">
+            Discounted Cash Flow
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom - Value of the company with L-shaped brackets */}
+      <div className="mt-8 flex flex-col items-center">
+        <div className="flex items-center">
+          {/* Left L-shape bracket */}
+          <svg className="hidden md:block w-40 h-12" viewBox="0 0 160 48">
+            <path
+              d="M 0 0 L 0 48 L 160 48"
+              fill="none"
+              stroke="hsl(var(--primary))"
+              strokeWidth="2"
+            />
+          </svg>
+          <div className="bg-primary text-primary-foreground rounded-full px-6 py-3 text-center font-semibold">
+            Value of the company
+          </div>
+          {/* Right L-shape bracket */}
+          <svg className="hidden md:block w-40 h-12" viewBox="0 0 160 48">
+            <path
+              d="M 160 0 L 160 48 L 0 48"
+              fill="none"
+              stroke="hsl(var(--primary))"
+              strokeWidth="2"
+            />
+          </svg>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ValuationMethodsDiagram;

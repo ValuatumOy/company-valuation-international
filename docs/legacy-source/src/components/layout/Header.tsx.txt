@@ -1,0 +1,222 @@
+import { Link, useLocation } from "react-router-dom";
+import { useState } from "react";
+import { ChevronDown } from "lucide-react";
+
+const navItems = [
+  { label: "Company Valuation Tools", path: "/" },
+  { 
+    label: "Solutions", 
+    dropdownOnly: true,
+    dropdown: [
+      { label: "Manual Data Input Company Valuation", path: "/solutions/manual-data-input-company-valuation" },
+      { label: "PDF-Based Company Valuation", path: "/solutions/pdf-based-company-valuation" },
+      { label: "Danish Company Valuation", path: "/solutions/danish-company-valuation" },
+      { label: "Finnish Company Valuation", path: "/solutions/finnish-company-valuation" },
+      { label: "International Company Valuation", path: "/solutions/international-company-valuation", comingSoon: true },
+      { label: "Why Do You Need Company Valuation?", path: "/solutions/why-do-you-need-company-valuation" },
+    ]
+  },
+  { 
+    label: "Resources", 
+    dropdownOnly: true,
+    dropdown: [
+      { label: "Resources", path: "/resources" },
+      { label: "What Is Company Valuation?", path: "/resources/company-valuation/what-is-company-valuation" },
+      { label: "Valuation Methods", path: "/resources/company-valuation/methods" }
+    ]
+  },
+  { 
+    label: "Support", 
+    dropdownOnly: true,
+    dropdown: [
+      { label: "Support", path: "/support" },
+      { label: "FAQ", path: "/support/faq" },
+      { label: "International coverage", path: "/contact-international" }
+    ]
+  },
+  
+  { 
+    label: "Company", 
+    dropdownOnly: true,
+    dropdown: [
+      { label: "About Us", path: "/about-us" },
+      { label: "Security", path: "/security" },
+      { label: "Privacy Policy", path: "/privacy-policy" }
+    ]
+  },
+];
+
+const Header = () => {
+  const location = useLocation();
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+
+  return (
+    <header className="site-header">
+      <div className="max-w-[1400px] mx-auto px-5 py-1.5">
+        <div className="flex items-center justify-between gap-6">
+          <Link to="/" className="no-underline hover:no-underline shrink-0 flex items-center gap-2.5">
+            <img src="/logo.svg" alt="Valuatum logo" className="h-8 w-auto" width="32" height="32" decoding="async" />
+            <div>
+              <div className="header-title text-xl">Valuatum Tools</div>
+              <div className="header-subtitle text-xs">Advanced company valuation and credit risk analysis</div>
+            </div>
+          </Link>
+          
+          <div className="flex items-center gap-4">
+            <nav className="primary-nav flex flex-wrap items-center gap-4 text-base" aria-label="Main navigation">
+              {navItems.map((item, index) => {
+                const isActive = item.path ? location.pathname === item.path : 
+                  (item.dropdown && item.dropdown.some(sub => location.pathname === sub.path));
+                const dropdownKey = item.path || `dropdown-${index}`;
+                
+                if (item.dropdown) {
+                  return (
+                    <div 
+                      key={dropdownKey} 
+                      className="relative"
+                      onMouseEnter={() => setOpenDropdown(dropdownKey)}
+                      onMouseLeave={() => setOpenDropdown(null)}
+                    >
+                      {item.dropdownOnly ? (
+                        <button
+                          className={`nav-link inline-flex items-center gap-1 py-2 ${isActive ? "border-b-primary text-primary" : ""}`}
+                        >
+                          {item.label}
+                          <ChevronDown className={`h-3 w-3 transition-transform ${openDropdown === dropdownKey ? "rotate-180" : ""}`} />
+                        </button>
+                      ) : (
+                        <Link
+                          to={item.path!}
+                          className={`nav-link inline-flex items-center gap-1 py-2 ${isActive ? "border-b-primary text-primary" : ""}`}
+                        >
+                          {item.label}
+                          <ChevronDown className={`h-3 w-3 transition-transform ${openDropdown === dropdownKey ? "rotate-180" : ""}`} />
+                        </Link>
+                      )}
+                      {openDropdown === dropdownKey && (
+                        <div className="absolute top-full left-0 pt-1 z-50">
+                          <div className="min-w-[260px] bg-white border border-border rounded-md shadow-lg py-1">
+                            {item.dropdown.map((subItem) => (
+                              <Link
+                                key={subItem.path}
+                                to={subItem.path}
+                                className="block px-4 py-2.5 text-sm text-foreground hover:bg-muted transition-colors"
+                                onClick={() => setOpenDropdown(null)}
+                              >
+                                <span className="flex items-center gap-2">
+                                  {subItem.label}
+                                  {subItem.comingSoon && (
+                                    <span className="text-xs bg-muted text-muted-foreground px-1.5 py-0.5 rounded">Soon</span>
+                                  )}
+                                </span>
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                    </div>
+                  );
+                }
+                
+                return (
+                  <Link
+                    key={item.path}
+                    to={item.path!}
+                    className={`nav-link ${isActive ? "border-b-primary text-primary" : ""}`}
+                  >
+                    {item.label}
+                  </Link>
+                );
+              })}
+            </nav>
+            
+            <div className="flex items-center gap-2 text-sm whitespace-nowrap">
+              <div 
+                className="relative"
+                onMouseEnter={() => setOpenDropdown('register')}
+                onMouseLeave={() => setOpenDropdown(null)}
+              >
+                <button className="btn btn-primary inline-flex items-center gap-1">
+                  Register
+                  <ChevronDown className={`h-3 w-3 transition-transform ${openDropdown === 'register' ? "rotate-180" : ""}`} />
+                </button>
+                {openDropdown === 'register' && (
+                  <div className="absolute top-full right-0 pt-1 z-50">
+                    <div className="min-w-[220px] bg-white border border-border rounded-md shadow-lg py-1">
+                      <a
+                        href="https://estimator.valuatum.com/AspAndUserCreation.action?templateAspQueryKey=PPVTemplate&userType=&popup=true"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block px-4 py-2.5 text-sm text-foreground hover:bg-muted transition-colors"
+                      >
+                        Manual Data Input Register
+                      </a>
+                      <a
+                        href="https://valuation.valuatum.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block px-4 py-2.5 text-sm text-foreground hover:bg-muted transition-colors"
+                      >
+                        PDF-Based Valuation Register
+                      </a>
+                      <a
+                        href="https://valuation-finland.valuatum.com/AspAndUserCreation.action?templateAspQueryKey=CVFinland&popup=true"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block px-4 py-2.5 text-sm text-foreground hover:bg-muted transition-colors"
+                      >
+                        Finnish Company Valuation Register
+                      </a>
+                    </div>
+                  </div>
+                )}
+              </div>
+              <div 
+                className="relative"
+                onMouseEnter={() => setOpenDropdown('login')}
+                onMouseLeave={() => setOpenDropdown(null)}
+              >
+                <button className="btn btn-ghost inline-flex items-center gap-1">
+                  Login
+                  <ChevronDown className={`h-3 w-3 transition-transform ${openDropdown === 'login' ? "rotate-180" : ""}`} />
+                </button>
+                {openDropdown === 'login' && (
+                  <div className="absolute top-full right-0 pt-1 z-50">
+                    <div className="min-w-[220px] bg-white border border-border rounded-md shadow-lg py-1">
+                      <a
+                        href="https://estimator.valuatum.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block px-4 py-2.5 text-sm text-foreground hover:bg-muted transition-colors"
+                      >
+                        Manual Data Input Login
+                      </a>
+                      <a
+                        href="https://pdfanalysis.valuatum.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block px-4 py-2.5 text-sm text-foreground hover:bg-muted transition-colors"
+                      >
+                        PDF-Based Valuation Login
+                      </a>
+                      <a
+                        href="https://valuation-finland.valuatum.com/PPVCompanySearch.action?"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block px-4 py-2.5 text-sm text-foreground hover:bg-muted transition-colors"
+                      >
+                        Finnish Company Valuation Login
+                      </a>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+  );
+};
+
+export default Header;

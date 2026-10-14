@@ -1,0 +1,122 @@
+[
+  {
+    "source": "https://company-valuation.com/wp-content/uploads/sites/4/2020/05/EVLI-LOGO-1-1.png",
+    "name": "legacy-EVLI-LOGO-1-1.png",
+    "alt": "Evli",
+    "page": "/about-us",
+    "status": "unavailable",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "source": "https://research.enlightresearch.net/mount/siteimages/130/logo_primary?v=-1",
+    "name": "legacy-enlight-research-logo.png",
+    "alt": "Enlight Research",
+    "page": "/about-us",
+    "status": "copied",
+    "bytes": 8498
+  },
+  {
+    "source": "https://www.porssisaatio.fi/app/uploads/2023/12/Vaaka2.png",
+    "name": "legacy-Vaaka2.png",
+    "alt": "Pörssisäätiö",
+    "page": "/about-us",
+    "status": "copied",
+    "bytes": 163056
+  },
+  {
+    "source": "https://s3-eu-west-1.amazonaws.com/valu-wordpress/wp-content/uploads/sites/4/2016/10/05070325/ProductFeatures_kuuva-1024x519.png",
+    "name": "legacy-ProductFeatures_kuuva-1024x519.png",
+    "alt": "Business valuation tool workflow",
+    "page": "/solutions/manual-data-input-company-valuation/key-features",
+    "status": "copied",
+    "bytes": 127899
+  },
+  {
+    "source": "https://s3-eu-west-1.amazonaws.com/valu-wordpress/wp-content/uploads/sites/4/2017/09/05055558/kirjautuminen.png",
+    "name": "legacy-kirjautuminen.png",
+    "alt": "Valuatum Estimator login screen",
+    "page": "/solutions/manual-data-input-company-valuation/user-manual",
+    "status": "copied",
+    "bytes": 33278
+  },
+  {
+    "source": "https://s3-eu-west-1.amazonaws.com/valu-wordpress/wp-content/uploads/sites/4/2017/09/05055551/basic-information.png",
+    "name": "legacy-basic-information.png",
+    "alt": "Personal information form in Valuatum Estimator",
+    "page": "/solutions/manual-data-input-company-valuation/user-manual",
+    "status": "copied",
+    "bytes": 13904
+  },
+  {
+    "source": "https://s3-eu-west-1.amazonaws.com/valu-wordpress/wp-content/uploads/sites/4/2017/09/05055559/password.png",
+    "name": "legacy-password.png",
+    "alt": "Password change form in Valuatum Estimator",
+    "page": "/solutions/manual-data-input-company-valuation/user-manual",
+    "status": "copied",
+    "bytes": 7350
+  },
+  {
+    "source": "https://s3-eu-west-1.amazonaws.com/valu-wordpress/wp-content/uploads/sites/4/2017/06/31055923/estimator_data_entry.png",
+    "name": "legacy-estimator_data_entry.png",
+    "alt": "Financial data entry form with income statement and balance sheet fields",
+    "page": "/solutions/manual-data-input-company-valuation/user-manual",
+    "status": "copied",
+    "bytes": 38520
+  },
+  {
+    "source": "https://s3-eu-west-1.amazonaws.com/valu-wordpress/wp-content/uploads/sites/4/2017/06/05103157/Screenshot-Estimaattorin-tutoriaaliin.jpg",
+    "name": "legacy-Screenshot-Estimaattorin-tutoriaaliin.jpg",
+    "alt": "Example of entering summary figures for a quick valuation",
+    "page": "/solutions/manual-data-input-company-valuation/user-manual",
+    "status": "copied",
+    "bytes": 43914
+  },
+  {
+    "source": "https://s3-eu-west-1.amazonaws.com/valu-wordpress/wp-content/uploads/sites/4/2017/09/05055554/CV-overview.png",
+    "name": "legacy-CV-overview.png",
+    "alt": "Company Views page showing financial data, estimates, and report generation",
+    "page": "/solutions/manual-data-input-company-valuation/user-manual",
+    "status": "copied",
+    "bytes": 12549
+  },
+  {
+    "source": "https://s3-eu-west-1.amazonaws.com/valu-wordpress/wp-content/uploads/sites/4/2017/09/05055552/change-estimates_1.png",
+    "name": "legacy-change-estimates_1.png",
+    "alt": "Editing forecast estimates with editable blue-highlighted cells",
+    "page": "/solutions/manual-data-input-company-valuation/user-manual",
+    "status": "copied",
+    "bytes": 38627
+  },
+  {
+    "source": "https://s3-eu-west-1.amazonaws.com/valu-wordpress/wp-content/uploads/sites/4/2017/09/05055557/geenrate-valuation-report.png",
+    "name": "legacy-geenrate-valuation-report.png",
+    "alt": "Generate Valuation Report button in Valuatum Estimator",
+    "page": "/solutions/manual-data-input-company-valuation/user-manual",
+    "status": "copied",
+    "bytes": 11862
+  },
+  {
+    "source": "https://s3-eu-west-1.amazonaws.com/valu-wordpress/wp-content/uploads/sites/4/2017/09/05055556/formulas-for-variable.png",
+    "name": "legacy-formulas-for-variable.png",
+    "alt": "Formula detail window showing how a financial variable is calculated",
+    "page": "/solutions/manual-data-input-company-valuation/user-manual",
+    "status": "copied",
+    "bytes": 21662
+  },
+  {
+    "source": "https://s3-eu-west-1.amazonaws.com/valu-wordpress/wp-content/uploads/sites/4/2017/09/05055555/estimate-parameters.png",
+    "name": "legacy-estimate-parameters.png",
+    "alt": "Estimate parameters table with growth, EBIT, depreciation, and tax rate fields",
+    "page": "/solutions/manual-data-input-company-valuation/user-manual",
+    "status": "copied",
+    "bytes": 29416
+  },
+  {
+    "source": "https://s3-eu-west-1.amazonaws.com/valu-wordpress/wp-content/uploads/sites/4/2017/06/20124107/valuaatiopolku_valuatum_en1.png",
+    "name": "legacy-valuaatiopolku_valuatum_en1.png",
+    "alt": "Valuation method selection flow diagram showing paths for profitable and unprofitable companies",
+    "page": "/solutions/manual-data-input-company-valuation/user-manual",
+    "status": "copied",
+    "bytes": 22421
+  }
+]
