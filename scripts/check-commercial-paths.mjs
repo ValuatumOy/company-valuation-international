@@ -43,7 +43,7 @@ try {
     assert.equal(await page.getByLabel("Company to value", { exact: true }).inputValue(), "");
 
     await page.goto(`${base}/sample-report`);
-    assert.equal(await page.locator(".company-example").filter({ hasText: "Heeros Oyj" }).getByRole("link").getAttribute("href"), "https://arvonmaaritys.fi/samples/heeros-oyj.pdf");
+    assert.equal(await page.locator(".company-example").filter({ hasText: "Harvia Oyj" }).getByRole("link").getAttribute("href"), "https://arvonmaaritys.fi/samples/harvia-oyj.pdf");
     for (const [company, pdf] of [["JYSK A/S", jyskPdf], ["NVIDIA Corporation", nvidiaPdf]]) {
       const reportLink = page.locator(".company-example").filter({ hasText: company }).getByRole("link", { name: "View report", exact: true });
       assert.equal(await reportLink.getAttribute("href"), pdf);

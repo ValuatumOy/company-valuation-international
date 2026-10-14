@@ -6,7 +6,7 @@ import { ReportExamples } from "@/components/report-examples";
 
 export const metadata = pageMetadata(
   "Company Valuation Report Examples",
-  "Read valuation reports for Heeros, JYSK and NVIDIA. Explore financial statements, DCF calculations, forecast assumptions and sensitivity analysis.",
+  "Read company valuation examples for Harvia, JYSK and NVIDIA. Explore financial statements, DCF calculations, forecast assumptions and sensitivity analysis.",
   "/sample-report",
 );
 
@@ -26,9 +26,9 @@ export default function SampleReport() {
           report examples.
         </h1>
         <p className="intro">
-          Read the Finnish Heeros report and English examples for JYSK and
-          NVIDIA. Each shows the financial inputs, valuation calculations and
-          assumptions. The short walkthrough below uses a fictional company.
+          Read a Finnish valuation report for Harvia, an English report for JYSK
+          and a manual DCF demonstration for NVIDIA. Their scope is described
+          below. The short walkthrough uses a fictional company.
         </p>
       </div>
       <div className="content-shell">
@@ -226,12 +226,12 @@ export default function SampleReport() {
           "@id": `${siteUrl}/sample-report#webpage`,
           url: `${siteUrl}/sample-report`,
           name: "Company valuation report examples",
-          description: "Finnish and English PDF valuation examples for Heeros, JYSK and NVIDIA, with a fictional valuation walkthrough.",
+          description: "Finnish and English PDF valuation examples for Harvia, JYSK and NVIDIA, with a fictional valuation walkthrough.",
           inLanguage: "en",
           isPartOf: { "@id": `${siteUrl}/#website` },
           publisher: { "@id": `${siteUrl}/#organization` },
           hasPart: [
-            { "@type": "DigitalDocument", name: "Heeros Oyj valuation report", url: "https://arvonmaaritys.fi/samples/heeros-oyj.pdf", inLanguage: "fi", encodingFormat: "application/pdf" },
+            { "@type": "DigitalDocument", name: "Harvia Oyj valuation report", url: "https://arvonmaaritys.fi/samples/harvia-oyj.pdf", inLanguage: "fi", encodingFormat: "application/pdf" },
             { "@type": "DigitalDocument", name: "JYSK A/S English valuation example", url: `${siteUrl}/reports/jysk-as-english-example.pdf`, inLanguage: "en", encodingFormat: "application/pdf" },
             { "@type": "DigitalDocument", name: "NVIDIA Corporation manual DCF example", url: `${siteUrl}/reports/nvidia-english-example.pdf`, inLanguage: "en", encodingFormat: "application/pdf" },
           ],

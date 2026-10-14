@@ -4,9 +4,9 @@ import { Arrow } from "./icon";
 
 const examples = [
   {
-    name: "Heeros Oyj",
+    name: "Harvia Oyj",
     country: "Finland · Finnish PDF",
-    description: "Read the public valuation report from arvonmaaritys.fi. Report dated 4 August 2026; it shows the financials, assumptions, scenarios and limitations.",
+    description: "A Finnish report for Harvia’s consolidated group, prepared with the current report pipeline. Includes financial history through 2025, model forecasts, valuation methods, scenarios and limitations.",
     reportHref: serviceLinks.finlandSample,
     requestHref: null,
   },
@@ -19,8 +19,8 @@ const examples = [
   },
   {
     name: "NVIDIA Corporation",
-    country: "United States · English PDF · USD",
-    description: "A manually prepared DCF example using NVIDIA’s FY2026 accounts and clearly stated forecast assumptions. Includes annual cash flows, an equity-value bridge and sensitivity analysis.",
+    country: "United States · Manual DCF example · English · USD",
+    description: "A 10-page worked DCF example using NVIDIA’s FY2026 accounts and manual forecast assumptions. It covers annual cash flows, the equity-value bridge and sensitivity analysis; its scope differs from the full valuation report.",
     reportHref: "/reports/nvidia-english-example.pdf",
     requestHref: `${serviceLinks.reportRequest}?country=United%20States&company=NVIDIA%20Corporation`,
   },

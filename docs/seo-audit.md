@@ -31,7 +31,7 @@ Published review build: [Vercel preview](https://company-valuation-international
 
 ## Reviewed example reports
 
-The sample page now describes all three real PDFs with DigitalDocument entries inside its CollectionPage schema. Heeros is the existing Finnish public report. JYSK is the approved, manually polished 27-page report. The US example is a new 10-page manual NVIDIA DCF based on verified FY2026 accounts, with clearly identified illustrative forecast assumptions. It does not reuse the problematic forecast economics from the earlier internal draft. Independent financial review checked its annual cash flows, financial-asset/debt bridge, terminal cash flow and all 23 sensitivity outcomes. No additional paid report generation was triggered by this editorial/SEO pass.
+The sample page now describes all three real PDFs with DigitalDocument entries inside its CollectionPage schema. Harvia is the current full Finnish consolidated report, replacing the old homepage Heeros example. JYSK is the approved, manually polished 27-page report. The US example is a new 10-page manual NVIDIA DCF based on verified FY2026 accounts, with clearly identified illustrative forecast assumptions. It does not reuse the problematic forecast economics from the earlier internal draft. Independent financial review checked its annual cash flows, financial-asset/debt bridge, terminal cash flow and all 23 sensitivity outcomes. No additional paid report generation was triggered by this editorial/SEO pass.
 
 ## Existing foundations retained
 
