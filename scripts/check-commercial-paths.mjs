@@ -8,9 +8,17 @@ import { sitemapUrls } from "./check-site.mjs";
 const base = process.env.CHECK_BASE_URL || "http://localhost:3000";
 const policy = JSON.parse(await readFile("ui-policy.json", "utf8"));
 const screenshots = process.env.SCREENSHOT_DIR;
-const browser = await chromium.launch();
+const jyskPdf = "/reports/jysk-as-english-example.pdf";
+const pdfResponse = await fetch(`${base}${jyskPdf}`);
+assert.equal(pdfResponse.status, 200, "JYSK example PDF must be served locally");
+assert.match(pdfResponse.headers.get("content-type") || "", /^application\/pdf(?:;|$)/i);
+assert.equal(Buffer.from(await pdfResponse.arrayBuffer()).subarray(0, 5).toString("ascii"), "%PDF-", "JYSK example must contain a PDF");
+const browser = await chromium.launch({ channel: "chromium" });
 try {
   const page = await browser.newPage();
+  await page.context().route("**/*", (route) =>
+    new URL(route.request().url()).origin === new URL(base).origin ? route.continue() : route.abort(),
+  );
   const urls = sitemapUrls(await (await fetch(`${base}/sitemap.xml`)).text());
   for (const url of urls) {
     await page.goto(`${base}${new URL(url).pathname}`, { waitUntil: "domcontentloaded" });
@@ -33,7 +41,21 @@ try {
 
     await page.goto(`${base}/sample-report`);
     assert.equal(await page.locator(".company-example").filter({ hasText: "Heeros Oyj" }).getByRole("link").getAttribute("href"), "https://arvonmaaritys.fi/samples/heeros-oyj.pdf");
-    for (const [company, country] of [["JYSK A/S", "Denmark"], ["Amazon.com, Inc.", "United States"]]) {
+    const jysk = page.locator(".company-example").filter({ hasText: "JYSK A/S" });
+    const reportLink = jysk.getByRole("link", { name: "View report", exact: true });
+    assert.equal(await reportLink.getAttribute("href"), jyskPdf);
+    assert.equal(await reportLink.getAttribute("target"), "_blank");
+    assert.match(await reportLink.getAttribute("rel"), /\bnoopener\b/);
+    const popupPromise = page.waitForEvent("popup");
+    await reportLink.click();
+    const popup = await popupPromise;
+    await popup.waitForURL(`${base}${jyskPdf}`);
+    assert.equal(popup.url(), `${base}${jyskPdf}`);
+    await popup.close();
+    const nvidia = page.locator(".company-example").filter({ hasText: "NVIDIA Corporation" });
+    assert.equal(await nvidia.getByRole("link", { name: "View report", exact: true }).count(), 0);
+    assert.equal(await page.locator('a[href="/reports/nvidia-english-example.pdf"]').count(), 0);
+    for (const [company, country] of [["JYSK A/S", "Denmark"], ["NVIDIA Corporation", "United States"]]) {
       await page.locator(".company-example").filter({ hasText: company }).getByRole("link", { name: "Request report", exact: true }).click();
       await page.getByLabel("Company to value", { exact: true }).waitFor();
       assert.equal(await page.getByLabel("Country", { exact: true }).inputValue(), country);
@@ -49,7 +71,7 @@ try {
       // No form submission, messages or live report generation.
       await page.goto(`${base}/sample-report`);
     }
-    for (const route of ["/sample-report", "/contact-international?country=Denmark&company=JYSK%20A%2FS", "/solutions/finnish-company-valuation", "/contact-finland", "/solutions/danish-company-valuation"]) {
+    for (const route of ["/", "/sample-report", "/contact-international?country=Denmark&company=JYSK%20A%2FS", "/contact-international?country=United%20States&company=NVIDIA%20Corporation", "/solutions/finnish-company-valuation", "/contact-finland", "/solutions/danish-company-valuation"]) {
       await page.goto(`${base}${route}`);
       await page.evaluate(() => document.fonts.ready);
       assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth), `${width}px ${route}: overflow`);
@@ -62,7 +84,7 @@ try {
       }
     }
   }
-  console.log(`Passed: Finnish destinations on all ${urls.length} pages, real sample PDF link, Danish/Amazon request navigation and prefills, and lintapple at 375/768/1440px.`);
+  console.log(`Passed: Finnish destinations on all ${urls.length} pages, JYSK PDF response and View report popup, Danish/NVIDIA request navigation and prefills, and lintapple at 375/768/1440px.`);
 } finally {
   await browser.close();
 }

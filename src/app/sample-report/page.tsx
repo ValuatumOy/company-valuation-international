@@ -6,7 +6,7 @@ import { ReportExamples } from "@/components/report-examples";
 
 export const metadata = pageMetadata(
   "Sample Company Valuation Report",
-  "Read a real Finnish company valuation sample, request English reports for Danish and US companies, and explore an illustrative valuation calculation.",
+  "Read real Finnish and English Danish company valuation reports, request a US report from our team, and explore an illustrative calculation.",
   "/sample-report",
 );
 
@@ -26,9 +26,9 @@ export default function SampleReport() {
           behind the value.
         </h1>
         <p className="intro">
-          Read a real Finnish report and ask our team about an English report
-          for a Danish or US company. The walkthrough below explains a simple
-          calculation with fictional financials.
+          Read the Finnish report and our English JYSK A/S sample, or ask our
+          team for an English report on a Danish or US company. The walkthrough
+          below explains a simple calculation with fictional financials.
         </p>
       </div>
       <div className="content-shell">

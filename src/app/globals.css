@@ -1701,10 +1701,12 @@ h2 {
 .company-example p { max-width: 65ch; color: var(--muted); font-size: 16px; }
 .company-example .example-country { margin: 0; font-size: 14px; }
 .company-example .text-link { white-space: nowrap; min-height: 44px; }
+.company-example-actions { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
 .examples-section { padding-top: 80px; padding-bottom: 80px; }
 @media (max-width: 650px) {
   .company-example { grid-template-columns: minmax(0, 1fr); gap: 12px; padding: 24px 0; }
   .company-example .text-link { justify-self: start; }
+  .company-example-actions { flex-direction: row; flex-wrap: wrap; column-gap: 24px; }
   .examples-section { padding-top: 50px; padding-bottom: 50px; }
 }
 .video-figure iframe {

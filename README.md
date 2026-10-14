@@ -36,7 +36,7 @@ Lintapple is installed from its published npm package. `ui-policy.json` defines 
 
 All 19 previous canonical URLs and 11 aliases are preserved. Content is in `src/content/pages.ts`; original source and historical asset provenance are recorded under `docs/`. The website sends users to the existing PDF, manual, Finnish and Danish valuation services. It does not generate reports or take payments itself.
 
-`/sample-report` links to the existing public Heeros Oyj report at arvonmaaritys.fi, provides company-specific requests for JYSK/Amazon English reports, and retains an explicitly fictional calculation and historical report library. New English PDFs are only linked after real generation and review. Finnish actions go to arvonmaaritys.fi; the new international offering uses requests with scope/price confirmation, while the earlier tools remain available separately.
+`/sample-report` links to the existing public Heeros Oyj report at arvonmaaritys.fi and the generated, reviewed JYSK A/S English PDF in DKK (14 October 2026). JYSK refers to the Danish legal entity, CVR 13590400, rather than the worldwide group. JYSK and NVIDIA company requests prefill the international enquiry. The NVIDIA draft is withheld because its stored forecast requires economic validation; no NVIDIA PDF is served by this website. The fictional calculation and historical library remain identified. Finnish actions go to arvonmaaritys.fi; new international reports use requests with scope/price confirmation.
 
 Contact forms prepare a `mailto:` message in the visitor's email app. They do not store or send enquiries on a server. The UI says this explicitly and provides the direct email address.
 

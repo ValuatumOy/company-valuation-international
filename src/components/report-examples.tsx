@@ -7,22 +7,22 @@ const examples = [
     name: "Heeros Oyj",
     country: "Finland · Finnish PDF",
     description: "Read the public valuation report from arvonmaaritys.fi. Report dated 4 August 2026; it shows the financials, assumptions, scenarios and limitations.",
-    href: serviceLinks.finlandSample,
-    action: "View report",
+    reportHref: serviceLinks.finlandSample,
+    requestHref: null,
   },
   {
     name: "JYSK A/S",
-    country: "Denmark · English report by request",
-    description: "Request a report on JYSK or another Danish company. We will confirm available financial data, the report scope and price before starting.",
-    href: `${serviceLinks.reportRequest}?country=Denmark&company=JYSK%20A%2FS`,
-    action: "Request report",
+    country: "Denmark · English PDF · DKK",
+    description: "Report dated 14 October 2026 for the Danish legal entity JYSK A/S (CVR 13590400). The analysis uses stored model forecasts and assumptions; it is not a current market price.",
+    reportHref: "/reports/jysk-as-english-example.pdf",
+    requestHref: `${serviceLinks.reportRequest}?country=Denmark&company=JYSK%20A%2FS`,
   },
   {
-    name: "Amazon.com, Inc.",
-    country: "United States · English report by request",
-    description: "Ask about a report for Amazon or another US company. We confirm the source data and assumptions with you before preparing the analysis.",
-    href: `${serviceLinks.reportRequest}?country=United%20States&company=Amazon.com%2C%20Inc.`,
-    action: "Request report",
+    name: "NVIDIA Corporation",
+    country: "United States · Report by request",
+    description: "NVIDIA’s latest financial year, FY2026, ended 25 January 2026. Ask our team about an English USD report; we confirm source data, model assumptions, scope and price before starting.",
+    reportHref: null,
+    requestHref: `${serviceLinks.reportRequest}?country=United%20States&company=NVIDIA%20Corporation`,
   },
 ];
 
@@ -36,11 +36,14 @@ export function ReportExamples() {
             <h3>{example.name}</h3>
             <p>{example.description}</p>
           </div>
-          {example.href.startsWith("https:") ? (
-            <a className="text-link" href={example.href} target="_blank" rel="noopener noreferrer">{example.action}<Arrow diagonal /></a>
-          ) : (
-            <Link className="text-link" href={example.href}>{example.action}<Arrow /></Link>
-          )}
+          <div className="company-example-actions">
+            {example.reportHref ? (
+              <a className="text-link" href={example.reportHref} target="_blank" rel="noopener noreferrer">View report<Arrow diagonal /></a>
+            ) : null}
+            {example.requestHref ? (
+              <Link className="text-link" href={example.requestHref}>Request report<Arrow /></Link>
+            ) : null}
+          </div>
         </article>
       ))}
     </div>

@@ -373,7 +373,7 @@ export default function Home() {
       <section className="section examples-section" id="company-examples">
         <div className="section-heading">
           <div><h2>See the report.<br />Find your next step.</h2></div>
-          <p>Order Finnish reports at arvonmaaritys.fi. For an English report on a Danish or US company, start with a request to our team.</p>
+          <p>Read real Finnish and English Danish reports. Ask our team about an English report for a Danish or US company; we confirm source data, scope and price before starting.</p>
         </div>
         <ReportExamples />
       </section>
