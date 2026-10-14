@@ -114,6 +114,7 @@ try {
       .getByLabel("Your email", { exact: true })
       .fill("visitor@example.com");
     await page.getByLabel("Country", { exact: true }).fill("Germany");
+    await page.getByLabel("Company to value", { exact: true }).fill("Example GmbH");
     assert.equal(
       await page.locator("form").evaluate((form) => form.checkValidity()),
       true,

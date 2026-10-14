@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Arrow, Mark } from "./icon";
+import { serviceLinks } from "@/lib/site";
 
 const groups = [
   {
@@ -7,7 +8,7 @@ const groups = [
     links: [
       ["PDF statement valuation", "/solutions/pdf-based-company-valuation"],
       ["Manual data input", "/solutions/manual-data-input-company-valuation"],
-      ["Finnish companies", "/solutions/finnish-company-valuation"],
+      ["Finnish companies", serviceLinks.finland],
       ["Danish companies", "/solutions/danish-company-valuation"],
       ["International coverage", "/solutions/international-company-valuation"],
     ],
@@ -33,7 +34,7 @@ const groups = [
     links: [
       ["About us", "/about-us"],
       ["Contact", "/contact-international"],
-      ["Contact Finland", "/contact-finland"],
+      ["Finland — arvonmaaritys.fi", serviceLinks.finland],
       ["Support", "/support"],
       ["Frequently asked questions", "/support/faq"],
     ],
@@ -64,7 +65,9 @@ export function Footer() {
         {groups.map((group) => (
           <nav key={group.title} aria-label={group.title}>
             <h2>{group.title}</h2>
-            {group.links.map(([label, href]) => (
+            {group.links.map(([label, href]) => href.startsWith("https:") ? (
+              <a key={label} href={href} target="_blank" rel="noopener noreferrer">{label}</a>
+            ) : (
               <Link key={href} href={href}>
                 {label}
               </Link>

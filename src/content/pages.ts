@@ -54,7 +54,7 @@ export const contentPages: ContentPage[] = [
         paragraphs: [
           "FAQ (Start here): Answers to the most common questions about inputs, PDF upload, assumptions, methods, reports, and pricing.",
           "Learn valuation basics: Definitions and valuation methods explained in plain English.",
-          "International coverage: Questions about company valuation outside Denmark and Finland.",
+          "International coverage: Request a company valuation report for a country and company.",
           "Email support: Include your workflow (manual/PDF/Denmark/Finland) and what you were trying to do.",
         ],
       },
@@ -76,7 +76,7 @@ export const contentPages: ContentPage[] = [
           },
           {
             label: "Finnish company valuation",
-            href: "/solutions/finnish-company-valuation",
+            href: "https://arvonmaaritys.fi/",
           },
           {
             label: "What is company valuation?",
@@ -172,7 +172,7 @@ export const contentPages: ContentPage[] = [
         bullets: [
           "Choose Manual Input if you already have key figures and want a fast estimate.",
           "Choose PDF Statement if you have statements in a PDF and want to reduce manual data entry.",
-          "Choose Denmark/Finland workflows if you want reports using existing company data where available.",
+          "For Finland, order a report through arvonmaaritys.fi. For Denmark and other countries, request a report and confirm scope and price with us before generation.",
         ],
         paragraphs: ["Denmark · Finland"],
         links: [
@@ -182,7 +182,7 @@ export const contentPages: ContentPage[] = [
           },
           {
             label: "Finland",
-            href: "/solutions/finnish-company-valuation",
+            href: "https://arvonmaaritys.fi/",
           },
         ],
       },
@@ -275,8 +275,8 @@ export const contentPages: ContentPage[] = [
         bullets: [
           "Manual data input: the basic Estimator has a free option; check current service terms",
           "PDF-based valuation: free and paid credit options; see the service for current allowances",
-          "Finnish company valuation: available now; the previous site listed €30 per company import, so check the current price before ordering",
-          "Broader international company-data coverage: upcoming; the earlier €50–100 range was indicative",
+          "Finnish company valuation: search for a company and order a report through arvonmaaritys.fi; review the assumptions and report there. Current terms are shown by the service.",
+          "Denmark and other international markets: request a report by country and company; we will confirm data scope and price before generation.",
         ],
       },
       {
@@ -298,21 +298,21 @@ export const contentPages: ContentPage[] = [
         id: "what-s-included-in-finnish-company-valuation",
         title: "What's included in Finnish company valuation?",
         paragraphs: [
-          "The Finnish workflow is designed to generate valuation reports for Finnish companies with editable assumptions and report output.",
+          "Search for a Finnish company on arvonmaaritys.fi, order its report, then review the assumptions and report in the service.",
           "Finnish company valuation",
         ],
         links: [
           {
             label: "Finnish company valuation",
-            href: "/solutions/finnish-company-valuation",
+            href: "https://arvonmaaritys.fi/",
           },
         ],
       },
       {
-        id: "when-will-international-company-valuation-be-available",
-        title: "When will international company valuation be available?",
+        id: "how-do-i-request-an-international-company-valuation",
+        title: "How do I request an international company valuation?",
         paragraphs: [
-          "Broader preloaded company-data coverage is being prepared. You can already use PDF statements or manual input for companies outside Denmark and Finland. Contact us about your country and requirements.",
+          "For Denmark and other international markets, request a report by country and company. We confirm scope and price before generation.",
           "International contact",
         ],
         links: [
@@ -402,7 +402,7 @@ export const contentPages: ContentPage[] = [
         title: "Other Solutions",
         paragraphs: [
           "In addition to Company Valuation Tool, Valuatum offers many other solutions to both large and small customers. Valuatum offers equity research and credit risk solutions to larger customers. To learn more about these solutions, visit the Valuatum home page .",
-          "Valuatum Aarre is an established Finnish-language valuation service aimed at Finnish SMEs and accounting firms. The original site described Finnish company data from Bisnode. The legacy service link is retained below.",
+          "Finnish customers can search for a company, order a valuation report, and review the assumptions and report through arvonmaaritys.fi.",
         ],
         links: [
           {
@@ -411,7 +411,7 @@ export const contentPages: ContentPage[] = [
           },
           {
             label: "here",
-            href: "https://pro-aarre.valuatum.com/",
+            href: "https://arvonmaaritys.fi/",
           },
         ],
       },
@@ -637,34 +637,29 @@ export const contentPages: ContentPage[] = [
   },
   {
     path: "/contact-finland",
-    title: "Credit Risk and Valuation Reports - Finland",
+    title: "Finnish Company Valuation",
     description:
-      "Request a Finnish company valuation report or ask questions about the Finland workflow. We'll reply by email.",
+      "Search for a Finnish company, order a valuation report, and review its assumptions and results at arvonmaaritys.fi.",
     eyebrow: "Valuatum",
     intro:
-      "Request a credit risk and valuation report for any Finnish company. Fill out the form below and we will send you the report for a fixed fee.",
+      "Search for a Finnish company, order a valuation report, and review its assumptions and results at arvonmaaritys.fi.",
     sections: [
       {
         id: "request-a-report",
-        title: "Request a report",
+        title: "Order a Finnish valuation report",
         paragraphs: [
-          "For a Finnish company report request, email us your name, email address, your company (optional), the Finnish company you want valued, and any additional requirements. We will reply about the report and fee.",
+          "Use the Finnish service to search for a company and order its report. You can review the assumptions and report in the service.",
         ],
         links: [
           {
-            label: "Email a Finnish report request",
-            href: "mailto:company-valuation@valuatum.com?subject=Finnish%20Company%20Valuation%20Request",
-          },
-          {
-            label: "Open the Finnish valuation service",
-            href: "https://valuation-finland.valuatum.com/AspAndUserCreation.action?templateAspQueryKey=CVFinland&popup=true",
+            label: "Open Finnish company valuation",
+            href: "https://arvonmaaritys.fi/",
           },
         ],
         bullets: [
-          "Your name and email address",
-          "Your company (optional)",
-          "Finnish company for valuation",
-          "Additional information or requirements (optional)",
+          "Search for the Finnish company by name",
+          "Order the report through the service",
+          "Review the assumptions and report",
         ],
       },
     ],
@@ -675,21 +670,21 @@ export const contentPages: ContentPage[] = [
     path: "/contact-international",
     title: "International company valuation enquiries",
     description:
-      "Request valuation or credit risk reports for companies outside Denmark and Finland, or register interest in upcoming coverage.",
+      "Request a company valuation report for Denmark or another international market. Confirm data scope and price before generation.",
     eyebrow: "Valuatum",
     intro:
-      "Tell us which country and company you need to value. Finland and Denmark have existing company-data services, and you can already use PDF financial statements or manual input for other companies. We are preparing broader international company-data coverage.",
+      "Request a valuation report for a Danish or international company. Share the country and target company; we will confirm available data, scope, and price before generating the report.",
     sections: [
       {
-        id: "register-your-interest",
-        title: "Ask about international coverage",
+        id: "request-a-report",
+        title: "Request a company report",
         paragraphs: [
-          "Email your name, email address, company (optional), country of interest, and what you need. We can discuss current options and interest in upcoming data coverage.",
+          "Send your name, email address, country, target company, and optional business ID. We will confirm the available data, report scope, and price before generation.",
         ],
         links: [
           {
-            label: "Email about international coverage",
-            href: "mailto:company-valuation@valuatum.com?subject=International%20Company%20Valuation%20Enquiry",
+            label: "Request a company report",
+            href: "mailto:company-valuation@valuatum.com?subject=Company%20Valuation%20Report%20Request",
           },
           {
             label: "Upload a financial statement PDF",
@@ -698,8 +693,8 @@ export const contentPages: ContentPage[] = [
         ],
         bullets: [
           "Your name and email address",
-          "Your company (optional)",
-          "Country and company of interest",
+          "Country and target company",
+          "Business ID (optional)",
           "Additional information or requirements (optional)",
         ],
       },
@@ -1911,7 +1906,7 @@ export const contentPages: ContentPage[] = [
           },
           {
             label: "Finnish Company Valuation",
-            href: "/solutions/finnish-company-valuation",
+            href: "https://arvonmaaritys.fi/",
           },
           {
             label: "Danish Company Valuation",
@@ -1948,30 +1943,32 @@ export const contentPages: ContentPage[] = [
     path: "/solutions/danish-company-valuation",
     title: "Danish Company Valuation",
     description:
-      "Search Danish companies and download free valuation and credit risk reports when available. No financial statements needed.",
+      "Request a Danish company valuation report. Confirm its data scope and price before generation.",
     eyebrow: "Solutions",
     intro:
-      "Find a Danish company and access credit risk and valuation reports through CreditReports.dk. Start with a company name or CVR number; you do not need to upload financial statements.",
+      "Request a report for a Danish company by sharing its name or CVR number. We will confirm the available data, report scope, and price before generating it.",
     sections: [
       {
         id: "overview",
-        title: "Overview",
+        title: "Request a Danish valuation report",
+        paragraphs: [
+          "Send the company name or CVR number through our international report request. We will confirm the data and price before work begins.",
+        ],
         links: [
           {
-            label: "Main Page",
-            href: "https://creditreports.dk/en/",
+            label: "Request a Danish company report",
+            href: "/contact-international?country=Denmark",
           },
         ],
       },
       {
         id: "valuatum-tools-in-creditreports-dk",
-        title: "Valuatum Tools in Creditreports.dk",
+        title: "Existing CreditReports.dk service",
         paragraphs: [
-          "Valuatum Tools is also used in the Creditreports.dk service. The platform includes data from over 400,000 Danish companies.",
+          "CreditReports.dk is a separate existing service with Danish company information and its own access terms. The details below describe that service, not the report request above.",
+          "Its website describes data from over 400,000 Danish companies.",
           'You can find, for example, the financial data and valuation details of GN STORE NORD A/S by clicking here. After opening the company, click the "Full version" button and then choose the Valuation page.',
           "You can search for any Danish company in Creditreports.dk's business directory using the search bar on the front page.",
-          "To start using Valuatum Tools directly, you can also go to our registration page.",
-          "Register",
         ],
         links: [
           {
@@ -1986,10 +1983,6 @@ export const contentPages: ContentPage[] = [
             label: "front page",
             href: "https://companies.creditreports.dk",
           },
-          {
-            label: "Register",
-            href: "https://platform.creditreports.dk/AspAndUserCreation.action?templateAspQueryKey=CreditAnalysis&popup=true",
-          },
         ],
       },
       {
@@ -1997,8 +1990,7 @@ export const contentPages: ContentPage[] = [
         title: "Features",
         bullets: [
           "Access data for 400,000+ Danish companies",
-          "Credit risk reports with free monthly access and paid options",
-          "Company valuation reports — see the service for current access terms",
+          "Company and financial information; access depends on CreditReports.dk's terms",
           "No financial data input required",
         ],
         paragraphs: [
@@ -2042,16 +2034,12 @@ export const contentPages: ContentPage[] = [
         id: "access-and-pricing",
         title: "Access and pricing",
         paragraphs: [
-          "CreditReports.dk offers company search, financial data, report ordering, automatically generated forecasts, and editable scenarios. Its current website lists free monthly reports and paid options. Check the service for current limits and pricing.",
+          "For the separate CreditReports.dk service, consult its website for current features, access terms, and pricing.",
         ],
         links: [
           {
             label: "Search Danish companies",
             href: "https://companies.creditreports.dk/en/",
-          },
-          {
-            label: "Create a CreditReports.dk account",
-            href: "https://platform.creditreports.dk/AspAndUserCreation.action?templateAspQueryKey=CreditAnalysis&popup=true",
           },
           {
             label: "Current CreditReports.dk pricing",
@@ -2073,22 +2061,21 @@ export const contentPages: ContentPage[] = [
     path: "/solutions/finnish-company-valuation",
     title: "Finnish Company Valuation",
     description:
-      "Order a valuation report for a Finnish limited company. Review financials, adjust assumptions, and download the report.",
+      "Search for a Finnish company and order a valuation report through arvonmaaritys.fi.",
     eyebrow: "Solutions",
     intro:
-      "Access professional company valuations for Finnish limited companies directly online through the Valuatum system.",
+      "Search for a company on arvonmaaritys.fi, order its valuation report, then review the assumptions and report in the service.",
     sections: [
       {
         id: "overview",
         title: "Overview",
         paragraphs: [
-          "The system allows you to retrieve financial statement data, adjust forecasts and generate valuation reports for over 200,000 Finnish companies.",
-          "The previous website listed a price of 30 EUR per company import, including access to the selected company’s data, forecasts, and valuation tools. Check the service for its current price before ordering.",
+          "The Finnish service lets customers search companies and order valuation reports. Customers can review assumptions and report output after ordering.",
         ],
         links: [
           {
-            label: "Register Now",
-            href: "https://valuation-finland.valuatum.com/AspAndUserCreation.action?templateAspQueryKey=CVFinland&popup=true",
+            label: "Search and order at arvonmaaritys.fi",
+            href: "https://arvonmaaritys.fi/",
           },
         ],
       },
@@ -2096,20 +2083,13 @@ export const contentPages: ContentPage[] = [
         id: "what-you-get",
         title: "What You Get",
         bullets: [
-          "Financial statement data and key financial metrics – You receive structured historical financial statements and key financial metrics for the selected company.",
-          "Automated company valuation – The system calculates company value using established valuation approaches. Multiple valuation paths are available and presented transparently. More information about our valuation logic can be found on our valuation methods page.",
-          "Editable forecasts – Users can modify key assumptions such as growth, profitability and discount rates. Changes are reflected directly in valuation results.",
-          "Valuation report – A clear valuation report is generated based on the selected assumptions and methods. The report can be used for internal analysis, decision-making or documentation purposes. See a demo report here .",
-          "Industry comparisons – All financial metrics of the selected company versus industry medians and averages.",
+          "Search for a company and order its valuation report through arvonmaaritys.fi.",
+          "Review the report assumptions and valuation output in the service.",
         ],
         links: [
           {
             label: "valuation methods",
             href: "/resources/company-valuation/methods",
-          },
-          {
-            label: "Legacy example: See a demo report here",
-            href: "https://www.valuatum.com/nokiavaluationreport/",
           },
         ],
       },
@@ -2117,15 +2097,14 @@ export const contentPages: ContentPage[] = [
         id: "how-it-works",
         title: "How It Works",
         bullets: [
-          "Register – Create a user account to access the valuation system.",
-          "Select a company – Search any Finnish company by name.",
-          "Review data and forecasts – Inspect historical financial data and adjust forecasts and assumptions as needed.",
-          "Generate valuation report – View valuation results and generate a valuation report based on automatic forecasts or your own estimates.",
+          "Search for the company by name.",
+          "Order its valuation report.",
+          "Review the assumptions and report in the service.",
         ],
         links: [
           {
-            label: "Create a user account",
-            href: "https://valuation-finland.valuatum.com/AspAndUserCreation.action?templateAspQueryKey=CVFinland&popup=true",
+            label: "Open arvonmaaritys.fi",
+            href: "https://arvonmaaritys.fi/",
           },
         ],
       },
@@ -2153,7 +2132,7 @@ export const contentPages: ContentPage[] = [
           },
           {
             label: "Contact us about Finnish valuations",
-            href: "/contact-finland",
+            href: "https://arvonmaaritys.fi/",
           },
         ],
       },
@@ -2162,29 +2141,12 @@ export const contentPages: ContentPage[] = [
         title: "Open the Finnish valuation service",
         links: [
           {
-            label: "Register for Finnish company valuation",
-            href: "https://valuation-finland.valuatum.com/AspAndUserCreation.action?templateAspQueryKey=CVFinland&popup=true",
-          },
-          {
-            label: "Sign in and search Finnish companies",
-            href: "https://valuation-finland.valuatum.com/PPVCompanySearch.action?",
-          },
-          {
-            label: "Finnish-language valuation service",
+            label: "Search and order a Finnish valuation report",
             href: "https://arvonmaaritys.fi/",
           },
-        ],
-      },
-      {
-        id: "credit-risk-service",
-        title: "Finnish credit risk reports",
-        paragraphs: [
-          "Luottoriskit.fi provides Finnish company financial indicators and purchasable credit risk reports with standardized financial statements, credit ratings, and risk information.",
-        ],
-        links: [
           {
-            label: "Explore Finnish credit risk insights",
-            href: "https://luottoriskit.fi/fi/",
+            label: "Sample Finnish valuation report (Heeros Oyj, 4 August 2026)",
+            href: "https://arvonmaaritys.fi/samples/heeros-oyj.pdf",
           },
         ],
       },
@@ -2202,10 +2164,10 @@ export const contentPages: ContentPage[] = [
     path: "/solutions/international-company-valuation",
     title: "International Company Valuation",
     description:
-      "Explore current PDF and manual valuation options for international companies and ask about upcoming company-data coverage beyond Denmark and Finland.",
+      "Request a valuation report for an international company. Confirm data scope and price before generation.",
     eyebrow: "International coverage",
     intro:
-      "We are preparing broader company-data coverage beyond Denmark and Finland. PDF-based valuation and manual input are already available for companies where you provide the financial statements or figures. Contact us about the country and company you need.",
+      "Request a report for an international company by sharing its country and name. We will confirm available data, report scope, and price before generating it.",
     sections: [
       {
         id: "overview",
@@ -2219,24 +2181,27 @@ export const contentPages: ContentPage[] = [
       },
       {
         id: "what-to-expect",
-        title: "What to Expect",
+        title: "Report request",
         bullets: [
-          "Valuation reports for companies worldwide",
-          "Globally sourced financial data",
-          "Professional analysis and forecasts",
-          "Credit risk assessment",
+          "Share the country and target company",
+          "Include a business ID if available",
+          "Confirm data scope and price with us before generation",
         ],
       },
       {
         id: "stay-informed",
-        title: "Stay Informed",
+        title: "Request a report",
         paragraphs: [
-          "Contact us about international coverage to be notified when this service becomes available.",
+          "Request a report for a specific company. We will confirm the available information and price before generating it.",
         ],
         links: [
           {
-            label: "Contact us about international coverage",
+            label: "Request a company report",
             href: "/contact-international",
+          },
+          {
+            label: "Request a report for Amazon.com, Inc.",
+            href: "/contact-international?country=United%20States&company=Amazon.com%2C%20Inc.",
           },
         ],
       },
@@ -2275,9 +2240,9 @@ export const contentPages: ContentPage[] = [
       },
       {
         id: "availability-and-pricing",
-        title: "Current options and upcoming coverage",
+        title: "Report scope and price",
         paragraphs: [
-          "The earlier website gave an indicative price range of €50–100 per report for the planned international company-data service. This was an estimate, not a confirmed current offer. Contact us to discuss availability and pricing.",
+          "We confirm available company information, report scope, and price with you before generating a new international report.",
         ],
         links: [
           {
@@ -2289,7 +2254,7 @@ export const contentPages: ContentPage[] = [
             href: "https://estimator.valuatum.com/AspAndUserCreation.action?templateAspQueryKey=PPVTemplate&userType=&popup=true",
           },
           {
-            label: "Ask about international data coverage",
+            label: "Request a company report",
             href: "/contact-international",
           },
         ],

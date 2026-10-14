@@ -4,6 +4,7 @@ import { ReportPreview } from "@/components/report-preview";
 import { Faq, homeFaqs } from "@/components/faq";
 import { JsonLd } from "@/components/json-ld";
 import { pageMetadata, serviceLinks } from "@/lib/site";
+import { ReportExamples } from "@/components/report-examples";
 
 export const metadata = pageMetadata(
   "Company Valuation | Understand Your Business Value",
@@ -24,20 +25,20 @@ const solutions = [
   {
     name: "Value a Finnish company",
     description:
-      "Find your company and start with available financial data. Access the Finnish valuation services and choose the report you need.",
-    href: "/solutions/finnish-company-valuation",
-    action: "Explore Finland",
+      "Search for a Finnish company and order its valuation report at arvonmaaritys.fi, our Finnish service.",
+    href: serviceLinks.finland,
+    action: "Visit arvonmaaritys.fi",
     type: "finland",
-    meta: "Company data available",
+    meta: "Online ordering",
   },
   {
     name: "Value a Danish company",
     description:
-      "Search the Danish company directory and explore valuation and credit risk reports through Creditreports.dk.",
-    href: "/solutions/danish-company-valuation",
-    action: "Explore Denmark",
+      "Request an English valuation report for a Danish company. We confirm the source data, scope and price with you before starting.",
+    href: `${serviceLinks.reportRequest}?country=Denmark`,
+    action: "Request report",
     type: "denmark",
-    meta: "Company data available",
+    meta: "By request",
   },
 ];
 
@@ -178,10 +179,14 @@ export default function Home() {
                 </span>
                 <h3>{solution.name}</h3>
                 <p>{solution.description}</p>
-                <Link className="text-link" href={solution.href}>
+                {solution.href.startsWith("https:") ? (
+                  <a className="text-link" href={solution.href} target="_blank" rel="noopener noreferrer">
+                    {solution.action}<Arrow diagonal />
+                  </a>
+                ) : <Link className="text-link" href={solution.href}>
                   {solution.action}
                   <Arrow diagonal />
-                </Link>
+                </Link>}
               </div>
             </article>
           ))}
@@ -364,6 +369,13 @@ export default function Home() {
             Explore the illustrative report <Arrow diagonal />
           </Link>
         </div>
+      </section>
+      <section className="section examples-section" id="company-examples">
+        <div className="section-heading">
+          <div><h2>See the report.<br />Find your next step.</h2></div>
+          <p>Order Finnish reports at arvonmaaritys.fi. For an English report on a Danish or US company, start with a request to our team.</p>
+        </div>
+        <ReportExamples />
       </section>
       <section className="resources-section section">
         <div className="section-heading">

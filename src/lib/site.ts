@@ -10,8 +10,8 @@ export const serviceLinks = {
   manualRegistration:
     "https://estimator.valuatum.com/AspAndUserCreation.action?templateAspQueryKey=PPVTemplate&userType=&popup=true",
   finland: "https://arvonmaaritys.fi/",
-  finlandRegistration:
-    "https://valuation-finland.valuatum.com/AspAndUserCreation.action?templateAspQueryKey=CVFinland&popup=true",
+  finlandSample: "https://arvonmaaritys.fi/samples/heeros-oyj.pdf",
+  reportRequest: "/contact-international",
   denmark: "https://creditreports.dk/en/",
   email: "mailto:company-valuation@valuatum.com",
 };

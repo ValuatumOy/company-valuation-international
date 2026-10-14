@@ -16,7 +16,7 @@ const media = [
   ["/solutions/why-do-you-need-company-valuation", "vHu7WsCF-5Y", []],
 ];
 const registration = [
-  ["/solutions/finnish-company-valuation", "Register now", "https://valuation-finland.valuatum.com/AspAndUserCreation.action?templateAspQueryKey=CVFinland&popup=true"],
+  ["/solutions/finnish-company-valuation", "Visit arvonmaaritys.fi", "https://arvonmaaritys.fi/"],
   ["/solutions/manual-data-input-company-valuation", "Register for manual valuation", "https://estimator.valuatum.com/AspAndUserCreation.action?templateAspQueryKey=PPVTemplate&userType=&popup=true"],
 ];
 
@@ -61,7 +61,7 @@ try {
     }
     await context.close();
   }
-  console.log("Passed: all four legacy video embeds, all four diagram placements, mobile/desktop lintapple, and both primary registration clicks (intercepted).");
+  console.log("Passed: all four legacy video embeds, all four diagram placements, mobile/desktop lintapple, and Finnish service/manual registration clicks (intercepted).");
 } finally {
   await browser.close();
 }

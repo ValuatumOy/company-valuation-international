@@ -9,7 +9,7 @@ export const homeFaqs = [
   },
   {
     q: "Which countries are supported?",
-    a: "Company data is available through our Finnish and Danish services. PDF upload and manual input let you work with your own financial statements from other countries. We are preparing broader international company data coverage; contact us about your market.",
+    a: "Finnish reports can be ordered at arvonmaaritys.fi. For an English report on a Danish, US or other international company, request it from our team; we confirm data availability and scope before starting. PDF upload and manual input remain available through the existing tools.",
   },
   {
     q: "Which valuation methods do you use?",
@@ -21,7 +21,7 @@ export const homeFaqs = [
   },
   {
     q: "What does a valuation cost?",
-    a: "Pricing and free allowances differ between PDF, manual input and country services. Check the current terms in the service you choose before ordering. We link directly to each service so you can see its available options.",
+    a: "See arvonmaaritys.fi for Finnish report pricing. For an English international report, we confirm the scope and quote the price before starting. The separate PDF and manual tools have their own access terms.",
   },
   {
     q: "What information do I need?",
@@ -29,7 +29,7 @@ export const homeFaqs = [
   },
   {
     q: "Can I download and share a report?",
-    a: "The existing valuation services can produce PDF reports with financial analysis, forecasts and valuation results. Check the options in your chosen service. The sample on this website demonstrates the report structure with clearly marked fictional data.",
+    a: "Yes. The sample-report page links to the public Heeros Oyj PDF from arvonmaaritys.fi and includes a fictional calculation to explain valuation basics. English international reports are handled by request; earlier report examples remain clearly marked as historical.",
   },
   {
     q: "How reliable is an automated company valuation?",

@@ -38,9 +38,17 @@ No production domain switch, payment integration, backend change or paid report 
 ## Feedback fixes
 
 - Reproduced the bottom homepage valuation CTA failing after the hero already set `#solutions`. Native fragment anchors now return to the section even when the URL hash is unchanged; shared header/TOC fragment links use the same behavior. The interaction suite covers the exact regression at 375/768/1440px.
-- Finnish primary CTA now opens the stable `CVFinland` registration URL. Manual primary CTA and the resource guide's registration link now open `PPVTemplate` registration rather than a login/root page. External service links open a separate tab.
+- All Finnish customer destinations now open `arvonmaaritys.fi`, superseding the earlier `CVFinland` registration change. Finnish routes remain readable for old-URL compatibility, with the same external ordering destination. The Finnish contact form was removed. Manual primary CTA and the resource guide's registration link open `PPVTemplate` registration. External service links open a separate tab.
 - The first migration retained video links and diagram text but omitted actual embeds/diagrams. Restored all four original YouTube videos, the historical-versus-forecast diagram, the method-selection diagram on both resource pages, and the PDF workflow. YouTube uses privacy-enhanced embeds without autoplay; native text diagrams remain readable on mobile.
 - `npm run check:content` verifies the old media contract, checks mobile/desktop layout with lintapple, and exercises registration clicks with requests intercepted. It does not submit to the live services. Local route checks and the existing unit/build/type/lint checks passed; actual resource YouTube player loading was also verified in the browser.
+
+## Country offering and report examples
+
+- Finnish orders and all Finnish service/contact/sample links go to `arvonmaaritys.fi`. Its existing public Heeros Oyj sample (26 pages, 4 August 2026) was checked against the local Finnish site's PDF by SHA-256. This is an existing public report, not a newly generated one.
+- New English reports for Denmark and the US are requested from the team. Homepage/sample-page rows show JYSK A/S and Amazon.com, Inc. with working request links; country and target company prefill the email enquiry. Data availability, scope and price are confirmed before generation. The form still prepares email in the visitor's email app and does not send from a server.
+- Earlier CreditReports.dk/PDF/manual tools and historical samples remain identifiable as separate existing material. No new English sample PDF is linked until a real report has been generated and reviewed.
+- `npm run check:commercial` verifies Finnish destinations across all 20 pages, company requests/prefills, the real Finnish sample link and layout/lintapple at 375/768/1440px. All frontend checks passed.
+- Foreign sample preparation is isolated in a worktree of `AI-company-valuation-raportti`; no production backend deployment/reseed, estimate regeneration or paid report run has been performed. Wisdom AMZN actuals stop in 2018; fresh historical input is prepared from the official FY2025 SEC filing. JYSK identity/data are verified on the Danish Profinder test environment. Data and preparation files remain outside this site's public repository.
 
 ## Deployment setup
 

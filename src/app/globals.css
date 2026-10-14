@@ -1688,6 +1688,25 @@ h2 {
 .video-figure {
   margin: 28px 0 0;
 }
+.company-example {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 32px;
+  padding: 30px 0;
+  border-bottom: 1px solid var(--line);
+}
+.company-example:first-child { border-top: 1px solid var(--line); }
+.company-example h3 { margin: 6px 0 12px; font-size: 28px; letter-spacing: -0.025em; }
+.company-example p { max-width: 65ch; color: var(--muted); font-size: 16px; }
+.company-example .example-country { margin: 0; font-size: 14px; }
+.company-example .text-link { white-space: nowrap; min-height: 44px; }
+.examples-section { padding-top: 80px; padding-bottom: 80px; }
+@media (max-width: 650px) {
+  .company-example { grid-template-columns: minmax(0, 1fr); gap: 12px; padding: 24px 0; }
+  .company-example .text-link { justify-self: start; }
+  .examples-section { padding-top: 50px; padding-bottom: 50px; }
+}
 .video-figure iframe {
   display: block;
   width: 100%;

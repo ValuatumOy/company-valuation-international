@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Suspense } from "react";
 import Image from "next/image";
 import { contentPages, type ContentPage } from "@/content/pages";
 import { Arrow } from "./icon";
@@ -18,16 +19,20 @@ const actions: Record<string, { label: string; href: string }> = {
     href: serviceLinks.manualRegistration,
   },
   "/solutions/finnish-company-valuation": {
-    label: "Register now",
-    href: serviceLinks.finlandRegistration,
+    label: "Visit arvonmaaritys.fi",
+    href: serviceLinks.finland,
+  },
+  "/contact-finland": {
+    label: "Visit arvonmaaritys.fi",
+    href: serviceLinks.finland,
   },
   "/solutions/danish-company-valuation": {
-    label: "Find a Danish company",
-    href: "https://companies.creditreports.dk/en/",
+    label: "Request report",
+    href: `${serviceLinks.reportRequest}?country=Denmark`,
   },
   "/solutions/international-company-valuation": {
-    label: "Ask about your country",
-    href: "/contact-international",
+    label: "Request report",
+    href: serviceLinks.reportRequest,
   },
 };
 
@@ -36,7 +41,8 @@ export function ContentPageView({ page }: { page: ContentPage }) {
   const related = page.related
     ?.map((path) => contentPages.find((item) => item.path === path))
     .filter((item): item is ContentPage => !!item);
-  const isContact = page.path.startsWith("/contact-");
+  const isContact = page.path === "/contact-international";
+  const isFinland = page.path === "/solutions/finnish-company-valuation" || page.path === "/contact-finland";
   const sizes = imageSizes as Record<string, { width: number; height: number }>;
   const faqSections = page.sections.filter(
     (section) => section.title.endsWith("?") && section.paragraphs?.length,
@@ -63,7 +69,11 @@ export function ContentPageView({ page }: { page: ContentPage }) {
               {action.label}
               <Arrow diagonal />
             </a>
-            {page.kind === "solution" && (
+            {isFinland ? (
+              <a className="button button-outline" href={serviceLinks.finlandSample} target="_blank" rel="noopener noreferrer">
+                View Finnish sample report <Arrow diagonal />
+              </a>
+            ) : page.kind === "solution" && (
               <Link className="button button-outline" href="/sample-report">
                 Explore a sample report <Arrow />
               </Link>
@@ -88,7 +98,9 @@ export function ContentPageView({ page }: { page: ContentPage }) {
         </aside>
         <article className="article-content">
           {isContact && (
-            <ContactForm finland={page.path === "/contact-finland"} />
+            <Suspense fallback={<p>To request a report, email company-valuation@valuatum.com with the company name and country.</p>}>
+              <ContactForm />
+            </Suspense>
           )}
           {page.sections.map((section) => (
             <section
@@ -162,7 +174,11 @@ export function ContentPageView({ page }: { page: ContentPage }) {
             <div className="related-pages">
               <h2>Keep exploring</h2>
               {related.map((item) => (
-                <Link key={item.path} href={item.path}>
+                item.path === "/solutions/finnish-company-valuation" || item.path === "/contact-finland" ? (
+                  <a key={item.path} href={serviceLinks.finland} target="_blank" rel="noopener noreferrer">
+                    Finnish valuations at arvonmaaritys.fi <Arrow diagonal />
+                  </a>
+                ) : <Link key={item.path} href={item.path}>
                   {item.title}
                   <Arrow />
                 </Link>

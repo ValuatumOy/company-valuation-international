@@ -27,6 +27,7 @@ npm run check:site
 npm run lint:ui
 npm run check:ui
 npm run check:content
+npm run check:commercial
 ```
 
 Lintapple is installed from its published npm package. `ui-policy.json` defines the project's font, type roles, control sizes and three responsive viewports. Its narrow exceptions cover decorative art, fluid display typography, the hidden skip link and the standard mobile menu icon. The real report tabs, text contrast, labels and page bounds are checked.
@@ -35,7 +36,7 @@ Lintapple is installed from its published npm package. `ui-policy.json` defines 
 
 All 19 previous canonical URLs and 11 aliases are preserved. Content is in `src/content/pages.ts`; original source and historical asset provenance are recorded under `docs/`. The website sends users to the existing PDF, manual, Finnish and Danish valuation services. It does not generate reports or take payments itself.
 
-`/sample-report` contains an explicitly fictional calculation and a library of historical real report links. It is not a new backend-generated sample. Replace it with approved current reports when available.
+`/sample-report` links to the existing public Heeros Oyj report at arvonmaaritys.fi, provides company-specific requests for JYSK/Amazon English reports, and retains an explicitly fictional calculation and historical report library. New English PDFs are only linked after real generation and review. Finnish actions go to arvonmaaritys.fi; the new international offering uses requests with scope/price confirmation, while the earlier tools remain available separately.
 
 Contact forms prepare a `mailto:` message in the visitor's email app. They do not store or send enquiries on a server. The UI says this explicitly and provides the direct email address.
 
