@@ -2,6 +2,8 @@
 
 Reviewed 14 October 2026. Scope: all 20 HTML pages, 11 legacy redirects, metadata, schema, navigation, media and the production indexing switch. The public company-valuation.com domain has not moved. Vercel previews stay authenticated and noindex. This audit does not claim measured search rankings, keyword volumes or field Core Web Vitals.
 
+Published review build: [Vercel preview](https://company-valuation-international-k2eda83ao-valuatum-dk.vercel.app), verified Ready with Preview target from source commit `ea6b990e49a3947621f9d8d280b8bf06dd43e76a`. [GitHub CI](https://github.com/ValuatumOy/company-valuation-international/actions/runs/38563048307) passed, including the new rendered route/SEO checks. Preview access requires the existing Vercel login.
+
 ## Changes and evidence
 
 | Finding | Before | Implementation | Impact |
