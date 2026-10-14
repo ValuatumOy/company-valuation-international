@@ -28,4 +28,4 @@ Run `npm test` for both migration/parser tests and the production/preview indexi
 
 `npm run check:ui` also reproduces the repeated-hash case: click the hero valuation link, scroll to the closing CTA, then click it to return to Solutions.
 
-`npm run check:content` checks the four legacy YouTube embeds and four diagram placements at 375 and 1440 pixels, runs lintapple on the media pages, and clicks the Finnish/manual registration CTAs with the external requests intercepted. It never creates accounts or reports. `SCREENSHOT_DIR` optionally saves resource-page media screenshots. Video IDs match the old site; actual player availability is controlled by YouTube.
+`npm run check:content` checks the four legacy YouTube embeds and four diagram placements at 375 and 1440 pixels, runs lintapple on the media pages, and clicks the Finnish/manual registration CTAs with the external requests intercepted. It never creates accounts or reports. `SCREENSHOT_DIR` optionally saves resource-page diagram screenshots. Video IDs match the old site; actual player availability is controlled by YouTube and is checked separately in a normal browser.

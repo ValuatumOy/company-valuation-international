@@ -46,6 +46,6 @@ No production domain switch, payment integration, backend change or paid report 
 
 Vercel project ID: `prj_9YbkB69mf0EhnA0GUfVjAHHRIcpG`; team: `valuatum-dk`. Repository is private. Hobby does not support its automatic Git integration. The CLI can publish a source package using the existing authorized Vercel account; use the README instructions and explicit `--target preview`. Deployment authentication remains enabled. The old live domain was not attached or moved.
 
-Review URL: https://company-valuation-international-pj7npcp3l-valuatum-dk.vercel.app
+Review URL: https://company-valuation-international-jir77g734-valuatum-dk.vercel.app (Ready, explicit Preview target).
 
-GitHub CI passed on source commit `3c9f4f6bb76b099f8ef592aec23f5f9980d5391a`. Source ZIP and desktop/mobile screenshots are also saved in the task's outputs folder.
+GitHub CI passed on source commit `d8fa5bf14b0a325533f43018ec937c69576436fb`. Source ZIP and desktop/mobile screenshots are also saved in the task's outputs folder.

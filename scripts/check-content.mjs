@@ -42,8 +42,6 @@ try {
       assert.equal(audit.findings.length, 0, `${width}px ${route}: ${JSON.stringify(audit.findings)}`);
       if (screenshots && route.endsWith("what-is-company-valuation")) {
         await mkdir(screenshots, { recursive: true });
-        await page.locator(".video-figure").scrollIntoViewIfNeeded();
-        await page.screenshot({ path: path.join(screenshots, `resource-video-${width}.png`) });
         await page.locator("[data-diagram]").scrollIntoViewIfNeeded();
         await page.screenshot({ path: path.join(screenshots, `resource-diagram-${width}.png`) });
       }
