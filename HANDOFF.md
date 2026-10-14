@@ -86,3 +86,34 @@ Current delivery: Finnish commit `f24534d6f944e37abcb074f0ee59239465ae2951` is R
 The public NVIDIA PDF now uses the same full template and section structure as the three current Finnish examples: 26 pages, 16 sections, 29 tables and eight SVG charts. The previous short manual PDF is superseded. Base equity value remains USD 2,718.196016314965 billion, financial bridge USD 76.339 billion. EVA follows the explicit modeled capital roll-forward and terminal residual; it is a reconciliation, not an independent market confirmation. Three full margin scenarios and both sensitivity grids are recalculated. Fiscal reference remains 25 January 2026; report preparation 14 October 2026. Forecasts and scenario weights are authored illustrative inputs, not management guidance or consensus.
 
 Independent review passed 931 numerical comparisons, 460 annual table cells and all 50 sensitivity cells. Final corrections aligned displayed units to bn USD and restored cash/borrowings chart parity from official FY2025/FY2026 accounts. All 26 pages and heavy tables/charts were checked. Public PDF SHA-256: `45dac7c9b1a745e2210ed537d2cd6930f79ae73fb9364fed9574ac860f8b0660`. Private builder/audits: `work/report-prepared/build_nvidia_full.py`, `nvidia-full-model-audit.json`, `nvidia-full-quality-check.json`. No source input or credentials belong in public assets. No paid LLM generation or production backend change was used for this report.
+
+Full NVIDIA publication source `9a9511b` is Ready Preview at https://company-valuation-international-th0ijnnf4-valuatum-dk.vercel.app (deployment `dpl_FiEMzeShxv5ZreSn5SwN9dT1bKgP`). GitHub CI passed. The PDF is public without Vercel login; preview noindex remains.
+
+## Danish automatic orders — implementation review, 14 October 2026
+
+The user confirmed the same automatic order flow as Finland. The new client is
+implemented in `codex/denmark-automatic-orders`; backend branch
+`codex/denmark-report-orders` includes the earlier English/currency work and
+country-aware source, payment, forecast, refinement and delivery paths. Deploy
+the separate Finnish webhook country filter before enabling DK Checkout.
+
+Independent cross-repo review passed with ordering gated OFF. It found and
+required fixes to generic scenario restatement affecting peer values, empty
+refinements, stale original order links, paid-return replays and long forecast
+imports. Backend: 428 tests passed. Client: build/TypeScript, lint and 18 tests
+passed. Broad isolated browser checks covered responsive375/768/1440, search,
+error/request states, native-currency forecast edits, PDF and refinements. Six
+focused final checks passed direct forecast CORS/units, explicit start, latest
+links and exactly one paid redemption. Fixture traffic was blocked externally.
+
+Production source is `platform.creditreports.dk/rest` with separately configured
+server credentials; Upcloud test data is never a fallback. Novo Nordisk passes
+offline data readiness and JYSK fails incomplete forecasts. Native source money
+is millions, report money thousands. No FX conversion is performed.
+
+Production forecast generation/import and a full paid English DK report have
+not been run. Keep both frontend and backend gates OFF until operational checks
+pass. Backend CLAUDE.md explicitly requires user approval for a Railway report
+generation run. No paid run, actual Stripe payment, source write or customer
+email was performed in this implementation. See `docs/danish-orders.md` and the
+backend `DANISH_ORDERS.md` for configuration and CORS/webhook prerequisites.
