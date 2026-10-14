@@ -34,3 +34,11 @@ All 20 rendered content pages, 11 redirects and local links passed the route/met
 Approved current generated sample reports are still needed. The new sample is visibly fictional and old actual samples are clearly historical. Prices/free-credit quantities from the old site are qualified; confirm current commercial terms before the domain switch. The inherited legal/security wording should be confirmed against each existing service's current practices.
 
 No production domain switch, payment integration, backend change or paid report generation was performed.
+
+## Deployment setup
+
+Vercel project ID: `prj_9YbkB69mf0EhnA0GUfVjAHHRIcpG`; team: `valuatum-dk`. Repository is private. Hobby does not support its automatic Git integration. The CLI can publish a source package using the existing authorized Vercel account; use the README instructions and explicit `--target preview`. Deployment authentication remains enabled. The old live domain was not attached or moved.
+
+Review URL: https://company-valuation-international-pj7npcp3l-valuatum-dk.vercel.app
+
+GitHub CI passed on source commit `3c9f4f6bb76b099f8ef592aec23f5f9980d5391a`. Source ZIP and desktop/mobile screenshots are also saved in the task's outputs folder.
