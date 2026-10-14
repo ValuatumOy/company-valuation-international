@@ -117,3 +117,12 @@ pass. Backend CLAUDE.md explicitly requires user approval for a Railway report
 generation run. No paid run, actual Stripe payment, source write or customer
 email was performed in this implementation. See `docs/danish-orders.md` and the
 backend `DANISH_ORDERS.md` for configuration and CORS/webhook prerequisites.
+
+Implementation source `3c5a0f6` is Ready Preview at
+https://company-valuation-international-miz30h5l4-valuatum-dk.vercel.app
+(`dpl_4aFPMCv9gE7KWwk31MHQaV5FKFF8`), public and noindex. GitHub checks passed.
+Draft PRs: international client #1, backend #14 (source `c30e1b0`, supersedes
+English-only #13), Finnish webhook isolation #6 (source `c3f4c8a`). All 28 isolated
+browser checks passed after focused fixes. Production test approval was requested
+for one Novo Nordisk English report; do not interpret an unanswered request as
+permission to run it.
