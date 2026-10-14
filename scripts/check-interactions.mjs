@@ -45,6 +45,13 @@ try {
       );
       await page.goto(base);
     }
+    await page.locator(".hero").getByRole("link", { name: "Find your valuation", exact: true }).click();
+    await page.waitForFunction(() => Math.abs(document.querySelector("#solutions").getBoundingClientRect().top - 100) < 10);
+    const closingAction = page.locator(".closing-cta").getByRole("link", { name: "Find your valuation", exact: true });
+    await closingAction.scrollIntoViewIfNeeded();
+    assert.ok(await page.locator("#solutions").evaluate((el) => el.getBoundingClientRect().top < -1000));
+    await closingAction.click();
+    await page.waitForFunction(() => Math.abs(document.querySelector("#solutions").getBoundingClientRect().top - 100) < 10);
     await page.getByRole("tab", { name: "Financials", exact: true }).click();
     assert.match(
       await page.getByRole("tabpanel").innerText(),
@@ -131,7 +138,7 @@ try {
     await page.close();
   }
   console.log(
-    `Passed: report tabs and keyboard navigation, FAQ, mobile menu, contact validation and lintapple at ${policy.viewports.map((v) => v.width).join(", ")}px.`,
+    `Passed: repeated valuation anchor navigation, report tabs and keyboard navigation, FAQ, mobile menu, contact validation and lintapple at ${policy.viewports.map((v) => v.width).join(", ")}px.`,
   );
 } finally {
   await browser.close();

@@ -117,9 +117,9 @@ export default function Home() {
             next decision.
           </p>
           <div className="actions" data-ui-actions>
-            <Link className="button" href="#solutions">
+            <a className="button" href="#solutions">
               Find your valuation <Arrow />
-            </Link>
+            </a>
             <Link className="button button-outline" href="/sample-report">
               Explore a sample report <Arrow diagonal />
             </Link>
@@ -304,7 +304,7 @@ export default function Home() {
             </p>
           </article>
         </div>
-        <a className="text-link" href={serviceLinks.pdf}>
+        <a className="text-link" href={serviceLinks.pdf} target="_blank" rel="noopener noreferrer">
           Open the PDF valuation service <Arrow diagonal />
         </a>
       </section>
@@ -460,9 +460,9 @@ export default function Home() {
           </h2>
         </div>
         <div>
-          <Link className="button" href="#solutions">
+          <a className="button" href="#solutions">
             Find your valuation <Arrow />
-          </Link>
+          </a>
           <Link className="text-link" href="/contact-international">
             Talk to our team <Arrow diagonal />
           </Link>

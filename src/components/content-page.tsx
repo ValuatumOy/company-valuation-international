@@ -6,6 +6,7 @@ import { ContactForm } from "./contact-form";
 import { JsonLd } from "./json-ld";
 import { siteUrl, serviceLinks } from "@/lib/site";
 import imageSizes from "@/content/image-sizes.json";
+import { ValuationDiagram } from "./valuation-diagram";
 
 const actions: Record<string, { label: string; href: string }> = {
   "/solutions/pdf-based-company-valuation": {
@@ -13,12 +14,12 @@ const actions: Record<string, { label: string; href: string }> = {
     href: serviceLinks.pdf,
   },
   "/solutions/manual-data-input-company-valuation": {
-    label: "Open manual valuation",
-    href: "https://estimator.valuatum.com/",
+    label: "Register for manual valuation",
+    href: serviceLinks.manualRegistration,
   },
   "/solutions/finnish-company-valuation": {
-    label: "Open Finnish valuation",
-    href: "https://valuation-finland.valuatum.com/PPVCompanySearch.action?",
+    label: "Register now",
+    href: serviceLinks.finlandRegistration,
   },
   "/solutions/danish-company-valuation": {
     label: "Find a Danish company",
@@ -53,7 +54,12 @@ export function ContentPageView({ page }: { page: ContentPage }) {
         <p className="intro">{page.intro}</p>
         {action && (
           <div className="actions">
-            <a className="button" href={action.href}>
+            <a
+              className="button"
+              href={action.href}
+              target={action.href.startsWith("https:") ? "_blank" : undefined}
+              rel={action.href.startsWith("https:") ? "noopener noreferrer" : undefined}
+            >
               {action.label}
               <Arrow diagonal />
             </a>
@@ -75,9 +81,10 @@ export function ContentPageView({ page }: { page: ContentPage }) {
               </a>
             ))}
           </nav>
-          <Link className="toc-cta" href="/#solutions">
+          {/* eslint-disable-next-line @next/next/no-html-link-for-pages -- Native anchors also scroll when the destination hash is already current. */}
+          <a className="toc-cta" href="/#solutions">
             Find your valuation →
-          </Link>
+          </a>
         </aside>
         <article className="article-content">
           {isContact && (
@@ -100,6 +107,7 @@ export function ContentPageView({ page }: { page: ContentPage }) {
                   ))}
                 </ul>
               )}
+              {section.diagram && <ValuationDiagram kind={section.diagram} />}
               {section.image && (
                 <figure className="legacy-figure">
                   <Image
@@ -116,10 +124,32 @@ export function ContentPageView({ page }: { page: ContentPage }) {
                   </figcaption>
                 </figure>
               )}
+              {section.video && (
+                <figure className="video-figure">
+                  <iframe
+                    src={`https://www.youtube-nocookie.com/embed/${section.video.id}`}
+                    title={section.video.title}
+                    width="760"
+                    height="428"
+                    loading="lazy"
+                    allow="encrypted-media; picture-in-picture; fullscreen"
+                    allowFullScreen
+                    referrerPolicy="strict-origin-when-cross-origin"
+                  />
+                  <figcaption>
+                    {section.video.title}. Playing this video connects to YouTube.
+                  </figcaption>
+                </figure>
+              )}
               {section.links && (
                 <div className="article-links">
                   {section.links.map((link, i) => (
-                    <a href={link.href} key={i}>
+                    <a
+                      href={link.href}
+                      key={i}
+                      target={link.href.startsWith("http") ? "_blank" : undefined}
+                      rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                    >
                       {link.label}
                       <Arrow diagonal={link.href.startsWith("http")} />
                     </a>

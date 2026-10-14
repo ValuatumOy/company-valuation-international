@@ -183,9 +183,10 @@ export default function SampleReport() {
               >
                 Explore PDF valuation <Arrow />
               </Link>
-              <Link className="button button-outline" href="/#solutions">
+              {/* eslint-disable-next-line @next/next/no-html-link-for-pages -- Native anchors also scroll when the destination hash is already current. */}
+              <a className="button button-outline" href="/#solutions">
                 See all solutions <Arrow />
-              </Link>
+              </a>
             </div>
           </section>
           <section className="article-section" id="historical-examples">

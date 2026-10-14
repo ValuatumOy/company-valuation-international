@@ -26,6 +26,7 @@ npm start
 npm run check:site
 npm run lint:ui
 npm run check:ui
+npm run check:content
 ```
 
 Lintapple is installed from its published npm package. `ui-policy.json` defines the project's font, type roles, control sizes and three responsive viewports. Its narrow exceptions cover decorative art, fluid display typography, the hidden skip link and the standard mobile menu icon. The real report tabs, text contrast, labels and page bounds are checked.

@@ -25,23 +25,25 @@ export function Header() {
         </span>
       </Link>
       <nav className="desktop-nav" aria-label="Main navigation">
-        {links.map((link) => (
-          <Link
+        {links.map((link) => {
+          const NavLink = link.href.includes("#") ? "a" : Link;
+          return <NavLink
             key={link.label}
             href={link.href}
             className={path === link.href ? "active" : ""}
           >
             {link.label}
-          </Link>
-        ))}
+          </NavLink>;
+        })}
       </nav>
       <div className="header-actions" data-ui-actions>
         <Link className="header-contact" href="/contact-international">
           Contact
         </Link>
-        <Link className="button button-small" href="/#solutions">
+        {/* eslint-disable-next-line @next/next/no-html-link-for-pages -- Native anchors also scroll when the destination hash is already current. */}
+        <a className="button button-small" href="/#solutions">
           Get a valuation <Arrow />
-        </Link>
+        </a>
         <button
           className="menu-toggle"
           aria-expanded={open}
@@ -60,16 +62,17 @@ export function Header() {
           id="mobile-navigation"
           aria-label="Mobile navigation"
         >
-          {links.map((link) => (
-            <Link
+          {links.map((link) => {
+            const NavLink = link.href.includes("#") ? "a" : Link;
+            return <NavLink
               key={link.label}
               href={link.href}
               onClick={() => setOpen(false)}
             >
               {link.label}
               <Arrow />
-            </Link>
-          ))}
+            </NavLink>;
+          })}
           <Link href="/contact-international" onClick={() => setOpen(false)}>
             Contact
             <Arrow />

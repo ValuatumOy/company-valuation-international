@@ -1685,6 +1685,150 @@ h2 {
   border-radius: 12px;
   background: white;
 }
+.video-figure {
+  margin: 28px 0 0;
+}
+.video-figure iframe {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  border: 0;
+  border-radius: 12px;
+  background: var(--dark);
+}
+.video-figure figcaption {
+  margin-top: 12px;
+  color: var(--muted);
+  font-size: 14px;
+}
+.valuation-diagram {
+  margin: 28px 0;
+  padding: 24px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+.valuation-diagram figcaption {
+  margin-bottom: 24px;
+  font-weight: 650;
+}
+.valuation-diagram h3 {
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+.valuation-diagram .diagram-nodes {
+  list-style: none;
+  padding: 0;
+  margin: 14px 0 0;
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.6;
+}
+.valuation-diagram .diagram-nodes li {
+  margin: 8px 0 0;
+  padding: 10px 12px;
+  background: var(--soft);
+  border-radius: 6px;
+}
+.methods-diagram {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 100px minmax(0, 1fr);
+  gap: 16px;
+  align-items: center;
+}
+.forecast-connector {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--muted);
+}
+.forecast-connector svg {
+  width: 48px;
+  height: 24px;
+  color: var(--accent);
+}
+.diagram-result,
+.diagram-origin {
+  background: var(--dark);
+  color: white;
+  padding: 12px 18px;
+  border-radius: 6px;
+  text-align: center;
+  font-weight: 650;
+}
+.diagram-result {
+  margin-top: 24px;
+}
+.diagram-origin {
+  margin-bottom: 20px;
+}
+.selection-diagram {
+  display: grid;
+  gap: 20px;
+}
+.selection-branch {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 24px minmax(0, 1.4fr);
+  gap: 16px;
+  align-items: center;
+}
+.selection-branch h3 {
+  padding: 14px;
+  border-radius: 6px;
+}
+.selection-branch.positive h3 { background: #d4eadc; }
+.selection-branch.mixed h3 { background: #f4ebcb; }
+.selection-branch.negative h3 { background: #e6deef; }
+.selection-branch svg { width: 24px; height: 24px; }
+.selection-branch .diagram-nodes { margin-top: 0; }
+.pdf-process-diagram {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.pdf-process-diagram li {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr);
+  gap: 16px;
+  position: relative;
+  margin: 0;
+  padding: 0 0 28px;
+}
+.pdf-process-diagram li:last-child { padding-bottom: 0; }
+.pdf-process-diagram li:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 19px;
+  top: 46px;
+  bottom: 6px;
+  width: 1px;
+  background: var(--line);
+}
+.diagram-step {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--dark);
+  color: white;
+  font-variant-numeric: tabular-nums;
+}
+.valuation-diagram .pdf-process-diagram p { margin: 6px 0 0; }
+@media (max-width: 650px) {
+  .valuation-diagram { padding: 18px; }
+  .methods-diagram,
+  .selection-branch { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+  .forecast-connector { align-items: flex-start; text-align: left; }
+  .forecast-connector svg,
+  .selection-branch > svg { transform: rotate(90deg); }
+  .selection-branch > svg { margin-left: 14px; }
+}
 .legacy-figure img {
   width: 100%;
   max-height: 420px;

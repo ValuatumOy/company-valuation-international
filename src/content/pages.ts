@@ -5,6 +5,8 @@ export type ContentSection = {
   bullets?: string[];
   links?: { label: string; href: string }[];
   image?: { src: string; alt: string };
+  video?: { id: string; title: string };
+  diagram?: "methods" | "selection" | "pdf-process";
 };
 
 export type ContentPage = {
@@ -775,18 +777,22 @@ export const contentPages: ContentPage[] = [
           "Company valuation is the analytical process of determining the economic worth of a business. Whether you're looking to calculate company value for a sale, investment, or strategic planning, understanding valuation fundamentals is essential. A proper business valuation establishes the intrinsic or true value of an enterprise — the price both buyer and seller would agree upon in an arm's-length transaction without negotiation premiums or discounts.",
           "Company value is inherently subjective and depends on the perspective of the observer. Consider a simple example: one investor might value a technology company at €5 million based on current cash flows, while another might value it at €8 million based on synergies with their existing portfolio. This difference reflects varying assessments of future prospects, risk, and strategic fit. A robust company valuation calculator helps quantify these factors systematically.",
           "It's important to distinguish between value and price. Price is the monetary amount actually paid in a transaction — it's more objective and observable. Value, however, reflects what a business is truly worth to a particular buyer or seller. In acquisitions and investments, the valuation process establishes an initial estimate of value, which then serves as a starting point for negotiations that ultimately determine the final price. Since the goal is to ensure value exceeds the price paid, accurate business valuation is critical.",
-          "To learn how to value a business effectively, the linked video provides a comprehensive overview. For hands-on experience with our company valuation software, you can register for free and generate your own valuation report.",
+          "To learn how to value a business effectively, the video below provides a comprehensive overview. For hands-on experience with our company valuation software, register for manual input valuation and generate your own valuation report.",
         ],
         links: [
           {
             label: "register for free",
-            href: "https://pdfanalysis.valuatum.com/Login.action",
+            href: "https://estimator.valuatum.com/AspAndUserCreation.action?templateAspQueryKey=PPVTemplate&userType=&popup=true",
           },
           {
             label: "How to Value a Company - Business Valuation Explained",
             href: "https://www.youtube.com/watch?v=3_R14_eFCOg",
           },
         ],
+        video: {
+          id: "3_R14_eFCOg",
+          title: "How to Value a Company - Business Valuation Explained",
+        },
       },
       {
         id: "why-is-accurate-company-valuation-important",
@@ -806,6 +812,7 @@ export const contentPages: ContentPage[] = [
       {
         id: "selecting-the-right-valuation-approach",
         title: "Selecting the Right Valuation Approach",
+        diagram: "selection",
         paragraphs: [
           "The choice of business valuation method depends on the company's financial situation. The workflow below illustrates how different methods are selected based on whether a company has positive or negative earnings and operating profit. No single method captures the complete picture — professional valuations typically combine multiple approaches to arrive at a reasonable value range.",
         ],
@@ -908,6 +915,7 @@ export const contentPages: ContentPage[] = [
       {
         id: "understanding",
         title: "Understanding Business Valuation Approaches",
+        diagram: "methods",
         paragraphs: [
           "No single valuation method can capture the complete picture of a company's worth. Different company valuation methods exist because businesses vary widely in their characteristics, financial performance, and growth potential. A profitable, established manufacturing company requires different analytical approaches than an early-stage technology startup with negative earnings but strong growth prospects.",
           "Most professional valuations combine multiple methods to arrive at a reasonable value range. This triangulation approach helps validate findings and accounts for the inherent uncertainty in any forward-looking financial analysis. The weight given to each method depends on factors such as the company's profitability, industry characteristics, data availability, and the purpose of the valuation.",
@@ -1098,6 +1106,7 @@ export const contentPages: ContentPage[] = [
       {
         id: "selecting",
         title: "Selecting the Right Valuation Approach",
+        diagram: "selection",
         paragraphs: [
           "The appropriate combination of valuation methods depends on a company's financial situation. Three key financial indicators—net income, EBITDA, and DCF valuation—determine which methods are applicable.",
         ],
@@ -1414,6 +1423,10 @@ export const contentPages: ContentPage[] = [
             href: "https://estimator.valuatum.com/AspAndUserCreation.action?templateAspQueryKey=PPVTemplate&userType=&popup=true",
           },
         ],
+        video: {
+          id: "RCqo-1ph-Gs",
+          title: "Valuatum Estimator Key Features",
+        },
       },
       {
         id: "how-does-the-system-work",
@@ -1787,6 +1800,7 @@ export const contentPages: ContentPage[] = [
       {
         id: "ai-powered-company-valuation-for-businesses-of-all-sizes",
         title: "AI-Powered Company Valuation for Businesses of All Sizes",
+        diagram: "pdf-process",
         paragraphs: [
           "Our company valuation software offers multiple ways to analyze and value companies quickly and professionally. From AI-powered PDF extraction to manual data input and ready-made financial data for selected countries, the system reads financial figures, builds forward-looking forecasts, and produces clear visual reports that support better business valuation decisions.",
           "Explore each company valuation tool in more detail and choose the method that works best for calculating your company value from our solutions overview.",
@@ -1853,6 +1867,10 @@ export const contentPages: ContentPage[] = [
             href: "https://www.youtube.com/watch?v=TkujkI6Riu4",
           },
         ],
+        video: {
+          id: "TkujkI6Riu4",
+          title: "How PDF-based company valuation works",
+        },
       },
       {
         id: "why-choose-our-company-valuation-tool",
@@ -2336,6 +2354,10 @@ export const contentPages: ContentPage[] = [
             href: "https://www.youtube.com/watch?v=vHu7WsCF-5Y",
           },
         ],
+        video: {
+          id: "vHu7WsCF-5Y",
+          title: "Company valuation explained – Valuatum Tools",
+        },
       },
       {
         id: "business-sales-acquisitions",

@@ -7,7 +7,11 @@ export const indexable =
 export const serviceLinks = {
   pdf: "https://valuation.valuatum.com/",
   manual: "https://estimator.valuatum.com/",
+  manualRegistration:
+    "https://estimator.valuatum.com/AspAndUserCreation.action?templateAspQueryKey=PPVTemplate&userType=&popup=true",
   finland: "https://arvonmaaritys.fi/",
+  finlandRegistration:
+    "https://valuation-finland.valuatum.com/AspAndUserCreation.action?templateAspQueryKey=CVFinland&popup=true",
   denmark: "https://creditreports.dk/en/",
   email: "mailto:company-valuation@valuatum.com",
 };
