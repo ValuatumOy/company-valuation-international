@@ -27,7 +27,7 @@ export default function SampleReport() {
         </h1>
         <p className="intro">
           Read a Finnish valuation report for Harvia, an English report for JYSK
-          and a manual DCF demonstration for NVIDIA. Their scope is described
+          and a full English report for NVIDIA. Their scope is described
           below. The short walkthrough uses a fictional company.
         </p>
       </div>
@@ -233,7 +233,7 @@ export default function SampleReport() {
           hasPart: [
             { "@type": "DigitalDocument", name: "Harvia Oyj valuation report", url: "https://arvonmaaritys.fi/samples/harvia-oyj.pdf", inLanguage: "fi", encodingFormat: "application/pdf" },
             { "@type": "DigitalDocument", name: "JYSK A/S English valuation example", url: `${siteUrl}/reports/jysk-as-english-example.pdf`, inLanguage: "en", encodingFormat: "application/pdf" },
-            { "@type": "DigitalDocument", name: "NVIDIA Corporation manual DCF example", url: `${siteUrl}/reports/nvidia-english-example.pdf`, inLanguage: "en", encodingFormat: "application/pdf" },
+            { "@type": "DigitalDocument", name: "NVIDIA Corporation full valuation example", url: `${siteUrl}/reports/nvidia-english-example.pdf`, inLanguage: "en", encodingFormat: "application/pdf" },
           ],
         }}
       />

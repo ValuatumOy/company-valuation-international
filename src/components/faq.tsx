@@ -29,7 +29,7 @@ export const homeFaqs = [
   },
   {
     q: "Can I download and share a report?",
-    a: "Yes. The sample page includes a Finnish valuation report for Harvia, an English report for JYSK and a manual DCF demonstration for NVIDIA. You can read and share the PDFs. For your own international company report, send our team a request.",
+    a: "Yes. The sample page includes a Finnish valuation report for Harvia and English reports for JYSK and NVIDIA. NVIDIA uses the full report template with manually prepared forecast assumptions. You can read and share the PDFs. For your own international company report, send our team a request.",
   },
   {
     q: "How reliable is an automated company valuation?",

@@ -91,3 +91,5 @@ These are content targets, not keyword-volume claims. Keep the educational guide
 - [Google: articles and factual authorship](https://developers.google.com/search/docs/appearance/structured-data/article)
 - [Google: Core Web Vitals](https://developers.google.com/search/docs/appearance/core-web-vitals)
 - Bundled Next.js 16.4 guides: metadata/generateMetadata, sitemap, JSON-LD and fonts in `node_modules/next/dist/docs/`. APIs were checked against the installed version.
+
+NVIDIA full-report update (14 October 2026): the earlier 10-page example is replaced by a manually prepared full report using the current Finnish report template. It has 26 pages, 16 sections, 29 tables and eight SVG charts. The reviewed base DCF economics remain unchanged; annual operating capital and EVA, full scenario chains, both recalculated sensitivity grids, cash/borrowings and the complete annual forecast appendix are included. All added assumptions are explicit. Independent review verified the calculations, original financial bridge, source facts and layout before publication. No paid generation was used for this update.

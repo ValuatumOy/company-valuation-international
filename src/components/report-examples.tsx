@@ -19,8 +19,8 @@ const examples = [
   },
   {
     name: "NVIDIA Corporation",
-    country: "United States · Manual DCF example · English · USD",
-    description: "A 10-page worked DCF example using NVIDIA’s FY2026 accounts and manual forecast assumptions. It covers annual cash flows, the equity-value bridge and sensitivity analysis; its scope differs from the full valuation report.",
+    country: "United States · English PDF · USD",
+    description: "A full 26-page report on the same template as the Finnish examples: 16 sections and eight charts, including annual cash flows, EVA, scenarios and sensitivities. Uses NVIDIA’s FY2026 accounts and clearly identified manual forecast assumptions.",
     reportHref: "/reports/nvidia-english-example.pdf",
     requestHref: `${serviceLinks.reportRequest}?country=United%20States&company=NVIDIA%20Corporation`,
   },
