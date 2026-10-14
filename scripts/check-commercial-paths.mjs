@@ -9,10 +9,13 @@ const base = process.env.CHECK_BASE_URL || "http://localhost:3000";
 const policy = JSON.parse(await readFile("ui-policy.json", "utf8"));
 const screenshots = process.env.SCREENSHOT_DIR;
 const jyskPdf = "/reports/jysk-as-english-example.pdf";
-const pdfResponse = await fetch(`${base}${jyskPdf}`);
-assert.equal(pdfResponse.status, 200, "JYSK example PDF must be served locally");
-assert.match(pdfResponse.headers.get("content-type") || "", /^application\/pdf(?:;|$)/i);
-assert.equal(Buffer.from(await pdfResponse.arrayBuffer()).subarray(0, 5).toString("ascii"), "%PDF-", "JYSK example must contain a PDF");
+const nvidiaPdf = "/reports/nvidia-english-example.pdf";
+for (const pdf of [jyskPdf, nvidiaPdf]) {
+  const pdfResponse = await fetch(`${base}${pdf}`);
+  assert.equal(pdfResponse.status, 200, `${pdf}: example PDF must be served locally`);
+  assert.match(pdfResponse.headers.get("content-type") || "", /^application\/pdf(?:;|$)/i);
+  assert.equal(Buffer.from(await pdfResponse.arrayBuffer()).subarray(0, 5).toString("ascii"), "%PDF-", `${pdf}: PDF magic`);
+}
 const browser = await chromium.launch({ channel: "chromium" });
 try {
   const page = await browser.newPage();
@@ -41,20 +44,18 @@ try {
 
     await page.goto(`${base}/sample-report`);
     assert.equal(await page.locator(".company-example").filter({ hasText: "Heeros Oyj" }).getByRole("link").getAttribute("href"), "https://arvonmaaritys.fi/samples/heeros-oyj.pdf");
-    const jysk = page.locator(".company-example").filter({ hasText: "JYSK A/S" });
-    const reportLink = jysk.getByRole("link", { name: "View report", exact: true });
-    assert.equal(await reportLink.getAttribute("href"), jyskPdf);
-    assert.equal(await reportLink.getAttribute("target"), "_blank");
-    assert.match(await reportLink.getAttribute("rel"), /\bnoopener\b/);
-    const popupPromise = page.waitForEvent("popup");
-    await reportLink.click();
-    const popup = await popupPromise;
-    await popup.waitForURL(`${base}${jyskPdf}`);
-    assert.equal(popup.url(), `${base}${jyskPdf}`);
-    await popup.close();
-    const nvidia = page.locator(".company-example").filter({ hasText: "NVIDIA Corporation" });
-    assert.equal(await nvidia.getByRole("link", { name: "View report", exact: true }).count(), 0);
-    assert.equal(await page.locator('a[href="/reports/nvidia-english-example.pdf"]').count(), 0);
+    for (const [company, pdf] of [["JYSK A/S", jyskPdf], ["NVIDIA Corporation", nvidiaPdf]]) {
+      const reportLink = page.locator(".company-example").filter({ hasText: company }).getByRole("link", { name: "View report", exact: true });
+      assert.equal(await reportLink.getAttribute("href"), pdf);
+      assert.equal(await reportLink.getAttribute("target"), "_blank");
+      assert.match(await reportLink.getAttribute("rel"), /\bnoopener\b/);
+      const popupPromise = page.waitForEvent("popup");
+      await reportLink.click();
+      const popup = await popupPromise;
+      await popup.waitForURL(`${base}${pdf}`);
+      assert.equal(popup.url(), `${base}${pdf}`);
+      await popup.close();
+    }
     for (const [company, country] of [["JYSK A/S", "Denmark"], ["NVIDIA Corporation", "United States"]]) {
       await page.locator(".company-example").filter({ hasText: company }).getByRole("link", { name: "Request report", exact: true }).click();
       await page.getByLabel("Company to value", { exact: true }).waitFor();
@@ -84,7 +85,7 @@ try {
       }
     }
   }
-  console.log(`Passed: Finnish destinations on all ${urls.length} pages, JYSK PDF response and View report popup, Danish/NVIDIA request navigation and prefills, and lintapple at 375/768/1440px.`);
+  console.log(`Passed: Finnish destinations on all ${urls.length} pages, JYSK/NVIDIA PDF responses and View report popups, request navigation and prefills, and lintapple at 375/768/1440px.`);
 } finally {
   await browser.close();
 }

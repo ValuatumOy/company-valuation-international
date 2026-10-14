@@ -16,7 +16,7 @@ const solutions = [
   {
     name: "Upload a financial statement",
     description:
-      "Turn a PDF statement into financial analysis, forecasts and a valuation report. Review the figures and make the assumptions your own.",
+      "Extract financial figures from a PDF statement, review the forecasts and create a valuation report.",
     href: "/solutions/pdf-based-company-valuation",
     action: "Explore PDF valuation",
     type: "pdf",
@@ -113,9 +113,9 @@ export default function Home() {
             is worth.
           </h1>
           <p>
-            A clearer view of company value. Start with your financial
-            statements, explore the assumptions, and turn the numbers into your
-            next decision.
+            Estimate business value from financial statements and forecasts.
+            Review the assumptions and use the report to prepare for a sale,
+            investment or ownership change.
           </p>
           <div className="actions" data-ui-actions>
             <a className="button" href="#solutions">
@@ -136,9 +136,9 @@ export default function Home() {
       </section>
       <section className="expertise-strip" aria-label="Valuatum expertise">
         <p>
-          Built by financial analysts.
+          Founded by financial analysts.
           <br />
-          <strong>Used to make real business decisions.</strong>
+          <strong>Valuation software from Valuatum.</strong>
         </p>
         <div>
           <span>Established</span>
@@ -156,16 +156,17 @@ export default function Home() {
       <section className="solutions section" id="solutions">
         <div className="section-heading">
           <div>
-            <p className="eyebrow">A starting point for every business</p>
+            <p className="eyebrow">Valuation services</p>
             <h2>
-              Your numbers.
+              Start with the
               <br />
-              Your way in.
+              data you have.
             </h2>
           </div>
           <p>
-            Choose the route that fits the data you have. Each service brings
-            you closer to a valuation you can understand.
+            Upload a financial statement, enter figures manually or use
+            available company data. For an international report, we confirm
+            the data, scope and price with you before starting.
           </p>
         </div>
         <div className="solution-grid">
@@ -217,16 +218,16 @@ export default function Home() {
       </section>
       <section className="clarity-section">
         <div className="clarity-copy">
-          <p className="eyebrow">See the reasoning behind the result</p>
+          <p className="eyebrow">Valuation assumptions</p>
           <h2>
-            Value is a range.
+            See what drives
             <br />
-            Clarity is knowing why.
+            the estimated value.
           </h2>
           <p>
-            A company’s value depends on its future, not just its past. Compare
-            methods, review the forecasts and see how a different assumption
-            changes the picture.
+            Compare methods and review forecasts for growth, margins and
+            investment. Test how changing those assumptions affects the
+            valuation.
           </p>
           <Link
             className="button button-light"
@@ -238,7 +239,7 @@ export default function Home() {
         <div className="clarity-visual">
           <div className="value-range-card">
             <div>
-              <span>Different methods. One clearer picture.</span>
+              <span>Compare valuation methods</span>
               <span className="illustration-label">Illustration</span>
             </div>
             <div className="range-row">
@@ -259,7 +260,7 @@ export default function Home() {
                 <i />
               </div>
             </div>
-            <p>Compare the result. Understand the assumptions.</p>
+            <p>Check each result against its assumptions.</p>
           </div>
           <div className="clarity-points">
             <span>Financial analysis</span>
@@ -271,16 +272,16 @@ export default function Home() {
       <section className="process-section section" id="how-it-works">
         <div className="section-heading">
           <div>
-            <p className="eyebrow">From statements to perspective</p>
+            <p className="eyebrow">How the valuation tools work</p>
             <h2>
-              Make sense of
+              From financial data
               <br />
-              the whole picture.
+              to a valuation report.
             </h2>
           </div>
           <p>
-            Financial data is the starting point. The real value comes from
-            understanding what drives the result.
+            Check the source figures, review the forecasts and document the
+            assumptions before sharing your report.
           </p>
         </div>
         <div className="process-grid">
@@ -302,10 +303,10 @@ export default function Home() {
           </article>
           <article>
             <span className="step-number">03</span>
-            <h3>Put the value to work</h3>
+            <h3>Create your report</h3>
             <p>
-              Create your report to support a sale, acquisition, investment
-              discussion or your next business decision.
+              Use the report to explain the estimated value in a sale,
+              acquisition or investment discussion.
             </p>
           </article>
         </div>
@@ -322,8 +323,8 @@ export default function Home() {
             </div>
             <small>Illustrative report outline</small>
             <strong>
-              A business.
-              <br />A clearer picture.
+              Company
+              <br />valuation report
             </strong>
             <div className="editorial-report-bars">
               {[40, 53, 49, 68, 79, 94].map((height, i) => (
@@ -333,19 +334,19 @@ export default function Home() {
             <span>Financials / Forecasts / Valuation</span>
           </div>
           <div className="report-page-tag">
-            Your analysis, ready to share <Arrow diagonal />
+            Financial data and valuation analysis <Arrow diagonal />
           </div>
         </div>
         <div className="report-editorial-copy">
-          <p className="eyebrow">A report with the reasoning included</p>
+          <p className="eyebrow">Inside the report</p>
           <h2>
-            More useful than
-            <br />a single number.
+            Financials, forecasts
+            <br />and valuation methods.
           </h2>
           <p>
-            Follow the financials, forecasts and valuation methods in one place.
-            See the assumptions that drive value and share an analysis others
-            can follow.
+            The report documents financial history, forecasts and the methods
+            used to estimate value. Review the assumptions before sharing the
+            analysis with buyers, investors or colleagues.
           </p>
           <ul>
             <li>
@@ -366,24 +367,24 @@ export default function Home() {
             </li>
           </ul>
           <Link className="text-link" href="/sample-report">
-            Explore the illustrative report <Arrow diagonal />
+            View sample reports <Arrow diagonal />
           </Link>
         </div>
       </section>
       <section className="section examples-section" id="company-examples">
         <div className="section-heading">
-          <div><h2>See the report.<br />Find your next step.</h2></div>
-          <p>Read real Finnish and English Danish reports. Ask our team about an English report for a Danish or US company; we confirm source data, scope and price before starting.</p>
+          <div><h2>Read a sample<br />valuation report.</h2></div>
+          <p>See examples for Finnish, Danish and US companies. Request an English report for your company; we confirm the available data, scope and price before starting.</p>
         </div>
         <ReportExamples />
       </section>
       <section className="resources-section section">
         <div className="section-heading">
           <div>
-            <p className="eyebrow">Know what goes into the number</p>
+            <p className="eyebrow">Valuation guides</p>
             <h2>
-              A little understanding.
-              <br />A better decision.
+              Learn how
+              <br />businesses are valued.
             </h2>
           </div>
           <Link className="text-link" href="/resources">
@@ -438,7 +439,7 @@ export default function Home() {
                 <path d="M10 80 40 50 68 62 110 16M86 16h24v24" />
               </svg>
             </span>
-            <span className="resource-type">The next step</span>
+            <span className="resource-type">Valuation use cases</span>
             <h3>When to value your company</h3>
             <p>From ownership changes to investment and strategic planning.</p>
             <span className="text-link">
@@ -449,11 +450,11 @@ export default function Home() {
       </section>
       <section className="faq-section">
         <div className="faq-heading">
-          <p className="eyebrow">Good questions, clear answers</p>
+          <p className="eyebrow">Frequently asked questions</p>
           <h2>
-            Before you
+            Choosing your
             <br />
-            take the next step.
+            valuation service.
           </h2>
           <p>Start here, or ask our team about your company and your market.</p>
           <Link className="text-link" href="/support/faq">
@@ -464,11 +465,11 @@ export default function Home() {
       </section>
       <section className="closing-cta">
         <div>
-          <p className="eyebrow">Your next decision starts here</p>
+          <p className="eyebrow">Get a valuation</p>
           <h2>
-            Get a clearer
+            Choose a service
             <br />
-            view of your business.
+            for your company.
           </h2>
         </div>
         <div>

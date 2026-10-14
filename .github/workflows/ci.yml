@@ -21,3 +21,12 @@ jobs:
       - run: npm run lint
       - run: npm test
       - run: npm run build
+      - name: Check rendered routes and SEO
+        run: |
+          npm run start > /tmp/valuation-site.log 2>&1 &
+          for attempt in $(seq 1 30); do
+            if curl --silent --fail http://localhost:3000/robots.txt > /dev/null; then break; fi
+            sleep 1
+          done
+          npm run check:site
+          npm run check:seo

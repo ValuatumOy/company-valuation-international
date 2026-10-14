@@ -24,6 +24,7 @@ npm test
 npm run build
 npm start
 npm run check:site
+npm run check:seo
 npm run lint:ui
 npm run check:ui
 npm run check:content
@@ -36,7 +37,7 @@ Lintapple is installed from its published npm package. `ui-policy.json` defines 
 
 All 19 previous canonical URLs and 11 aliases are preserved. Content is in `src/content/pages.ts`; original source and historical asset provenance are recorded under `docs/`. The website sends users to the existing PDF, manual, Finnish and Danish valuation services. It does not generate reports or take payments itself.
 
-`/sample-report` links to the existing public Heeros Oyj report at arvonmaaritys.fi and the generated, reviewed JYSK A/S English PDF in DKK (14 October 2026). JYSK refers to the Danish legal entity, CVR 13590400, rather than the worldwide group. JYSK and NVIDIA company requests prefill the international enquiry. The NVIDIA draft is withheld because its stored forecast requires economic validation; no NVIDIA PDF is served by this website. The fictional calculation and historical library remain identified. Finnish actions go to arvonmaaritys.fi; new international reports use requests with scope/price confirmation.
+`/sample-report` links to three examples: the existing public Heeros Oyj report at arvonmaaritys.fi, the manually polished and reviewed JYSK A/S English PDF in DKK, and a manually prepared NVIDIA English PDF in USD (14 October 2026). JYSK refers to the Danish legal entity, CVR 13590400, rather than the worldwide group. The NVIDIA example uses verified FY2026 accounts and explicitly illustrative forecast assumptions; it is a new manual DCF, not the earlier withheld source-forecast draft or an investment recommendation. Its annual cash flows, equity bridge and sensitivity calculations passed independent review. JYSK and NVIDIA requests prefill the international enquiry. The fictional calculation and historical library remain identified. Finnish actions go to arvonmaaritys.fi; new international reports use requests with scope/price confirmation.
 
 Contact forms prepare a `mailto:` message in the visitor's email app. They do not store or send enquiries on a server. The UI says this explicitly and provides the direct email address.
 
@@ -53,3 +54,5 @@ The current Vercel team is on Hobby. Automatic Git integration with this private
 When deploying a fresh source package, link it with `vercel link --project company-valuation-international --scope valuatum-dk --yes`, then use `vercel deploy --target preview --yes --no-wait --scope valuatum-dk`. Always specify the target: Vercel automatically assigned the project's very first unqualified deployment to production, despite the absence of `--prod`. That isolated version remains noindex and has no connection to the existing company-valuation.com domain.
 
 Before the domain switch, review current pricing, legacy financial assumptions, legal/security copy and real report samples. Then attach the domain, enable production indexing, deploy production, verify routes/redirects and submit the sitemap in Search Console. See `HANDOFF.md`.
+
+The full 20-page copy and SEO pass is documented in `docs/seo-audit.md`. Automated checks cover metadata uniqueness, social cards, schema roles, heading hierarchy, media attributes and internal crawl depth, alongside the existing route and interaction checks. CI runs the route and SEO checks against its built local server.

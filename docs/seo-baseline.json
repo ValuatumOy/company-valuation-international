@@ -1,0 +1,239 @@
+{
+  "capturedAt": "2026-10-14T11:55:34.072Z",
+  "source": "Local production build before the SEO pass",
+  "canonicalOrigin": "https://company-valuation.com",
+  "pages": [
+    {
+      "path": "/",
+      "title": "Company Valuation | Understand Your Business Value",
+      "description": "Understand what your business is worth. Upload a PDF statement, enter financials or use Finnish and Danish company data to create a valuation report.",
+      "ogTitle": "Company Valuation | Understand Your Business Value",
+      "schemaTypes": [
+        "FAQPage",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "path": "/sample-report",
+      "title": "Sample Company Valuation Report | Valuatum",
+      "description": "Read real Finnish and English Danish company valuation reports, request a US report from our team, and explore an illustrative calculation.",
+      "ogTitle": "Sample Company Valuation Report",
+      "schemaTypes": [
+        "BreadcrumbList",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "path": "/support",
+      "title": "Support | Valuatum",
+      "description": "Help using Valuatum Tools: choose the right workflow, upload or enter data, edit assumptions, and export valuation reports.",
+      "ogTitle": "Support",
+      "schemaTypes": [
+        "BreadcrumbList",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "path": "/support/faq",
+      "title": "Company Valuation Tool FAQ | Valuatum",
+      "description": "Answers about inputs, PDF uploads, DCF vs multiples, editable assumptions, valuation reports, and pricing for Valuatum Tools.",
+      "ogTitle": "Company Valuation Tool FAQ",
+      "schemaTypes": [
+        "BreadcrumbList",
+        "FAQPage",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "path": "/about-us",
+      "title": "About Us | Valuatum",
+      "description": "Valuatum is a financial software company founded in 2000, building valuation, credit risk, and equity research solutions for customers worldwide.",
+      "ogTitle": "About Us",
+      "schemaTypes": [
+        "BreadcrumbList",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "path": "/privacy-policy",
+      "title": "Privacy Policy | Valuatum",
+      "description": "Read how Valuatum Oy collects and uses account data, usage data, and financial information entered for valuations.",
+      "ogTitle": "Privacy Policy",
+      "schemaTypes": [
+        "BreadcrumbList",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "path": "/security",
+      "title": "Security & Data Handling | Valuatum",
+      "description": "How Valuatum Tools handles data in valuation workflows, including PDF statement uploads. See privacy policy and support contact.",
+      "ogTitle": "Security & Data Handling",
+      "schemaTypes": [
+        "BreadcrumbList",
+        "FAQPage",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "path": "/contact-finland",
+      "title": "Finnish Company Valuation | Valuatum",
+      "description": "Search for a Finnish company, order a valuation report, and review its assumptions and results at arvonmaaritys.fi.",
+      "ogTitle": "Finnish Company Valuation",
+      "schemaTypes": [
+        "BreadcrumbList",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "path": "/contact-international",
+      "title": "International company valuation enquiries | Valuatum",
+      "description": "Request a company valuation report for Denmark or another international market. Confirm data scope and price before generation.",
+      "ogTitle": "International company valuation enquiries",
+      "schemaTypes": [
+        "BreadcrumbList",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "path": "/resources",
+      "title": "Resources | Valuatum",
+      "description": "Company valuation guides covering definitions and methods like DCF and multiples—built to help you estimate business value and understand reports.",
+      "ogTitle": "Resources",
+      "schemaTypes": [
+        "BreadcrumbList",
+        "Article",
+        "FAQPage",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "path": "/resources/company-valuation/what-is-company-valuation",
+      "title": "What Is Company Valuation? | Valuatum",
+      "description": "Learn what company valuation is, how to estimate business value using methods like DCF and multiples, and how to generate a valuation report from financial data.",
+      "ogTitle": "What Is Company Valuation?",
+      "schemaTypes": [
+        "BreadcrumbList",
+        "Article",
+        "FAQPage",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "path": "/resources/company-valuation/methods",
+      "title": "Company Valuation Methods | Valuatum",
+      "description": "Detailed guide to company valuation methods including DCF, EBITDA multiples, comparable analysis, and book value. Learn when to use each method and how they are combined.",
+      "ogTitle": "Company Valuation Methods",
+      "schemaTypes": [
+        "BreadcrumbList",
+        "Article",
+        "FAQPage",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "path": "/solutions/manual-data-input-company-valuation",
+      "title": "Manual Data Input Company Valuation | Valuatum",
+      "description": "Enter financial figures manually to estimate business value. Review assumptions, run scenarios, and export a valuation report.",
+      "ogTitle": "Manual Data Input Company Valuation",
+      "schemaTypes": [
+        "BreadcrumbList",
+        "FAQPage",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "path": "/solutions/manual-data-input-company-valuation/key-features",
+      "title": "Key Features | Valuatum",
+      "description": "Explore key features like editable assumptions, scenarios, peer comparisons, and valuation report export.",
+      "ogTitle": "Key Features",
+      "schemaTypes": [
+        "BreadcrumbList",
+        "FAQPage",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "path": "/solutions/manual-data-input-company-valuation/user-manual",
+      "title": "User Manual | Valuatum",
+      "description": "Step-by-step instructions for entering data, editing assumptions, and creating valuation reports in Valuatum Tools.",
+      "ogTitle": "User Manual",
+      "schemaTypes": [
+        "BreadcrumbList",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "path": "/solutions/pdf-based-company-valuation",
+      "title": "PDF-Based Company Valuation | Valuatum",
+      "description": "Upload a PDF financial statement to extract key figures and estimate company value. Edit assumptions and generate a valuation report.",
+      "ogTitle": "PDF-Based Company Valuation",
+      "schemaTypes": [
+        "BreadcrumbList",
+        "FAQPage",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "path": "/solutions/danish-company-valuation",
+      "title": "Danish Company Valuation | Valuatum",
+      "description": "Request a Danish company valuation report. Confirm its data scope and price before generation.",
+      "ogTitle": "Danish Company Valuation",
+      "schemaTypes": [
+        "BreadcrumbList",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "path": "/solutions/finnish-company-valuation",
+      "title": "Finnish Company Valuation | Valuatum",
+      "description": "Search for a Finnish company and order a valuation report through arvonmaaritys.fi.",
+      "ogTitle": "Finnish Company Valuation",
+      "schemaTypes": [
+        "BreadcrumbList",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "path": "/solutions/international-company-valuation",
+      "title": "International Company Valuation | Valuatum",
+      "description": "Request a valuation report for an international company. Confirm data scope and price before generation.",
+      "ogTitle": "International Company Valuation",
+      "schemaTypes": [
+        "BreadcrumbList",
+        "Organization",
+        "WebSite"
+      ]
+    },
+    {
+      "path": "/solutions/why-do-you-need-company-valuation",
+      "title": "Why Do You Need Company Valuation? | Valuatum",
+      "description": "Learn when you need a business valuation—selling, fundraising, planning, or financing—and what inputs affect the estimate.",
+      "ogTitle": "Why Do You Need Company Valuation?",
+      "schemaTypes": [
+        "BreadcrumbList",
+        "FAQPage",
+        "Organization",
+        "WebSite"
+      ]
+    }
+  ]
+}

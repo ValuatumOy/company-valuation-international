@@ -5,7 +5,8 @@ import { contentPages, type ContentPage } from "@/content/pages";
 import { Arrow } from "./icon";
 import { ContactForm } from "./contact-form";
 import { JsonLd } from "./json-ld";
-import { siteUrl, serviceLinks } from "@/lib/site";
+import { canonicalUrl, siteUrl, serviceLinks } from "@/lib/site";
+import { contentBreadcrumbs, contentSchemaType, isValuationArticle } from "@/lib/content-seo";
 import imageSizes from "@/content/image-sizes.json";
 import { ValuationDiagram } from "./valuation-diagram";
 
@@ -44,20 +45,28 @@ export function ContentPageView({ page }: { page: ContentPage }) {
   const isContact = page.path === "/contact-international";
   const isFinland = page.path === "/solutions/finnish-company-valuation" || page.path === "/contact-finland";
   const sizes = imageSizes as Record<string, { width: number; height: number }>;
+  const breadcrumbs = contentBreadcrumbs(page, contentPages);
+  const isArticle = isValuationArticle(page);
   const faqSections = page.sections.filter(
-    (section) => section.title.endsWith("?") && section.paragraphs?.length,
+    (section) => section.title.endsWith("?") && (section.paragraphs?.length || section.bullets?.length),
   );
   return (
     <main id="main">
       <div className="page-hero">
         <nav className="breadcrumb" aria-label="Breadcrumb">
-          <Link href="/">Home</Link>
-          <Arrow />
-          <span>{page.eyebrow}</span>
+          {breadcrumbs.map((item, i) => (
+            <span key={item.path} style={{ display: "contents" }}>
+              {i > 0 && <Arrow />}
+              {i === breadcrumbs.length - 1 ? (
+                <span aria-current="page">{item.title}</span>
+              ) : <Link href={item.path}>{item.title}</Link>}
+            </span>
+          ))}
         </nav>
         <p className="eyebrow">{page.eyebrow}</p>
         <h1>{page.title}</h1>
         <p className="intro">{page.intro}</p>
+        {isArticle && <p>By <Link href="/about-us">Valuatum Oy</Link></p>}
         {action && (
           <div className="actions">
             <a
@@ -191,27 +200,39 @@ export function ContentPageView({ page }: { page: ContentPage }) {
         data={{
           "@context": "https://schema.org",
           "@type": "BreadcrumbList",
-          itemListElement: [
-            { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
-            {
+          "@id": `${canonicalUrl(page.path)}#breadcrumb`,
+          itemListElement: breadcrumbs.map((item, i) => ({
               "@type": "ListItem",
-              position: 2,
-              name: page.title,
-              item: `${siteUrl}${page.path}`,
-            },
-          ],
+              position: i + 1,
+              name: item.title,
+              item: canonicalUrl(item.path),
+          })),
         }}
       />
-      {page.kind === "guide" && (
+      <JsonLd data={{
+        "@context": "https://schema.org",
+        "@type": contentSchemaType(page),
+        "@id": `${canonicalUrl(page.path)}#webpage`,
+        url: canonicalUrl(page.path),
+        name: page.title,
+        description: page.description,
+        inLanguage: "en",
+        isPartOf: { "@id": `${siteUrl}/#website` },
+        publisher: { "@id": `${siteUrl}/#organization` },
+        breadcrumb: { "@id": `${canonicalUrl(page.path)}#breadcrumb` },
+        ...(isArticle ? { mainEntity: { "@id": `${canonicalUrl(page.path)}#article` } } : {}),
+      }} />
+      {isArticle && (
         <JsonLd
           data={{
             "@context": "https://schema.org",
             "@type": "Article",
+            "@id": `${canonicalUrl(page.path)}#article`,
             headline: page.title,
             description: page.description,
             inLanguage: "en",
-            mainEntityOfPage: `${siteUrl}${page.path}`,
-            author: { "@id": `${siteUrl}/#organization` },
+            mainEntityOfPage: { "@id": `${canonicalUrl(page.path)}#webpage` },
+            author: { "@type": "Organization", "@id": `${siteUrl}/#organization`, name: "Valuatum Oy", url: canonicalUrl("/about-us") },
             publisher: { "@id": `${siteUrl}/#organization` },
           }}
         />
@@ -226,7 +247,7 @@ export function ContentPageView({ page }: { page: ContentPage }) {
               name: section.title,
               acceptedAnswer: {
                 "@type": "Answer",
-                text: section.paragraphs!.join(" "),
+                text: [...(section.paragraphs || []), ...(section.bullets || [])].join(" "),
               },
             })),
           }}

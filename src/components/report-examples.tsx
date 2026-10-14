@@ -19,9 +19,9 @@ const examples = [
   },
   {
     name: "NVIDIA Corporation",
-    country: "United States · Report by request",
-    description: "NVIDIA’s latest financial year, FY2026, ended 25 January 2026. Ask our team about an English USD report; we confirm source data, model assumptions, scope and price before starting.",
-    reportHref: null,
+    country: "United States · English PDF · USD",
+    description: "A manually prepared DCF example using NVIDIA’s FY2026 accounts and clearly stated forecast assumptions. Includes annual cash flows, an equity-value bridge and sensitivity analysis.",
+    reportHref: "/reports/nvidia-english-example.pdf",
     requestHref: `${serviceLinks.reportRequest}?country=United%20States&company=NVIDIA%20Corporation`,
   },
 ];

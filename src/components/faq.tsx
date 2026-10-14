@@ -29,7 +29,7 @@ export const homeFaqs = [
   },
   {
     q: "Can I download and share a report?",
-    a: "Yes. The sample-report page links to the public Heeros Oyj PDF from arvonmaaritys.fi and includes a fictional calculation to explain valuation basics. English international reports are handled by request; earlier report examples remain clearly marked as historical.",
+    a: "Yes. You can read and share the Heeros, JYSK and NVIDIA PDF examples on the sample-report page. Heeros is in Finnish; JYSK and NVIDIA are in English. For your own international company report, send our team a request.",
   },
   {
     q: "How reliable is an automated company valuation?",

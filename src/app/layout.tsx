@@ -19,8 +19,12 @@ export const metadata: Metadata = {
     template: "%s | Valuatum",
   },
   description:
-    "Value a business from PDF financial statements, manual inputs or company data from Finland and Denmark. Compare methods and review the assumptions.",
-  robots: { index: indexable, follow: indexable },
+    "Explore company valuation methods, read sample reports, and request a valuation. Finnish reports are available through arvonmaaritys.fi.",
+  robots: {
+    index: indexable,
+    follow: indexable,
+    ...(indexable ? { googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1, "max-video-preview": -1 } } : {}),
+  },
   icons: { icon: "/icon.svg" },
 };
 

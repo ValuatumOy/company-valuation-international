@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 
-export const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL || "https://company-valuation.com";
+export const siteUrl = new URL(
+  process.env.NEXT_PUBLIC_SITE_URL || "https://company-valuation.com",
+).origin;
 export const indexable =
   process.env.SITE_INDEXABLE === "true" && process.env.VERCEL_ENV !== "preview";
 export const serviceLinks = {
@@ -21,15 +22,17 @@ export function pageMetadata(
   description: string,
   path: string,
 ): Metadata {
+  const pageTitle = searchTitles[path] || title;
+  const fullTitle = `${pageTitle} | Valuatum`;
   return {
-    title,
+    title: { absolute: fullTitle },
     description,
-    alternates: { canonical: `${siteUrl}${path}` },
+    alternates: { canonical: canonicalUrl(path) },
     openGraph: {
-      title,
+      title: fullTitle,
       description,
-      url: `${siteUrl}${path}`,
-      type: "website",
+      url: canonicalUrl(path),
+      type: path.startsWith("/resources/company-valuation/") ? "article" : "website",
       siteName: "Company Valuation by Valuatum",
       locale: "en_US",
       images: [
@@ -43,9 +46,26 @@ export function pageMetadata(
     },
     twitter: {
       card: "summary_large_image",
-      title,
+      title: fullTitle,
       description,
       images: ["/og-image.png"],
     },
   };
 }
+
+export function canonicalUrl(path: string) {
+  return new URL(path, `${siteUrl}/`).href;
+}
+
+const searchTitles: Record<string, string> = {
+  "/": "Company Valuation Tools and Reports",
+  "/resources": "Company Valuation Guides and Resources",
+  "/support": "Company Valuation Support",
+  "/about-us": "About Valuatum: Company Valuation Software",
+  "/contact-finland": "Finnish Valuation Enquiries: arvonmaaritys.fi",
+  "/contact-international": "Request an International Company Valuation",
+  "/solutions/manual-data-input-company-valuation/key-features":
+    "Manual Company Valuation: Features",
+  "/solutions/manual-data-input-company-valuation/user-manual":
+    "Manual Company Valuation: User Guide",
+};

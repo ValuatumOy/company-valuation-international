@@ -180,7 +180,7 @@ export function ReportPreview() {
           )}
         </div>
         <div className="report-bottom">
-          <span>Transparent inputs. Clear assumptions.</span>
+          <span>Financial inputs and valuation assumptions</span>
           <Link
             href="/sample-report"
             aria-label="Explore the illustrative sample report"
@@ -190,7 +190,7 @@ export function ReportPreview() {
         </div>
       </div>
       <div className="stage-caption">
-        Explore the report above. Figures are illustrative.
+        Example Company Ltd · fictional financial data
       </div>
     </div>
   );

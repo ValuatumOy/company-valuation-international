@@ -34,7 +34,7 @@ const groups = [
     links: [
       ["About us", "/about-us"],
       ["Contact", "/contact-international"],
-      ["Finland — arvonmaaritys.fi", serviceLinks.finland],
+      ["Finland: arvonmaaritys.fi", serviceLinks.finland],
       ["Support", "/support"],
       ["Frequently asked questions", "/support/faq"],
     ],
@@ -54,9 +54,9 @@ export function Footer() {
             </span>
           </Link>
           <p>
-            A clearer view of business value.
+            Company valuation software.
             <br />
-            Built on financial expertise since 2000.
+            Valuatum, founded in 2000.
           </p>
           <a className="text-link" href="mailto:company-valuation@valuatum.com">
             Talk to our team <Arrow diagonal />
@@ -76,7 +76,7 @@ export function Footer() {
         ))}
       </div>
       <div className="footer-wordmark" aria-hidden="true">
-        value, understood.
+        business value.
       </div>
       <div className="footer-bottom">
         <span>© {new Date().getFullYear()} Valuatum Oy</span>
@@ -87,7 +87,7 @@ export function Footer() {
             Valuatum.com <Arrow diagonal />
           </a>
         </div>
-        <span>Made in Finland. Built for business.</span>
+        <span>Valuatum Oy, Finland</span>
       </div>
     </footer>
   );

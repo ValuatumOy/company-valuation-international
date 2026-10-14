@@ -5,8 +5,8 @@ import { pageMetadata, siteUrl } from "@/lib/site";
 import { ReportExamples } from "@/components/report-examples";
 
 export const metadata = pageMetadata(
-  "Sample Company Valuation Report",
-  "Read real Finnish and English Danish company valuation reports, request a US report from our team, and explore an illustrative calculation.",
+  "Company Valuation Report Examples",
+  "Read valuation reports for Heeros, JYSK and NVIDIA. Explore financial statements, DCF calculations, forecast assumptions and sensitivity analysis.",
   "/sample-report",
 );
 
@@ -21,14 +21,14 @@ export default function SampleReport() {
         </nav>
         <p className="eyebrow">Company valuation reports</p>
         <h1>
-          The reasoning
+          Company valuation
           <br />
-          behind the value.
+          report examples.
         </h1>
         <p className="intro">
-          Read the Finnish report and our English JYSK A/S sample, or ask our
-          team for an English report on a Danish or US company. The walkthrough
-          below explains a simple calculation with fictional financials.
+          Read the Finnish Heeros report and English examples for JYSK and
+          NVIDIA. Each shows the financial inputs, valuation calculations and
+          assumptions. The short walkthrough below uses a fictional company.
         </p>
       </div>
       <div className="content-shell">
@@ -178,9 +178,9 @@ export default function SampleReport() {
           <section className="article-section" id="your-report">
             <h2>Start with your own company</h2>
             <p>
-              The existing services can create reports from your financial
-              statements or available company data. Check the current report
-              options and pricing in the service you choose.
+              Order a Finnish company report at arvonmaaritys.fi. For an English
+              report on a Danish or US company, send a request to our team. We
+              confirm the available data, scope and price before starting.
             </p>
             <div className="actions">
               <Link
@@ -219,6 +219,24 @@ export default function SampleReport() {
           </section>
         </article>
       </div>
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          "@id": `${siteUrl}/sample-report#webpage`,
+          url: `${siteUrl}/sample-report`,
+          name: "Company valuation report examples",
+          description: "Finnish and English PDF valuation examples for Heeros, JYSK and NVIDIA, with a fictional valuation walkthrough.",
+          inLanguage: "en",
+          isPartOf: { "@id": `${siteUrl}/#website` },
+          publisher: { "@id": `${siteUrl}/#organization` },
+          hasPart: [
+            { "@type": "DigitalDocument", name: "Heeros Oyj valuation report", url: "https://arvonmaaritys.fi/samples/heeros-oyj.pdf", inLanguage: "fi", encodingFormat: "application/pdf" },
+            { "@type": "DigitalDocument", name: "JYSK A/S English valuation example", url: `${siteUrl}/reports/jysk-as-english-example.pdf`, inLanguage: "en", encodingFormat: "application/pdf" },
+            { "@type": "DigitalDocument", name: "NVIDIA Corporation manual DCF example", url: `${siteUrl}/reports/nvidia-english-example.pdf`, inLanguage: "en", encodingFormat: "application/pdf" },
+          ],
+        }}
+      />
       <JsonLd
         data={{
           "@context": "https://schema.org",

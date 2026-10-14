@@ -25,3 +25,15 @@ for (const [name, flag, environment, expected] of [
     assert.equal(result.stdout.trim(), String(expected));
   });
 }
+
+test("canonical origin normalizes an environment URL with a trailing slash", () => {
+  const result = spawnSync(process.execPath, [
+    "--input-type=module", "-e",
+    "import { siteUrl, canonicalUrl } from './src/lib/site.ts'; console.log(JSON.stringify([siteUrl, canonicalUrl('/support')]));",
+  ], {
+    env: { ...process.env, NEXT_PUBLIC_SITE_URL: "https://company-valuation.com/" },
+    encoding: "utf8",
+  });
+  assert.equal(result.status, 0, result.stderr);
+  assert.deepEqual(JSON.parse(result.stdout), ["https://company-valuation.com", "https://company-valuation.com/support"]);
+});
