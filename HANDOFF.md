@@ -57,7 +57,7 @@ No production domain switch, payment integration, backend change or paid report 
 
 Vercel project ID: `prj_9YbkB69mf0EhnA0GUfVjAHHRIcpG`; team: `valuatum-dk`. Repository is private. Hobby does not support its automatic Git integration. The CLI can publish a source package using the existing authorized Vercel account; use the README instructions and explicit `--target preview`. Deployment authentication remains enabled. The old live domain was not attached or moved.
 
-Review URL: https://company-valuation-international-2odh0tm6d-valuatum-dk.vercel.app (Ready, explicit Preview target; deployment `dpl_9o7NV8KVjnqBBUMdx7o3yUEdVS4F`, source `fbaf3ba09bebef440587a4f8d73850f2be378962`). Vercel login is required by the existing preview protection.
+Review URL: https://company-valuation-international-fuid73o07-valuatum-dk.vercel.app (Ready, explicit Preview target; deployment `dpl_7StiaG89gUivvgVBLGxQ8PDXdfMX`, source `554e500aa6974ae77219d41ccfa16581e431b215`). Vercel login is required by the existing preview protection. GitHub CI passed for this manually polished PDF revision; the following URL update changes documentation only after deployment.
 
 GitHub CI passed on source commit `fbaf3ba09bebef440587a4f8d73850f2be378962`. Local typecheck, ESLint, 10 unit tests, build, 20-page/11-redirect audit, JYSK PDF response/popup checks, company request prefills, repeated-hash CTA interactions and lintapple at 375/768/1440px passed. Backend commit `f6f6d20e6a6abdc179b78db45d32d17947943219` passed 312 focused tests plus the separately isolated peer test; five Finnish HTML fixtures retain exact parity. Source ZIP, reviewed JYSK PDF, internal NVIDIA draft and desktop/mobile screenshots are saved in the task's outputs folder.
 
