@@ -43,3 +43,31 @@ Verification uses isolated local fixtures with external requests blocked. No rea
 Stripe payment, production report run, forecast import or customer email is part
 of automated verification. A separately approved production run is still required
 before launch. Keep production ordering disabled until that succeeds.
+
+## Production test stopping point, 14 October 2026
+
+The user approved one Novo Nordisk production test, then asked to wrap up before
+obtaining the missing credential. No paid report run was started.
+
+- Actual source reads through the native PowerShell client succeed. The first
+  forecast-import attempt reaches Java but returns
+  `403: No rights for permission Controller.Estimates`; no job or new model was
+  created. Do not grant writes to the directory's existing client credential.
+  A separate server-only Danish credential with that permission is required.
+- A read-only modeldata call from Railway's actual Python client is blocked by
+  AWS WAF `AWSManagedRulesBotControlRuleSet/SignalNonBrowserUserAgent`. The traced
+  request established this exact cause; no firewall rule was changed. A reviewed
+  exception for legitimate authenticated API traffic is required before launch.
+- Backend source `c30e1b0` is deployed successfully on Railway with both Danish
+  enablement/verification flags `0`. International CORS origins are configured.
+  The Finnish webhook country filter `c3f4c8a` is on main.
+- Public stable preview:
+  https://company-valuation-international-preview.vercel.app
+  points at reviewed source `3c5a0f6`. Frontend ordering stays disabled.
+
+Private source-test evidence is preserved outside Git in
+`work/report-prepared/novo-dk-source-operational-iwr-audit.json`. Temporary source
+diagnostic SSH access was removed. Continue with the dedicated credential and
+scoped firewall configuration, then source generation/import, the one approved
+English report test and financial/layout review. The wrap-up request means no
+production test should resume until the user resumes this work.

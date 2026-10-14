@@ -126,3 +126,23 @@ English-only #13), Finnish webhook isolation #6 (source `c3f4c8a`). All 28 isola
 browser checks passed after focused fixes. Production test approval was requested
 for one Novo Nordisk English report; do not interpret an unanswered request as
 permission to run it.
+
+The user subsequently approved ONE Novo Nordisk production test, then requested
+a wrap-up because the Danish writer credential was unavailable. No paid run
+started. Read-only production Python calls are blocked by WAF Bot Control's
+`SignalNonBrowserUserAgent` (trace matched in sampled requests). Native source
+reads work, but an actual baseline-copy import fails the source permission
+`Controller.Estimates`; no job/model was created. Do not enable Danish orders.
+Backend `c30e1b0` is now successfully deployed on Railway (configuration deployment
+`7b06a024-ca71-4838-831a-d2525a6cecdc`); both DK flags remain `0`. Finnish webhook
+filter `c3f4c8a` and international `8f90eed` are on main. CORS is configured for
+the stable preview and the reviewed unique deployment. Stable public preview:
+https://company-valuation-international-preview.vercel.app. See
+`docs/danish-orders.md` for exact stopping point and resume prerequisites.
+
+Credential incident: a metadata inspection accidentally exposed three Wisdom
+REST token fields in the task's tool transcript. No values were committed to Git.
+Affected fields: `REST_API_KEY` in `pdf-dataimport-Wisdom-prod`; `valuatumRestToken`
+and `valuatumRestWriteToken` in `pdf-report/customers/Wisdom`. The user was notified.
+These require controlled owner-managed rotation and consumer updates; no tokens
+were rotated in this session. Never copy their values into this handoff or Git.
