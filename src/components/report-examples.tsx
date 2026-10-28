@@ -1,50 +1,68 @@
-import Link from "next/link";
-import { serviceLinks } from "@/lib/site";
+import Image from "next/image";
 import { Arrow } from "./icon";
 
-const examples = [
+export const reportExamples = [
   {
-    name: "Harvia Oyj",
-    country: "Finland · Finnish PDF",
-    description: "A Finnish report for Harvia’s consolidated group, prepared with the current report pipeline. Includes financial history through 2025, model forecasts, valuation methods, scenarios and limitations.",
-    reportHref: serviceLinks.finlandSample,
-    requestHref: null,
+    name: "NVIDIA Corporation",
+    country: "United States · English",
+    href: "/reports/nvidia-english-example.pdf",
+    cover: "/reports/covers/nvidia-english-example.webp",
+    language: "en",
   },
   {
     name: "JYSK A/S",
-    country: "Denmark · English PDF · DKK",
-    description: "Report dated 14 October 2026 for the Danish legal entity JYSK A/S (CVR 13590400). The analysis uses stored model forecasts and assumptions; it is not a current market price.",
-    reportHref: "/reports/jysk-as-english-example.pdf",
-    requestHref: `${serviceLinks.reportRequest}?country=Denmark&company=JYSK%20A%2FS`,
+    country: "Denmark · English",
+    href: "/reports/jysk-as-english-example.pdf",
+    cover: "/reports/covers/jysk-as-english-example.webp",
+    language: "en",
   },
   {
-    name: "NVIDIA Corporation",
-    country: "United States · English PDF · USD",
-    description: "A full 26-page report on the same template as the Finnish examples: 16 sections and eight charts, including annual cash flows, EVA, scenarios and sensitivities. Uses NVIDIA’s FY2026 accounts and clearly identified manual forecast assumptions.",
-    reportHref: "/reports/nvidia-english-example.pdf",
-    requestHref: `${serviceLinks.reportRequest}?country=United%20States&company=NVIDIA%20Corporation`,
+    name: "Harvia Oyj",
+    country: "Finland · Finnish",
+    href: "https://arvonmaaritys.fi/samples/harvia-oyj.pdf",
+    cover: "/reports/covers/harvia-oyj.webp",
+    language: "fi",
+  },
+  {
+    name: "Gofore Oyj",
+    country: "Finland · Finnish",
+    href: "https://arvonmaaritys.fi/samples/gofore-oyj.pdf",
+    cover: "/reports/covers/gofore-oyj.webp",
+    language: "fi",
+  },
+  {
+    name: "Fiskars Oyj Abp",
+    country: "Finland · Finnish",
+    href: "https://arvonmaaritys.fi/samples/fiskars-oyj-abp.pdf",
+    cover: "/reports/covers/fiskars-oyj-abp.webp",
+    language: "fi",
   },
 ];
 
 export function ReportExamples() {
   return (
     <div className="company-examples">
-      {examples.map((example) => (
-        <article className="company-example" key={example.name}>
-          <div>
-            <p className="example-country">{example.country}</p>
-            <h3>{example.name}</h3>
-            <p>{example.description}</p>
-          </div>
-          <div className="company-example-actions">
-            {example.reportHref ? (
-              <a className="text-link" href={example.reportHref} target="_blank" rel="noopener noreferrer">View report<Arrow diagonal /></a>
-            ) : null}
-            {example.requestHref ? (
-              <Link className="text-link" href={example.requestHref}>Request report<Arrow /></Link>
-            ) : null}
-          </div>
-        </article>
+      {reportExamples.map((example) => (
+        <a
+          className="company-example"
+          key={example.name}
+          href={example.href}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <Image
+            src={example.cover}
+            alt=""
+            width={827}
+            height={1170}
+            sizes="(max-width: 600px) 45vw, 260px"
+          />
+          <span className="example-name">
+            {example.name}
+            <Arrow diagonal />
+          </span>
+          <span className="example-country">{example.country}</span>
+        </a>
       ))}
     </div>
   );

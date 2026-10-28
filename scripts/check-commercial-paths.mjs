@@ -43,21 +43,20 @@ try {
     assert.equal(await page.getByLabel("Company to value", { exact: true }).inputValue(), "");
 
     await page.goto(`${base}/sample-report`);
-    assert.equal(await page.locator(".company-example").filter({ hasText: "Harvia Oyj" }).getByRole("link").getAttribute("href"), "https://arvonmaaritys.fi/samples/harvia-oyj.pdf");
-    for (const [company, pdf] of [["JYSK A/S", jyskPdf], ["NVIDIA Corporation", nvidiaPdf]]) {
-      const reportLink = page.locator(".company-example").filter({ hasText: company }).getByRole("link", { name: "View report", exact: true });
+    for (const [company, pdf] of [["Harvia Oyj", "https://arvonmaaritys.fi/samples/harvia-oyj.pdf"], ["Gofore Oyj", "https://arvonmaaritys.fi/samples/gofore-oyj.pdf"], ["Fiskars Oyj Abp", "https://arvonmaaritys.fi/samples/fiskars-oyj-abp.pdf"], ["JYSK A/S", jyskPdf], ["NVIDIA Corporation", nvidiaPdf]]) {
+      const reportLink = page.locator(".company-example").filter({ hasText: company });
       assert.equal(await reportLink.getAttribute("href"), pdf);
       assert.equal(await reportLink.getAttribute("target"), "_blank");
       assert.match(await reportLink.getAttribute("rel"), /\bnoopener\b/);
+      if (!pdf.startsWith("/")) continue;
       const popupPromise = page.waitForEvent("popup");
       await reportLink.click();
       const popup = await popupPromise;
       await popup.waitForURL(`${base}${pdf}`);
-      assert.equal(popup.url(), `${base}${pdf}`);
       await popup.close();
     }
     for (const [company, country] of [["JYSK A/S", "Denmark"], ["NVIDIA Corporation", "United States"]]) {
-      await page.locator(".company-example").filter({ hasText: company }).getByRole("link", { name: "Request report", exact: true }).click();
+      await page.goto(`${base}/contact-international?country=${encodeURIComponent(country)}&company=${encodeURIComponent(company)}`);
       await page.getByLabel("Company to value", { exact: true }).waitFor();
       assert.equal(await page.getByLabel("Country", { exact: true }).inputValue(), country);
       assert.equal(await page.getByLabel("Company to value", { exact: true }).inputValue(), company);
@@ -70,7 +69,6 @@ try {
         return [data.get("country"), data.get("targetCompany"), data.get("identifier")];
       }), [country, company, "EXAMPLE-ID"]);
       // No form submission, messages or live report generation.
-      await page.goto(`${base}/sample-report`);
     }
     for (const route of ["/", "/sample-report", "/contact-international?country=Denmark&company=JYSK%20A%2FS", "/contact-international?country=United%20States&company=NVIDIA%20Corporation", "/solutions/finnish-company-valuation", "/contact-finland", "/solutions/danish-company-valuation"]) {
       await page.goto(`${base}${route}`);
@@ -85,7 +83,7 @@ try {
       }
     }
   }
-  console.log(`Passed: Finnish destinations on all ${urls.length} pages, JYSK/NVIDIA PDF responses and View report popups, request navigation and prefills, and lintapple at 375/768/1440px.`);
+  console.log(`Passed: Finnish destinations on all ${urls.length} pages, all five sample report links, JYSK/NVIDIA PDF popups, request prefills, and lintapple at 375/768/1440px.`);
 } finally {
   await browser.close();
 }
