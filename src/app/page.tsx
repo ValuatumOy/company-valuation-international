@@ -40,7 +40,22 @@ const solutions = [
     type: "denmark",
     meta: "By request",
   },
+  {
+    name: "Value an international company",
+    description:
+      "Request an English valuation report for a company outside Finland and Denmark. We confirm the available data, scope and price before starting.",
+    href: "/solutions/international-company-valuation",
+    action: "Explore international reports",
+    type: "international",
+    meta: "By request",
+  },
 ];
+
+const countryLabels: Record<string, string> = {
+  finland: "Finland",
+  denmark: "Denmark",
+  international: "International",
+};
 
 function SolutionArt({ type }: { type: string }) {
   if (type === "pdf")
@@ -78,7 +93,15 @@ function SolutionArt({ type }: { type: string }) {
     <div className={`solution-art ${type}-art`} aria-hidden="true">
       <div className="country-lines" />
       <div className="country-disc">
-        <div className={`flag flag-${type}`} />
+        {type === "international" ? (
+          <svg className="globe" viewBox="0 0 48 48">
+            <circle cx="24" cy="24" r="20" />
+            <ellipse cx="24" cy="24" rx="9" ry="20" />
+            <path d="M4 24h40M7 14h34M7 34h34" />
+          </svg>
+        ) : (
+          <div className={`flag flag-${type}`} />
+        )}
       </div>
       <div className="country-data">
         <span>Company data</span>
@@ -90,9 +113,7 @@ function SolutionArt({ type }: { type: string }) {
           <i />
         </div>
       </div>
-      <span className="country-label">
-        {type === "finland" ? "Finland" : "Denmark"}
-      </span>
+      <span className="country-label">{countryLabels[type]}</span>
     </div>
   );
 }
@@ -129,7 +150,7 @@ export default function Home() {
             <span className="tiny-check" aria-hidden="true">
               ✓
             </span>{" "}
-            PDF upload · Manual input · Finland & Denmark
+            PDF upload · Manual input · Finland, Denmark & international
           </div>
         </div>
         <ReportPreview />
@@ -207,12 +228,6 @@ export default function Home() {
             href="/solutions/manual-data-input-company-valuation"
           >
             Explore manual input <Arrow diagonal />
-          </Link>
-        </div>
-        <div className="coverage-note">
-          <span>Looking beyond Finland and Denmark?</span>
-          <Link href="/solutions/international-company-valuation">
-            Explore international options <Arrow />
           </Link>
         </div>
       </section>
