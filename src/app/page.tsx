@@ -1,6 +1,6 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Arrow, Mark } from "@/components/icon";
-import { ReportPreview } from "@/components/report-preview";
 import { Faq, homeFaqs } from "@/components/faq";
 import { JsonLd } from "@/components/json-ld";
 import { pageMetadata, serviceLinks } from "@/lib/site";
@@ -133,7 +133,11 @@ export default function Home() {
             </Link>
           </div>
         </div>
-        <ReportPreview />
+        <Link className="hero-reports" href="/sample-report">
+          <Image className="hero-report hero-report-left" src="/reports/covers/harvia-oyj.webp" alt="" width={827} height={1170} sizes="300px" />
+          <Image className="hero-report hero-report-right" src="/reports/covers/jysk-as-english-example.webp" alt="" width={827} height={1170} sizes="300px" />
+          <Image className="hero-report" src="/reports/covers/nvidia-english-example.webp" alt="Sample valuation reports" width={827} height={1170} sizes="(max-width: 600px) 75vw, 360px" preload />
+        </Link>
       </section>
       <section className="expertise-strip" aria-label="Valuatum expertise">
         <p>

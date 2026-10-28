@@ -52,31 +52,7 @@ try {
     assert.ok(await page.locator("#solutions").evaluate((el) => el.getBoundingClientRect().top < -1000));
     await closingAction.click();
     await page.waitForFunction(() => Math.abs(document.querySelector("#solutions").getBoundingClientRect().top - 100) < 10);
-    await page.getByRole("tab", { name: "Financials", exact: true }).click();
-    assert.match(
-      await page.getByRole("tabpanel").innerText(),
-      /EBITDA margin[\s\S]*15.0%/,
-    );
-    await page
-      .getByRole("tab", { name: "Financials", exact: true })
-      .press("ArrowRight");
-    assert.equal(
-      await page
-        .getByRole("tab", { name: "Methods", exact: true })
-        .getAttribute("aria-selected"),
-      "true",
-    );
-    assert.match(
-      await page.getByRole("tabpanel").innerText(),
-      /Equity value = EBITDA/,
-    );
-    await page.getByRole("tab", { name: "Methods", exact: true }).press("Home");
-    assert.equal(
-      await page
-        .getByRole("tab", { name: "Overview", exact: true })
-        .getAttribute("aria-selected"),
-      "true",
-    );
+    assert.equal(await page.locator(".hero-reports").getAttribute("href"), "/sample-report");
     await page
       .locator("details")
       .filter({ hasText: "Which countries are supported?" })
@@ -139,7 +115,7 @@ try {
     await page.close();
   }
   console.log(
-    `Passed: repeated valuation anchor navigation, report tabs and keyboard navigation, FAQ, mobile menu, contact validation and lintapple at ${policy.viewports.map((v) => v.width).join(", ")}px.`,
+    `Passed: repeated valuation anchor navigation, hero report link, FAQ, mobile menu, contact validation and lintapple at ${policy.viewports.map((v) => v.width).join(", ")}px.`,
   );
 } finally {
   await browser.close();
