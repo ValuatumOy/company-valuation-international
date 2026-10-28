@@ -32,9 +32,9 @@ const solutions = [
   {
     name: "Value a Danish company",
     description:
-      "Request an English valuation report for a Danish company. We confirm the source data, scope and price with you before starting.",
-    href: `${serviceLinks.reportRequest}?country=Denmark`,
-    action: "Request report",
+      "Search 400,000+ Danish companies at creditreports.dk, our Danish service. Every company has a free company view.",
+    href: serviceLinks.denmark,
+    action: "Visit creditreports.dk",
     type: "denmark",
   },
   {

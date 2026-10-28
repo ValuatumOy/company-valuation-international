@@ -9,7 +9,7 @@ export const homeFaqs = [
   },
   {
     q: "Which countries are supported?",
-    a: "Finnish reports can be ordered at arvonmaaritys.fi. For an English report on a Danish, US or other international company, request it from our team; we confirm data availability and scope before starting. PDF upload and manual input remain available through the existing tools.",
+    a: "Finnish reports can be ordered at arvonmaaritys.fi. Danish companies are available at creditreports.dk. For an English report on a US or other international company, request it from our team; we confirm data availability and scope before starting. PDF upload and manual input remain available through the existing tools.",
   },
   {
     q: "Which valuation methods do you use?",

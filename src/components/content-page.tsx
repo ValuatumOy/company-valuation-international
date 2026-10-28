@@ -28,8 +28,8 @@ const actions: Record<string, { label: string; href: string }> = {
     href: serviceLinks.finland,
   },
   "/solutions/danish-company-valuation": {
-    label: "Request report",
-    href: `${serviceLinks.reportRequest}?country=Denmark`,
+    label: "Visit creditreports.dk",
+    href: serviceLinks.denmark,
   },
   "/solutions/international-company-valuation": {
     label: "Request report",

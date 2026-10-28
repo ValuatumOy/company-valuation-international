@@ -171,7 +171,7 @@ export const contentPages: ContentPage[] = [
         bullets: [
           "Choose Manual Input if you already have key figures and want a fast estimate.",
           "Choose PDF Statement if you have statements in a PDF and want to reduce manual data entry.",
-          "For Finland, order a report through arvonmaaritys.fi. For Denmark and other countries, request a report and confirm scope and price with us before generation.",
+          "For Finland, order a report through arvonmaaritys.fi. For Denmark, use creditreports.dk. For other countries, request a report and confirm scope and price with us before generation.",
         ],
                 links: [
           {
@@ -272,7 +272,7 @@ export const contentPages: ContentPage[] = [
           "Manual data input: the basic Estimator has a free option; check current service terms",
           "PDF-based valuation: free and paid credit options; see the service for current allowances",
           "Finnish company valuation: search for a company and order a report through arvonmaaritys.fi; review the assumptions and report there. Current terms are shown by the service.",
-          "Denmark and other international markets: request a report by country and company; we will confirm data scope and price before generation.",
+          "Denmark: free company views at creditreports.dk. Other international markets: request a report by country and company; we will confirm data scope and price before generation.",
         ],
       },
       {
@@ -280,7 +280,7 @@ export const contentPages: ContentPage[] = [
         title:
           "How does Danish company valuation work if I don't have financial statements?",
         paragraphs: [
-          "For a Danish company, send us its name or CVR number. We will check the available company data and confirm the report scope and price.",
+          "Search the company by name or CVR number at creditreports.dk. Its financial statements are already in the service, so you don't need to enter any figures.",
         ],
         links: [
           {
@@ -306,7 +306,7 @@ export const contentPages: ContentPage[] = [
         id: "how-do-i-request-an-international-company-valuation",
         title: "How do I request an international company valuation?",
         paragraphs: [
-          "For Denmark and other international markets, request a report by country and company. We confirm scope and price before generation.",
+          "For Denmark, use creditreports.dk. For other international markets, request a report by country and company. We confirm scope and price before generation.",
         ],
         links: [
           {
@@ -1942,30 +1942,16 @@ export const contentPages: ContentPage[] = [
     path: "/solutions/danish-company-valuation",
     title: "Danish company valuation",
     description:
-      "Request a Danish company valuation report. Confirm its data scope and price before generation.",
+      "Value a Danish company at creditreports.dk, with financial data for 400,000+ Danish companies and a free company view for each.",
     eyebrow: "Solutions",
     intro:
-      "Request a report for a Danish company by sharing its name or CVR number. We will confirm the available data, report scope, and price before generating it.",
+      "Danish company valuations are available at creditreports.dk, our Danish service. Search by company name or CVR number. Every company has a free company view.",
     sections: [
       {
-        id: "overview",
-        title: "Request a Danish valuation report",
-        paragraphs: [
-          "Send the company name or CVR number through our international report request. We will confirm the data and price before work begins.",
-        ],
-        links: [
-          {
-            label: "Request a Danish company report",
-            href: "/contact-international?country=Denmark",
-          },
-        ],
-      },
-      {
         id: "valuatum-tools-in-creditreports-dk",
-        title: "Existing CreditReports.dk service",
+        title: "Search Danish companies at CreditReports.dk",
         paragraphs: [
-          "CreditReports.dk is a separate existing service with Danish company information and its own access terms. The details below describe that service, not the report request above.",
-          "Its website describes data from over 400,000 Danish companies.",
+          "CreditReports.dk covers over 400,000 Danish companies with data from the Danish Central Business Register.",
           'For an example, open GN STORE NORD A/S below, click "Full version", then choose the Valuation page.',
           "You can search for any Danish company in Creditreports.dk's business directory using the search bar on the front page.",
         ],
@@ -1988,8 +1974,8 @@ export const contentPages: ContentPage[] = [
         id: "features",
         title: "Features",
         bullets: [
-          "Access data for 400,000+ Danish companies",
-          "Company and financial information; access depends on CreditReports.dk's terms",
+          "Data for 400,000+ Danish companies",
+          "Free company view with key financials and credit risk summary",
           "No financial data input required",
         ],
         paragraphs: [
@@ -2012,7 +1998,7 @@ export const contentPages: ContentPage[] = [
         bullets: [
           "Already have financial figures? Try manual input",
           "Support FAQ",
-          "Need coverage outside Denmark and Finland?",
+          "Need an English report? Request one",
         ],
         links: [
           {
@@ -2024,8 +2010,8 @@ export const contentPages: ContentPage[] = [
             href: "/support/faq",
           },
           {
-            label: "Need coverage outside Denmark and Finland?",
-            href: "/contact-international",
+            label: "Need an English report? Request one",
+            href: "/contact-international?country=Denmark",
           },
         ],
       },
@@ -2033,7 +2019,7 @@ export const contentPages: ContentPage[] = [
         id: "access-and-pricing",
         title: "Access and pricing",
         paragraphs: [
-          "For the separate CreditReports.dk service, consult its website for current features, access terms, and pricing.",
+          "Company views are free. Paid reports and their prices are listed on the CreditReports.dk website.",
         ],
         links: [
           {

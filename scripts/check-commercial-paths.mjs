@@ -37,10 +37,7 @@ try {
     const finland = page.locator(".solution-card").filter({ hasText: "Value a Finnish company" });
     assert.equal(await finland.getByRole("link").getAttribute("href"), "https://arvonmaaritys.fi/");
     const danish = page.locator(".solution-card").filter({ hasText: "Value a Danish company" });
-    await danish.getByRole("link", { name: "Request report", exact: true }).click();
-    await page.waitForURL(`${base}/contact-international?country=Denmark`);
-    assert.equal(await page.getByLabel("Country", { exact: true }).inputValue(), "Denmark");
-    assert.equal(await page.getByLabel("Company to value", { exact: true }).inputValue(), "");
+    assert.equal(await danish.getByRole("link").getAttribute("href"), "https://creditreports.dk/en/");
 
     await page.goto(`${base}/sample-report`);
     for (const [company, pdf] of [["Harvia Oyj", "https://arvonmaaritys.fi/samples/harvia-oyj.pdf"], ["Gofore Oyj", "https://arvonmaaritys.fi/samples/gofore-oyj.pdf"], ["Fiskars Oyj Abp", "https://arvonmaaritys.fi/samples/fiskars-oyj-abp.pdf"], ["JYSK A/S", jyskPdf], ["NVIDIA Corporation", nvidiaPdf]]) {
