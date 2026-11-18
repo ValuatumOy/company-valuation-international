@@ -228,8 +228,9 @@ The PDF service read a scanned Brønnøysund annual accounts PDF for 2TAL AS
 Branch `feat/norway-brreg-pdf` adds a Norwegian organisation number field under
 the PDF drop: it fetches the latest accounts copy from the open register
 (`data.brreg.no`, CORS for any origin) and sends it through the same upload.
-Preview: https://company-valuation-international-1lwgwkgx5-valuatum-dk.vercel.app
-(verified against the real register; the upload Lambda was blocked in that test).
+Preview: https://company-valuation-international-preview.vercel.app (alias of
+deployment 1lwgwkgx5; only this stable host is in the S3 upload CORS origins).
+Verified against the real register; the upload Lambda was blocked in that test.
 Not on production yet. The backend branch `feat/pdf-source-norway` in the
 pipeline repository adds a read-only PDF source and NO/SE/DE locales; the first
 Norwegian AI report waits for a PDF-service REST read key and goes through the
