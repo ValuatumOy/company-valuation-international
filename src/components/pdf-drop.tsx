@@ -1,9 +1,11 @@
 "use client";
 
-import { useState, type DragEvent } from "react";
+import { useState, type DragEvent, type FormEvent } from "react";
 import { serviceLinks } from "@/lib/site";
 
 const maxBytes = 20 * 1024 * 1024;
+// Brønnøysund annual accounts copies: open data, served with CORS for any origin.
+const brreg = "https://data.brreg.no/regnskapsregisteret/regnskap/aarsregnskap/kopi";
 
 function putFile(url: string, file: File, onProgress: (share: number) => void) {
   return new Promise<void>((resolve, reject) => {
@@ -21,6 +23,7 @@ export function PdfDrop() {
   const [dragging, setDragging] = useState(false);
   const [progress, setProgress] = useState<number | null>(null);
   const [error, setError] = useState("");
+  const [fetching, setFetching] = useState(false);
 
   async function upload(file?: File) {
     if (!file || progress !== null) return;
@@ -51,6 +54,28 @@ export function PdfDrop() {
     }
   }
 
+  async function fetchNorwegian(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (fetching || progress !== null) return;
+    const orgnr = String(new FormData(event.currentTarget).get("orgnr") || "").replace(/\s/g, "");
+    if (!/^\d{9}$/.test(orgnr)) return setError("Enter the nine-digit organisation number.");
+    setError("");
+    setFetching(true);
+    try {
+      const yearsResponse = await fetch(`${brreg}/${orgnr}/aar`);
+      const years: string[] = yearsResponse.ok ? await yearsResponse.json() : [];
+      const year = years.map(Number).filter(Number.isInteger).sort((a, b) => b - a)[0];
+      if (!year) return setError("No published accounts found for this organisation number.");
+      const pdf = await fetch(`${brreg}/${orgnr}/${year}`);
+      if (!pdf.ok) throw new Error();
+      await upload(new File([await pdf.blob()], `${orgnr}-${year}.pdf`, { type: "application/pdf" }));
+    } catch {
+      setError("The Norwegian register did not respond. Try again.");
+    } finally {
+      setFetching(false);
+    }
+  }
+
   function drop(event: DragEvent<HTMLLabelElement>) {
     event.preventDefault();
     setDragging(false);
@@ -58,6 +83,7 @@ export function PdfDrop() {
   }
 
   return (
+    <>
     <label
       className={`pdf-drop${dragging ? " dragging" : ""}`}
       onDragOver={(event) => {
@@ -89,5 +115,15 @@ export function PdfDrop() {
       )}
       {error && <span className="pdf-drop-error" role="alert">{error}</span>}
     </label>
+    <form className="order-search brreg-fetch" onSubmit={fetchNorwegian}>
+      <label className="form-field">
+        Norwegian company? Enter its organisation number
+        <input name="orgnr" inputMode="numeric" autoComplete="off" maxLength={11} disabled={fetching || progress !== null} />
+      </label>
+      <button className="button button-outline" type="submit" disabled={fetching || progress !== null}>
+        {fetching ? "Getting accounts…" : "Get latest accounts"}
+      </button>
+    </form>
+    </>
   );
 }

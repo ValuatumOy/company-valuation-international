@@ -116,6 +116,7 @@ try {
   }
   const pdfPage = await browser.newPage();
   const putBodies = [];
+  const brregPaths = [];
   await pdfPage.route("**/*", (route) => {
     const url = new URL(route.request().url());
     if (url.origin === new URL(base).origin) return route.continue();
@@ -126,6 +127,13 @@ try {
       return route.fulfill({ status: 200, headers: { "Access-Control-Allow-Origin": "*" } });
     }
     if (url.hostname === "pdfanalysis.valuatum.com") return route.fulfill({ body: "registration" });
+    if (url.hostname === "data.brreg.no") {
+      brregPaths.push(url.pathname);
+      const cors = { "Access-Control-Allow-Origin": "*" };
+      if (url.pathname.endsWith("/000000000/aar")) return route.fulfill({ status: 404, headers: cors });
+      if (url.pathname.endsWith("/aar")) return route.fulfill({ json: ["2024", "2025"], headers: cors });
+      return route.fulfill({ body: "%PDF-1.4", headers: { ...cors, "Content-Type": "application/pdf" } });
+    }
     return route.abort();
   });
   await pdfPage.goto(`${base}/solutions/pdf-based-company-valuation`, { waitUntil: "networkidle" });
@@ -139,9 +147,23 @@ try {
   await pdfPage.dispatchEvent(".pdf-drop", "drop", { dataTransfer: dropped });
   await pdfPage.waitForURL(/pdfanalysis\.valuatum\.com.*uploadSession=check-session/);
   assert.deepEqual(putBodies, ["PUT"]);
+  await pdfPage.goto(`${base}/solutions/pdf-based-company-valuation`, { waitUntil: "networkidle" });
+  const orgnr = pdfPage.getByLabel("Norwegian company? Enter its organisation number", { exact: true });
+  const getAccounts = pdfPage.getByRole("button", { name: "Get latest accounts", exact: true });
+  await orgnr.fill("12345");
+  await getAccounts.click();
+  assert.equal(await pdfPage.locator(".pdf-drop-error").innerText(), "Enter the nine-digit organisation number.");
+  await orgnr.fill("000000000");
+  await getAccounts.click();
+  await pdfPage.locator(".pdf-drop-error", { hasText: "No published accounts" }).waitFor();
+  await orgnr.fill("955 497 643");
+  await getAccounts.click();
+  await pdfPage.waitForURL(/pdfanalysis\.valuatum\.com.*uploadSession=check-session/);
+  assert.ok(brregPaths.some((p) => p.endsWith("/955497643/2025")), `latest year fetched: ${brregPaths}`);
+  assert.deepEqual(putBodies, ["PUT", "PUT"]);
   await pdfPage.close();
   console.log(
-    `Passed: PDF drop validation, drag-and-drop upload and registration hand-off; repeated valuation anchor navigation, hero report link, FAQ, mobile menu, contact validation and lintapple at ${policy.viewports.map((v) => v.width).join(", ")}px.`,
+    `Passed: PDF drop validation, drag-and-drop upload, Norwegian register fetch and registration hand-off; repeated valuation anchor navigation, hero report link, FAQ, mobile menu, contact validation and lintapple at ${policy.viewports.map((v) => v.width).join(", ")}px.`,
   );
 } finally {
   await browser.close();

@@ -1166,6 +1166,10 @@ h2 {
 .pdf-drop .pdf-drop-error {
   color: #a13d3d;
 }
+.brreg-fetch {
+  max-width: 720px;
+  margin: 18px 0 0;
+}
 .page-hero .company-examples {
   margin: 56px 0 48px;
 }
