@@ -167,8 +167,14 @@ were rotated in this session. Never copy their values into this handoff or Git.
   within one business day, invoice payment, PDF by email 2–3 business days after
   acceptance. User-confirmed values.
 - Decisions: Denmark's €79 automatic order replaces the creditreports.dk card once
-  enabled; Sweden uses Valuatum's SE environment (`sweden.valuatum.com`, same REST
-  API as DK, needs its own token); domain cutover happens after DK, SE and PDF work.
+  enabled; for Sweden the candidate source is `sweden.valuatum.com` (unverified: its
+  `/rest/company` returns 401 like every other Valuatum host, which proves nothing
+  about Swedish forecast coverage; needs its own token and owner confirmation).
+  Don't clone the DK flow for SE until DK has completed a production run. Domain
+  cutover happens after DK, SE and PDF work.
+- The PDF drop hands off to the existing PDF tool's own report, not the
+  26-page template shown on `/sample-report`. Registration page 404s
+  (`/style/741/*.css`) are identical with and without `uploadSession`.
 - Still blocked: DK write credential (`Controller.Estimates`) and WAF exception;
   SE API token; Railway CLI token (run `npx @railway/cli login`); Stripe keys must
   be entered in Vercel by the user; Vercel Hobby plan vs. commercial use.

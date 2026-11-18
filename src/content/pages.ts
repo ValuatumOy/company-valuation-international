@@ -689,7 +689,7 @@ export const contentPages: ContentPage[] = [
           },
           {
             label: "Upload a financial statement PDF",
-            href: "https://valuation.valuatum.com/",
+            href: "/solutions/pdf-based-company-valuation",
           },
         ],
         bullets: [
@@ -1784,12 +1784,6 @@ export const contentPages: ContentPage[] = [
           "Industry comparisons and peer benchmarking",
           "Credit-based access with free and paid options; check the service for current allowances and prices",
         ],
-        links: [
-          {
-            label: "Open PDF valuation",
-            href: "https://valuation.valuatum.com/",
-          },
-        ],
       },
       {
         id: "ai-powered-company-valuation-for-businesses-of-all-sizes",
@@ -1917,10 +1911,6 @@ export const contentPages: ContentPage[] = [
         id: "service-access",
         title: "Open PDF valuation",
         links: [
-          {
-            label: "Upload a financial statement PDF",
-            href: "https://valuation.valuatum.com/",
-          },
           {
             label: "Existing PDF analysis login",
             href: "https://pdfanalysis.valuatum.com/Login.action",
@@ -2185,7 +2175,7 @@ export const contentPages: ContentPage[] = [
         id: "have-the-financial-statements",
         title: "Have the financial statements?",
         paragraphs: [
-          "Drop the PDF at the top of this page and get a report straight away, without a request. The first report is free.",
+          "Drop the PDF at the top of this page instead. You create an account and get the PDF valuation tool's report straight away, without a request. The first report is free.",
         ],
       },
     ],

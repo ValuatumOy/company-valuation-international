@@ -23,7 +23,7 @@ export function PdfDrop() {
   const [error, setError] = useState("");
 
   async function upload(file?: File) {
-    if (!file) return;
+    if (!file || progress !== null) return;
     setError("");
     if (file.type !== "application/pdf" || !file.name.toLowerCase().endsWith(".pdf"))
       return setError("Choose a PDF file.");
@@ -71,7 +71,10 @@ export function PdfDrop() {
         type="file"
         accept=".pdf,application/pdf"
         disabled={progress !== null}
-        onChange={(event) => upload(event.target.files?.[0])}
+        onChange={(event) => {
+          upload(event.target.files?.[0]);
+          event.target.value = "";
+        }}
       />
       {progress === null ? (
         <>

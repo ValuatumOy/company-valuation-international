@@ -286,9 +286,9 @@ export default function Home() {
             </p>
           </article>
         </div>
-        <a className="text-link" href={serviceLinks.pdf} target="_blank" rel="noopener noreferrer">
-          Open the PDF valuation service <Arrow diagonal />
-        </a>
+        <Link className="text-link" href="/solutions/pdf-based-company-valuation">
+          Upload a financial statement <Arrow />
+        </Link>
       </section>
       <section className="section examples-section" id="company-examples">
         <div className="section-heading">

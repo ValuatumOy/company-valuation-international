@@ -131,12 +131,17 @@ try {
   await pdfPage.goto(`${base}/solutions/pdf-based-company-valuation`, { waitUntil: "networkidle" });
   await pdfPage.locator(".pdf-drop input").setInputFiles({ name: "notes.txt", mimeType: "text/plain", buffer: Buffer.from("x") });
   assert.equal(await pdfPage.locator(".pdf-drop-error").innerText(), "Choose a PDF file.");
-  await pdfPage.locator(".pdf-drop input").setInputFiles({ name: "statement.pdf", mimeType: "application/pdf", buffer: Buffer.from("%PDF-1.4") });
+  const dropped = await pdfPage.evaluateHandle(() => {
+    const data = new DataTransfer();
+    data.items.add(new File(["%PDF-1.4"], "statement.pdf", { type: "application/pdf" }));
+    return data;
+  });
+  await pdfPage.dispatchEvent(".pdf-drop", "drop", { dataTransfer: dropped });
   await pdfPage.waitForURL(/pdfanalysis\.valuatum\.com.*uploadSession=check-session/);
   assert.deepEqual(putBodies, ["PUT"]);
   await pdfPage.close();
   console.log(
-    `Passed: PDF drop validation, upload and registration hand-off; repeated valuation anchor navigation, hero report link, FAQ, mobile menu, contact validation and lintapple at ${policy.viewports.map((v) => v.width).join(", ")}px.`,
+    `Passed: PDF drop validation, drag-and-drop upload and registration hand-off; repeated valuation anchor navigation, hero report link, FAQ, mobile menu, contact validation and lintapple at ${policy.viewports.map((v) => v.width).join(", ")}px.`,
   );
 } finally {
   await browser.close();
