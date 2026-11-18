@@ -2162,6 +2162,10 @@ export const contentPages: ContentPage[] = [
             label: "Request a report for Amazon.com, Inc.",
             href: "/contact-international?country=United%20States&company=Amazon.com%2C%20Inc.",
           },
+          {
+            label: "Request a report for a Norwegian company",
+            href: "/contact-international?country=Norway",
+          },
         ],
       },
       {
@@ -2175,7 +2179,7 @@ export const contentPages: ContentPage[] = [
         id: "have-the-financial-statements",
         title: "Have the financial statements?",
         paragraphs: [
-          "Drop the PDF at the top of this page instead. You create an account and get the PDF valuation tool's report straight away, without a request. The first report is free.",
+          "Drop the PDF at the top of this page instead, or enter a Norwegian organisation number to fetch the latest accounts from the Brønnøysund register. You create an account and get the PDF valuation tool's report straight away, without a request. The first report is free.",
         ],
       },
     ],

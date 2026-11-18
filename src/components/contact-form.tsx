@@ -9,6 +9,7 @@ export function ContactForm() {
   const searchParams = useSearchParams();
   const country = (searchParams.get("country") || "").slice(0, 100);
   const targetCompany = (searchParams.get("company") || "").slice(0, 200);
+  const identifier = (searchParams.get("identifier") || "").slice(0, 100);
   function prepareEmail(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = new FormData(event.currentTarget);
@@ -61,7 +62,7 @@ export function ContactForm() {
         </label>
         <label className="form-field">
           Company identifier (optional)
-          <input name="identifier" placeholder="CVR number, ticker or registration number" maxLength={100} />
+          <input name="identifier" defaultValue={identifier} placeholder="CVR number, ticker or registration number" maxLength={100} />
         </label>
         <label className="form-field full">
           Message (optional)

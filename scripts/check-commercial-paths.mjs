@@ -67,6 +67,10 @@ try {
       }), [country, company, "EXAMPLE-ID"]);
       // No form submission, messages or live report generation.
     }
+    await page.goto(`${base}/contact-international?country=Norway&identifier=955497643`);
+    await page.getByLabel("Company to value", { exact: true }).waitFor();
+    assert.equal(await page.getByLabel("Country", { exact: true }).inputValue(), "Norway");
+    assert.equal(await page.getByLabel("Company identifier (optional)", { exact: true }).inputValue(), "955497643");
     for (const route of ["/", "/sample-report", "/contact-international?country=Denmark&company=JYSK%20A%2FS", "/contact-international?country=United%20States&company=NVIDIA%20Corporation", "/solutions/finnish-company-valuation", "/contact-finland", "/solutions/danish-company-valuation"]) {
       await page.goto(`${base}${route}`);
       await page.evaluate(() => document.fonts.ready);
