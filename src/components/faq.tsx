@@ -21,7 +21,7 @@ export const homeFaqs = [
   },
   {
     q: "What does a valuation cost?",
-    a: "See arvonmaaritys.fi for Finnish report pricing. For an English international report, we confirm the scope and quote the price before starting. The separate PDF and manual tools have their own access terms.",
+    a: "See arvonmaaritys.fi for Finnish report pricing. For an international report, we send a quote within one business day and you pay by invoice. The first report from a PDF financial statement is free.",
   },
   {
     q: "What information do I need?",

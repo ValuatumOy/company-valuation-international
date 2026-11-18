@@ -680,7 +680,7 @@ export const contentPages: ContentPage[] = [
         id: "request-a-report",
         title: "Request a company report",
         paragraphs: [
-          "Send your name, email address, country, target company, and optional business ID. We will confirm the available data, report scope, and price before generation.",
+          "Send your name, email address, country, target company, and optional business ID. Within one business day, we confirm the available data and send a quote. The PDF report arrives 2–3 business days after you accept.",
         ],
         links: [
           {
@@ -2149,35 +2149,19 @@ export const contentPages: ContentPage[] = [
     path: "/solutions/international-company-valuation",
     title: "International company valuation",
     description:
-      "Request a valuation report for an international company. Confirm data scope and price before generation.",
+      "Request a valuation report for a company in any country. Quote within one business day, PDF report 2–3 business days after you accept.",
     eyebrow: "International coverage",
     intro:
-      "Request a report for an international company by sharing its country and name. We will confirm available data, report scope, and price before generating it.",
+      "Request a valuation report for a company in any country. We check the available data and send a quote within one business day. The PDF report follows 2–3 business days after you accept.",
     sections: [
       {
-        id: "overview",
-        title: "Overview",
-        links: [
-          {
-            label: "Request an international valuation report",
-            href: "/contact-international",
-          },
-        ],
-      },
-      {
-        id: "what-to-expect",
-        title: "Report request",
+        id: "how-it-works",
+        title: "How a report request works",
         bullets: [
-          "Share the country and target company",
-          "Include a business ID if available",
-          "Confirm data scope and price with us before generation",
-        ],
-      },
-      {
-        id: "stay-informed",
-        title: "Request a report",
-        paragraphs: [
-          "Request a report for a specific company. We will confirm the available information and price before generating it.",
+          "Send the company name, country and business ID if you have it.",
+          "Within one business day, we tell you what data is available and send a quote.",
+          "Accept the quote, and we send an invoice.",
+          "The PDF report arrives by email 2–3 business days after you accept.",
         ],
         links: [
           {
@@ -2191,57 +2175,17 @@ export const contentPages: ContentPage[] = [
         ],
       },
       {
-        id: "related-pages",
-        title: "Related pages",
-        bullets: [
-          "Valuation methods we use",
-          "What is company valuation?",
-          "PDF statement valuation",
-          "Manual data input valuation",
-          "FAQ",
-        ],
-        links: [
-          {
-            label: "Valuation methods we use",
-            href: "/resources/company-valuation/methods",
-          },
-          {
-            label: "What is company valuation?",
-            href: "/resources/company-valuation/what-is-company-valuation",
-          },
-          {
-            label: "PDF statement valuation",
-            href: "/solutions/pdf-based-company-valuation",
-          },
-          {
-            label: "Manual data input valuation",
-            href: "/solutions/manual-data-input-company-valuation",
-          },
-          {
-            label: "FAQ",
-            href: "/support/faq",
-          },
+        id: "price-and-payment",
+        title: "Price and payment",
+        paragraphs: [
+          "The price depends on the data available for the company and the scope of the report, so we quote each request. You see the price before any work starts, and you pay by invoice.",
         ],
       },
       {
-        id: "availability-and-pricing",
-        title: "Report scope and price",
+        id: "have-the-financial-statements",
+        title: "Have the financial statements?",
         paragraphs: [
-          "We confirm available company information, report scope, and price with you before generating a new international report.",
-        ],
-        links: [
-          {
-            label: "Upload a financial statement PDF",
-            href: "https://valuation.valuatum.com/",
-          },
-          {
-            label: "Enter financial figures manually",
-            href: "https://estimator.valuatum.com/AspAndUserCreation.action?templateAspQueryKey=PPVTemplate&userType=&popup=true",
-          },
-          {
-            label: "Request a company report",
-            href: "/contact-international",
-          },
+          "Drop the PDF at the top of this page and get a report straight away, without a request. The first report is free.",
         ],
       },
     ],

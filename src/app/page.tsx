@@ -40,7 +40,7 @@ const solutions = [
   {
     name: "Value an international company",
     description:
-      "Request an English valuation report for a company outside Finland and Denmark. We confirm the available data, scope and price before starting.",
+      "Request a report for a company outside Finland and Denmark. You get a quote within one business day and the PDF report 2–3 business days after you accept.",
     href: "/solutions/international-company-valuation",
     action: "Explore international reports",
     type: "international",
