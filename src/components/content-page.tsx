@@ -9,12 +9,9 @@ import { canonicalUrl, siteUrl, serviceLinks } from "@/lib/site";
 import { contentBreadcrumbs, contentSchemaType, isValuationArticle } from "@/lib/content-seo";
 import imageSizes from "@/content/image-sizes.json";
 import { ValuationDiagram } from "./valuation-diagram";
+import { PdfDrop } from "./pdf-drop";
 
 const actions: Record<string, { label: string; href: string }> = {
-  "/solutions/pdf-based-company-valuation": {
-    label: "Upload a financial statement",
-    href: serviceLinks.pdf,
-  },
   "/solutions/manual-data-input-company-valuation": {
     label: "Register for manual valuation",
     href: serviceLinks.manualRegistration,
@@ -43,6 +40,7 @@ export function ContentPageView({ page }: { page: ContentPage }) {
     ?.map((path) => contentPages.find((item) => item.path === path))
     .filter((item): item is ContentPage => !!item);
   const isContact = page.path === "/contact-international";
+  const hasPdfDrop = page.path === "/solutions/pdf-based-company-valuation" || page.path === "/solutions/international-company-valuation";
   const isFinland = page.path === "/solutions/finnish-company-valuation" || page.path === "/contact-finland";
   const sizes = imageSizes as Record<string, { width: number; height: number }>;
   const breadcrumbs = contentBreadcrumbs(page, contentPages);
@@ -89,6 +87,7 @@ export function ContentPageView({ page }: { page: ContentPage }) {
             )}
           </div>
         )}
+        {hasPdfDrop && <PdfDrop />}
       </div>
       <div className="content-shell">
         <aside className="page-toc">

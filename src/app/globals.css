@@ -1128,6 +1128,44 @@ h2 {
 .page-hero .actions {
   margin-top: 28px;
 }
+.pdf-drop {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  max-width: 720px;
+  margin-top: 32px;
+  padding: 44px 24px;
+  border: 1.5px dashed #9fbfb5;
+  border-radius: var(--radius);
+  background: var(--surface);
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+.pdf-drop:hover,
+.pdf-drop.dragging,
+.pdf-drop:focus-within {
+  border-color: var(--accent);
+  background: var(--soft);
+}
+.pdf-drop input {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+.pdf-drop strong {
+  font-size: 18px;
+  font-weight: 600;
+}
+.pdf-drop span {
+  font-size: 14px;
+  color: var(--muted);
+}
+.pdf-drop .pdf-drop-error {
+  color: #a13d3d;
+}
 .page-hero .company-examples {
   margin: 56px 0 48px;
 }

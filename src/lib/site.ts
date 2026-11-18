@@ -7,6 +7,9 @@ export const indexable =
   process.env.SITE_INDEXABLE === "true" && process.env.VERCEL_ENV !== "preview";
 export const serviceLinks = {
   pdf: "https://valuation.valuatum.com/",
+  pdfUpload: "https://dmtgt5nmtdrhv7bxgxmfw7vasy0pbvtr.lambda-url.eu-west-1.on.aws/",
+  pdfRegistration:
+    "https://pdfanalysis.valuatum.com/AspAndUserCreation.action?templateAspQueryKey=PDFAnalysis&popup=true",
   manual: "https://estimator.valuatum.com/",
   manualRegistration:
     "https://estimator.valuatum.com/AspAndUserCreation.action?templateAspQueryKey=PPVTemplate&userType=&popup=true",

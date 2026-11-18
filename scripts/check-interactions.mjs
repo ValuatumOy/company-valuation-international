@@ -114,8 +114,29 @@ try {
     );
     await page.close();
   }
+  const pdfPage = await browser.newPage();
+  const putBodies = [];
+  await pdfPage.route("**/*", (route) => {
+    const url = new URL(route.request().url());
+    if (url.origin === new URL(base).origin) return route.continue();
+    if (url.hostname.endsWith(".lambda-url.eu-west-1.on.aws"))
+      return route.fulfill({ json: { sessionId: "check-session", uploadUrl: "https://upload.example/file.pdf", s3Key: "k" } });
+    if (url.hostname === "upload.example") {
+      putBodies.push(route.request().method());
+      return route.fulfill({ status: 200, headers: { "Access-Control-Allow-Origin": "*" } });
+    }
+    if (url.hostname === "pdfanalysis.valuatum.com") return route.fulfill({ body: "registration" });
+    return route.abort();
+  });
+  await pdfPage.goto(`${base}/solutions/pdf-based-company-valuation`, { waitUntil: "networkidle" });
+  await pdfPage.locator(".pdf-drop input").setInputFiles({ name: "notes.txt", mimeType: "text/plain", buffer: Buffer.from("x") });
+  assert.equal(await pdfPage.locator(".pdf-drop-error").innerText(), "Choose a PDF file.");
+  await pdfPage.locator(".pdf-drop input").setInputFiles({ name: "statement.pdf", mimeType: "application/pdf", buffer: Buffer.from("%PDF-1.4") });
+  await pdfPage.waitForURL(/pdfanalysis\.valuatum\.com.*uploadSession=check-session/);
+  assert.deepEqual(putBodies, ["PUT"]);
+  await pdfPage.close();
   console.log(
-    `Passed: repeated valuation anchor navigation, hero report link, FAQ, mobile menu, contact validation and lintapple at ${policy.viewports.map((v) => v.width).join(", ")}px.`,
+    `Passed: PDF drop validation, upload and registration hand-off; repeated valuation anchor navigation, hero report link, FAQ, mobile menu, contact validation and lintapple at ${policy.viewports.map((v) => v.width).join(", ")}px.`,
   );
 } finally {
   await browser.close();
