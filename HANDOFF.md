@@ -178,3 +178,21 @@ were rotated in this session. Never copy their values into this handoff or Git.
 - Still blocked: DK write credential (`Controller.Estimates`) and WAF exception;
   SE API token; Railway CLI token (run `npx @railway/cli login`); Stripe keys must
   be entered in Vercel by the user; Vercel Hobby plan vs. commercial use.
+
+## 2026-11-18 — Denmark and Sweden source findings (read-only)
+
+- Sweden (wiki `SwedenAWSEnvironment`, owner Sami): `sweden.valuatum.com` is a hosted
+  Valuatum platform fed by Bolagsverket iXBRL annual reports. Read-only `ai` DB user
+  (IAM auth, see wiki `DevelopmentWithAI`) shows 180,199 companies and followed
+  models with financial history, but every MODELVERSION has `ESTIMATEYEARS = 0`, no
+  fair values, and ESTIMATEGENERATIONJOB is empty: forecasts have never been
+  generated there. 1,440 estimate generation rules exist. Sweden sits behind
+  `profinder-lb`, which has no WAF, so only the credential blocks it.
+- Denmark: Railway still has only `VALUATUM_DK_TOKEN` (no separate write credential);
+  DK flags remain 0. `platform.creditreports.dk` is behind `upcloud-prod-lb` /
+  `upcloudprod-web-acl`; its Bot Control group is scoped to Host containing
+  `platform` with no rule overrides, so `SignalNonBrowserUserAgent` still blocks
+  the backend's Python client unless the call comes from Ireland (`allow-ireland`,
+  priority 1). Railway SSH stays removed; no WAF or credential change was made.
+- Both countries need the same thing from the platform owner: a server-only REST
+  credential with `Controller.Estimates` for the international backend.
