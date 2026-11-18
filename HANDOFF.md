@@ -196,3 +196,10 @@ were rotated in this session. Never copy their values into this handoff or Git.
   priority 1). Railway SSH stays removed; no WAF or credential change was made.
 - Both countries need the same thing from the platform owner: a server-only REST
   credential with `Controller.Estimates` for the international backend.
+- WAF change, 2026-11-18 (user-approved): in `upcloudprod-web-acl`, the Bot Control
+  scope-down is now `Host contains "platform"` AND NOT (`UriPath starts with "/rest/"`
+  AND `Authorization starts with "Bearer "`). Verified from a non-Irish IP with a
+  Python user agent: `/rest/` without auth 403, `/rest/` with a Bearer header 401
+  (reaches the app), site pages 403 for bots even with a Bearer header, 200 for a
+  browser. All other rules unchanged. Pre-change ACL backup:
+  `work/waf-backup/upcloudprod-web-acl-2026-11-18.json`.
