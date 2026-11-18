@@ -231,8 +231,11 @@ the PDF drop: it fetches the latest accounts copy from the open register
 Preview: https://company-valuation-international-preview.vercel.app (alias of
 deployment 1lwgwkgx5; only this stable host is in the S3 upload CORS origins).
 Verified against the real register; the upload Lambda was blocked in that test.
-Not on production yet. The backend branch `feat/pdf-source-norway` in the
-pipeline repository adds a read-only PDF source and NO/SE/DE locales; the first
+In production since 2026-11-18 (main 8c6faed); a real organisation number went
+from the production origin through the register, Lambda and S3 PUT to the
+registration page. Norwegian AI reports are requested through
+`/contact-international?country=Norway` and fulfilled manually (see the
+pipeline's PDF_SOURCE.md). The pipeline's main (63490cd, on Railway) adds a read-only PDF source and NO/SE/DE locales; the first
 Norwegian AI report waits for a PDF-service REST read key and goes through the
 admin path. Open PDF-service bugs: the upload is lost when an existing user logs
 in from the registration page, "CVR number" label on Norwegian reports, "does not
