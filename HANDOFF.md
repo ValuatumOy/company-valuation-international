@@ -203,3 +203,20 @@ were rotated in this session. Never copy their values into this handoff or Git.
   (reaches the app), site pages 403 for bots even with a Bearer header, 200 for a
   browser. All other rules unchanged. Pre-change ACL backup:
   `work/waf-backup/upcloudprod-web-acl-2026-11-18.json`.
+
+## 2026-11-18 — Sweden source probe
+
+- Railway now has `VALUATUM_SE_API_BASE_URL=https://sweden.valuatum.com/rest` and
+  `VALUATUM_SE_TOKEN` (read access works). Company search needs `code=NNNNNN-NNNN`
+  (bare digits return []); broad names return 400 "Too many results".
+- Coverage is partial: e.g. Volvo AB and Clas Ohlson are absent; DB COMPANY.INDUSTRYCODE
+  is 0 while REST returns NACE `industryText`. Sample data gaps: Axfood Snabbgross AB
+  (556000-3575, fid 16872) has EBITDA = EBIT and 2024–2025 copied from 2023;
+  Husqvarna Stockholm AB (556983-9805, fid 52623) has real 2024–2025.
+- Local read-only readiness probe (`work/tooling/se_readiness.py`, currency label
+  overridden in-process only) fails on missing forecast cash-flow reconciliation, as
+  expected before generation.
+- User-approved estimate generation for fid 52623 returned
+  `401 No rights for permission Controller.Estimates`; nothing was created. The SE
+  token needs the same permission as the pending DK credential.
+- User decisions: English report, €79 like Denmark, Bolagsverket data rights OK.
