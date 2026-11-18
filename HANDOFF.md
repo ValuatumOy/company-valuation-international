@@ -146,3 +146,29 @@ Affected fields: `REST_API_KEY` in `pdf-dataimport-Wisdom-prod`; `valuatumRestTo
 and `valuatumRestWriteToken` in `pdf-report/customers/Wisdom`. The user was notified.
 These require controlled owner-managed rotation and consumer updates; no tokens
 were rotated in this session. Never copy their values into this handoff or Git.
+
+## 2026-11-18 — Security upgrade, PDF drop, request process
+
+- Next.js 16.4.0 → 16.4.6 (`9c2412a`): fixes GHSA-2464-fhr4-w9xw (RCE in image
+  optimization) and four related advisories. Deployed to production.
+- PDF drop (`/solutions/pdf-based-company-valuation`, `/solutions/international-company-valuation`):
+  `src/components/pdf-drop.tsx` uses the existing PDF import service exactly like
+  valuation.valuatum.com — POST to the upload Lambda, PUT to the presigned S3 URL,
+  then redirect to pdfanalysis.valuatum.com registration with `uploadSession`.
+  Verified end to end from the preview origin up to the registration page; no
+  account was created, so report generation after registration was not observed.
+- S3 bucket `valu-pdf-dataimport-files-prod` CORS (not IaC-managed): added
+  `https://company-valuation.com`, `https://www.company-valuation.com`,
+  `https://company-valuation-international.vercel.app` and
+  `https://company-valuation-international-preview.vercel.app` to the existing
+  PUT rule. Previous origins were the Amplify master URL, creditrisk.valuatum.com
+  and valuation.valuatum.com; to roll back, remove the four added origins.
+- International request process (quote per request): quote and data availability
+  within one business day, invoice payment, PDF by email 2–3 business days after
+  acceptance. User-confirmed values.
+- Decisions: Denmark's €79 automatic order replaces the creditreports.dk card once
+  enabled; Sweden uses Valuatum's SE environment (`sweden.valuatum.com`, same REST
+  API as DK, needs its own token); domain cutover happens after DK, SE and PDF work.
+- Still blocked: DK write credential (`Controller.Estimates`) and WAF exception;
+  SE API token; Railway CLI token (run `npx @railway/cli login`); Stripe keys must
+  be entered in Vercel by the user; Vercel Hobby plan vs. commercial use.
