@@ -1,11 +1,11 @@
 import Stripe from "stripe";
+import { acceptsCurrency, businessId, isOrderCountry, orderCountries, type OrderCompany, type OrderCountry } from "./order-countries.ts";
 
 export const productTag = "arvonmaaritys_ai_raportti";
 export class OrderError extends Error {}
 export const pipelineUrl = () => (process.env.VALUATION_PIPELINE_URL || "https://valu-pipeline-production-88f2.up.railway.app").replace(/\/$/, "");
 
-export type DanishCompany = { fid: number; company_name: string; company_code: string; industry_text?: string | null };
-export type CompanyReadiness = DanishCompany & { eligible: boolean; currency: string; actual_year?: number; forecast_years?: number[]; reason?: string };
+export type CompanyReadiness = OrderCompany & { eligible: boolean; currency: string; actual_year?: number; forecast_years?: number[]; reason?: string };
 
 export function stripeClient() {
   const key = process.env.STRIPE_SECRET_KEY;
@@ -20,22 +20,23 @@ export function checkoutOrigin() {
   throw new Error("Order site URL is not configured");
 }
 
-export async function danishOrdersEnabled() {
-  if (process.env.DANISH_ORDERS_ENABLED !== "1" || !process.env.STRIPE_SECRET_KEY || !process.env.STRIPE_AI_REPORT_PRICE_ID) return false;
+export async function ordersEnabled(country: OrderCountry) {
+  if (process.env[orderCountries[country].flag] !== "1" || !process.env.STRIPE_SECRET_KEY || !process.env.STRIPE_AI_REPORT_PRICE_ID) return false;
   try {
     const response = await fetch(`${pipelineUrl()}/api/public/capabilities`, { cache: "no-store", signal: AbortSignal.timeout(10000) });
     if (!response.ok) return false;
     const data = await response.json();
-    return data.countries?.DK?.enabled === true && data.countries.DK.language === "en";
+    return data.countries?.[country]?.enabled === true && data.countries[country].language === "en";
   } catch { return false; }
 }
 
-export async function selectedCompanyReady(fid: number, code: string): Promise<CompanyReadiness> {
-  const query = new URLSearchParams({ country: "DK", fid: String(fid), code });
-  const response = await fetch(`${pipelineUrl()}/api/public/company-readiness?${query}`, { cache: "no-store", signal: AbortSignal.timeout(60000) });
+export async function selectedCompanyReady(country: OrderCountry, fid: number, code: string): Promise<CompanyReadiness> {
+  const spec = orderCountries[country];
+  const query = new URLSearchParams({ country, fid: String(fid), code });
+  const response = await fetch(`${pipelineUrl()}/api/public/company-readiness?${query}`, { cache: "no-store", signal: AbortSignal.timeout(spec.readinessTimeout) });
   if (!response.ok) throw new OrderError("Company data could not be checked. Please try again.");
   const data: CompanyReadiness = await response.json();
-  if (!data.eligible || !["DKK", "EUR"].includes(data.currency) || data.fid !== fid || !/^\d{8}K?$/.test(data.company_code) || data.company_code.replace(/K$/, "") !== code) throw new OrderError("This company is not available for automatic ordering. Please request a report from our team.");
+  if (!data.eligible || !acceptsCurrency(country, data.currency) || data.fid !== fid || !spec.sourceCode.test(data.company_code) || businessId(data.company_code) !== code) throw new OrderError("This company is not available for automatic ordering. Please request a report from our team.");
   return data;
 }
 
@@ -57,14 +58,15 @@ export function readInput(metadata: Stripe.Metadata | null) {
   return Array.from({ length: 8 }, (_, i) => metadata?.[i === 0 ? "userInput" : `userInput${i + 1}`] || "").join("");
 }
 
-export async function fulfilDanishSession(session: Stripe.Checkout.Session) {
+export async function fulfilOrderSession(session: Stripe.Checkout.Session) {
   const meta = session.metadata;
-  if (session.payment_status !== "paid" || meta?.product !== productTag || meta.country !== "DK" || meta.reportLanguage !== "en" || !["DKK", "EUR"].includes(meta.reportCurrency)) throw new OrderError("This payment is not a Danish valuation-report order.");
+  const country = meta?.country;
+  if (session.payment_status !== "paid" || meta?.product !== productTag || !isOrderCountry(country) || meta.reportLanguage !== "en" || !acceptsCurrency(country, meta.reportCurrency)) throw new OrderError("This payment is not a valuation-report order.");
   const fid = Number(meta.fid);
-  if (!Number.isSafeInteger(fid) || fid <= 0 || !/^\d{8}$/.test(meta.businessId || "")) throw new OrderError("The paid company could not be identified.");
+  if (!Number.isSafeInteger(fid) || fid <= 0 || !orderCountries[country].businessId.test(meta.businessId || "")) throw new OrderError("The paid company could not be identified.");
   const response = await fetch(`${pipelineUrl()}/api/public/checkout-generate`, {
     method: "POST", headers: { "Content-Type": "application/json" }, cache: "no-store", signal: AbortSignal.timeout(60000),
-    body: JSON.stringify({ country: "DK", report_language: "en", business_id: meta.businessId, fid, company_name: meta.companyName, email: session.customer_details?.email || session.customer_email || meta.customerEmail, user_input: readInput(meta), stripe_session_id: session.id, mode: "forecast", website: "" }),
+    body: JSON.stringify({ country, report_language: "en", business_id: meta.businessId, fid, company_name: meta.companyName, email: session.customer_details?.email || session.customer_email || meta.customerEmail, user_input: readInput(meta), stripe_session_id: session.id, mode: "forecast", website: "" }),
   });
   if (!response.ok) throw new OrderError("Payment was received, but the report could not be opened. Please retry or contact our team with your payment reference.");
   const data = await response.json();

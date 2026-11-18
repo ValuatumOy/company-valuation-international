@@ -1,6 +1,6 @@
 # Danish ordering
 
-`/order/denmark` uses the existing Finnish backend with an explicit Danish source,
+`/order/denmark` (and `/order/sweden`, see `HANDOFF.md`) uses the existing Finnish backend with an explicit Danish source,
 English report language and native DKK/EUR report currency. Payment remains EUR.
 The flow is company search → source readiness → €79 payment → forecast review/edit
 → report generation → private English HTML/PDF → included or paid refinements.

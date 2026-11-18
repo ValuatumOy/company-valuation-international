@@ -242,3 +242,21 @@ in from the registration page, "CVR number" label on Norwegian reports, "does no
 report its sales" text despite extracted revenue, no industry comparison, and
 empty 2021–2023 columns. The Brønnøysund licence for PDF copies is assumed NLOD
 but not confirmed in writing. Germany is untested through the PDF service.
+
+## 2026-11-18: Swedish online orders (built, disabled)
+
+- `/order/denmark` and `/order/sweden` are one dynamic route, `/order/[country]`,
+  driven by `src/lib/order-countries.ts`. The API routes moved to
+  `/api/order/{denmark|sweden}/{search|checkout}`. Webhook, success page, report
+  proxy and report workspace accept any order country with its own currencies
+  (DK: DKK/EUR, SE: SEK).
+- Sweden is keyed on the hyphenated organisation number (`556983-9805`). The
+  pre-checkout readiness check generates estimates first (about 40 s), so the
+  Swedish readiness timeout is 120 s and the checkout route allows 150 s.
+- Enable with `SWEDISH_ORDERS_ENABLED=1` here plus the backend's
+  `VALUATUM_SE_*` flags (backend `SWEDISH_ORDERS.md`). Nothing links to
+  `/order/sweden` yet; add the link when the first paid Swedish test passes.
+- The Finnish site's webhook already ignores every non-FI order (`c3f4c8a`).
+- Backend estimate generation works on both asps (2026-11-18: Novo Nordisk on
+  asp 1233, Husqvarna Stockholm AB on asp 116). Forecast import is untested on
+  either.

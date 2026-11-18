@@ -80,7 +80,7 @@ const nextConfig: NextConfig = {
             : [{ key: "X-Robots-Tag", value: "noindex, nofollow" }]),
         ],
       },
-      ...["/order/denmark", "/checkout/:path*", "/report", "/api/:path*"].map(source => ({
+      ...["/order/:path*", "/checkout/:path*", "/report", "/api/:path*"].map(source => ({
         source,
         headers: [
           { key: "X-Robots-Tag", value: "noindex, nofollow" },

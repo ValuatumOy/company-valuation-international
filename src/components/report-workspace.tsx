@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useState, type FormEvent } from "react";
 import { useSearchParams } from "next/navigation";
+import { acceptsCurrency, isOrderCountry } from "@/lib/order-countries";
 
 type Forecast = { years: number[]; net_sales: number[]; ebit: number[] };
 type Question = { id: string; question: string; why_it_matters?: string };
@@ -19,6 +20,7 @@ export function ReportWorkspace({ pipelineBaseUrl }: { pipelineBaseUrl: string }
   const headers = useCallback(() => ({ Authorization: `Bearer ${key}`, "Content-Type": "application/json" }), [key]);
   const input = run?.input_data || run?.results?.find(result => result.order === 0)?.parsed_json;
   const currency = input?.meta?.currency || run?.params?.source_currency || "";
+  const runCountry = input?.meta?.country_code || run?.params?.country_code;
   const validLink = /^[a-f0-9]{32}$/.test(rid) && /^(?:exp_|cli_)[A-Za-z0-9_-]+$/.test(key);
   const questions = run?.results?.find(result => result.order === 1)?.parsed_json?.clarification_requests || [];
   const hasReviewInput = !!reviewContext.trim() || questions.some(question => answers[question.id]?.trim());
@@ -38,7 +40,7 @@ export function ReportWorkspace({ pipelineBaseUrl }: { pipelineBaseUrl: string }
     }
     const source = next.input_data || next.results?.find(result => result.order === 0)?.parsed_json;
     const country = source?.meta?.country_code || next.params?.country_code;
-    if (country !== "DK") throw new Error("This page is for Danish report orders. Open your report through the service where you ordered it.");
+    if (!isOrderCountry(country)) throw new Error("This page is for reports ordered on this website. Open your report through the service where you ordered it.");
     setRun(next);
     if (next.status === "awaiting_forecast" && source?.forecast) setForecast(previous => previous || structuredClone(source.forecast!));
     if (["ok", "validation_failed"].includes(next.status)) {
@@ -118,7 +120,7 @@ export function ReportWorkspace({ pipelineBaseUrl }: { pipelineBaseUrl: string }
   if (!validLink) return <section className="order-panel"><p>Open the report using the private link from your order confirmation.</p></section>;
   return <section className="order-panel"><h2>{input?.meta?.company_name || run?.report?.meta?.company_name || "Your company"}</h2>{error && <p role="alert" className="order-error">{error}</p>}
     {!run && <p role="status">Loading your order…</p>}
-    {run?.status === "awaiting_forecast" && forecast && ["DKK", "EUR"].includes(currency) && <form onSubmit={start}><h3>Review the forecast</h3><p>Amounts are in millions of {currency}. These are model forecasts, not company guidance. Change revenue and operating profit where you have better assumptions.</p><div className="forecast-scroll"><table className="forecast-table"><caption>Annual forecast · million {currency}</caption><thead><tr><th>Fiscal year</th><th>Revenue</th><th>Operating profit</th></tr></thead><tbody>{forecast.years.map((year, i) => <tr key={year}><th>{year}</th>{(["net_sales", "ebit"] as const).map(variable => <td key={variable}><input aria-label={`${variable === "net_sales" ? "Revenue" : "Operating profit"} ${year}`} type="number" step="any" required value={forecast[variable][i] / 1000} onChange={event => { const amount = event.target.valueAsNumber; if (Number.isFinite(amount)) setForecast(previous => previous ? { ...previous, [variable]: previous[variable].map((value, index) => index === i ? amount * 1000 : value) } : null); }} /></td>)}</tr>)}</tbody></table></div><button className="button" disabled={busy} type="submit">{busy ? "Submitting forecast…" : "Start my report"}</button></form>}
+    {run?.status === "awaiting_forecast" && forecast && isOrderCountry(runCountry) && acceptsCurrency(runCountry, currency) && <form onSubmit={start}><h3>Review the forecast</h3><p>Amounts are in millions of {currency}. These are model forecasts, not company guidance. Change revenue and operating profit where you have better assumptions.</p><div className="forecast-scroll"><table className="forecast-table"><caption>Annual forecast · million {currency}</caption><thead><tr><th>Fiscal year</th><th>Revenue</th><th>Operating profit</th></tr></thead><tbody>{forecast.years.map((year, i) => <tr key={year}><th>{year}</th>{(["net_sales", "ebit"] as const).map(variable => <td key={variable}><input aria-label={`${variable === "net_sales" ? "Revenue" : "Operating profit"} ${year}`} type="number" step="any" required value={forecast[variable][i] / 1000} onChange={event => { const amount = event.target.valueAsNumber; if (Number.isFinite(amount)) setForecast(previous => previous ? { ...previous, [variable]: previous[variable].map((value, index) => index === i ? amount * 1000 : value) } : null); }} /></td>)}</tr>)}</tbody></table></div><button className="button" disabled={busy} type="submit">{busy ? "Submitting forecast…" : "Start my report"}</button></form>}
     {run && !["awaiting_forecast", "ok", "validation_failed", "error"].includes(run.status) && <p role="status">Preparing your report. You can return using the same order link.</p>}
     {run?.status === "error" && <p role="alert">The report could not be completed. Contact company-valuation@valuatum.com with your order reference; you do not need to pay again.</p>}
     {run?.status === "validation_failed" && <p role="alert">The report needs further review. Check its limitations and contact our team before using the result.</p>}

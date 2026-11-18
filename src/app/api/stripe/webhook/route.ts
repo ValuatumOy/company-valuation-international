@@ -1,4 +1,5 @@
-import { fulfilDanishSession, productTag, stripeClient } from "@/lib/denmark-orders";
+import { isOrderCountry } from "@/lib/order-countries";
+import { fulfilOrderSession, productTag, stripeClient } from "@/lib/orders";
 
 export const runtime = "nodejs";
 export async function POST(request: Request) {
@@ -9,8 +10,8 @@ export async function POST(request: Request) {
   catch { return Response.json({ error: "Invalid signature" }, { status: 400 }); }
   if (event.type === "checkout.session.completed" || event.type === "checkout.session.async_payment_succeeded") {
     const session = event.data.object;
-    if (session.metadata?.product === productTag && session.metadata.country === "DK" && session.payment_status === "paid") {
-      try { await fulfilDanishSession(session); }
+    if (session.metadata?.product === productTag && isOrderCountry(session.metadata.country) && session.payment_status === "paid") {
+      try { await fulfilOrderSession(session); }
       catch { return Response.json({ error: "Order delivery is pending; retry required" }, { status: 500 }); }
     }
   }

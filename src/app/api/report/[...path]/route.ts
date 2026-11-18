@@ -1,4 +1,5 @@
-import { pipelineUrl } from "@/lib/denmark-orders";
+import { acceptsCurrency, isOrderCountry } from "@/lib/order-countries";
+import { pipelineUrl } from "@/lib/orders";
 
 async function proxy(request: Request, context: { params: Promise<{ path: string[] }> }) {
   const { path } = await context.params;
@@ -18,7 +19,7 @@ async function proxy(request: Request, context: { params: Promise<{ path: string
     const info = await fetch(`${pipelineUrl()}/api/runs/${rid}`, { headers: { Authorization: auth }, cache: "no-store", signal: AbortSignal.timeout(15000) });
     if (!info.ok) return Response.json({ error: "The private report link could not be verified." }, { status: info.status });
     const run = await info.json();
-    if (run.params?.country_code !== "DK" || !["DKK", "EUR"].includes(run.params.source_currency)) return Response.json({ error: "Open this report through the service where you ordered it." }, { status: 403 });
+    if (!isOrderCountry(run.params?.country_code) || !acceptsCurrency(run.params.country_code, run.params.source_currency)) return Response.json({ error: "Open this report through the service where you ordered it." }, { status: 403 });
     if (!action) return Response.json(run, { headers: { "Cache-Control": "private, no-store", "X-Robots-Tag": "noindex, nofollow", "Referrer-Policy": "no-referrer" } });
     if (action === "round2/checkout") {
       const capabilities = await fetch(`${pipelineUrl()}/api/public/capabilities`, { cache: "no-store", signal: AbortSignal.timeout(10000) });
