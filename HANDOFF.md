@@ -220,3 +220,21 @@ were rotated in this session. Never copy their values into this handoff or Git.
   `401 No rights for permission Controller.Estimates`; nothing was created. The SE
   token needs the same permission as the pending DK credential.
 - User decisions: English report, €79 like Denmark, Bolagsverket data rights OK.
+
+## 2026-11-18: Norway through the PDF service
+
+The PDF service read a scanned Brønnøysund annual accounts PDF for 2TAL AS
+(955 497 643) correctly and built a model with 2026e–2028e estimates and a DCF.
+Branch `feat/norway-brreg-pdf` adds a Norwegian organisation number field under
+the PDF drop: it fetches the latest accounts copy from the open register
+(`data.brreg.no`, CORS for any origin) and sends it through the same upload.
+Preview: https://company-valuation-international-1lwgwkgx5-valuatum-dk.vercel.app
+(verified against the real register; the upload Lambda was blocked in that test).
+Not on production yet. The backend branch `feat/pdf-source-norway` in the
+pipeline repository adds a read-only PDF source and NO/SE/DE locales; the first
+Norwegian AI report waits for a PDF-service REST read key and goes through the
+admin path. Open PDF-service bugs: the upload is lost when an existing user logs
+in from the registration page, "CVR number" label on Norwegian reports, "does not
+report its sales" text despite extracted revenue, no industry comparison, and
+empty 2021–2023 columns. The Brønnøysund licence for PDF copies is assumed NLOD
+but not confirmed in writing. Germany is untested through the PDF service.
