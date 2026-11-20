@@ -5,7 +5,16 @@ export const productTag = "arvonmaaritys_ai_raportti";
 export class OrderError extends Error {}
 export const pipelineUrl = () => (process.env.VALUATION_PIPELINE_URL || "https://valu-pipeline-production-88f2.up.railway.app").replace(/\/$/, "");
 
-export type CompanyReadiness = OrderCompany & { eligible: boolean; currency: string; actual_year?: number; forecast_years?: number[]; reason?: string };
+export type CompanyReadiness = OrderCompany & { eligible: boolean; currency: string; actual_year?: number; actual_years?: number[]; forecast_years?: number[]; negative_equity?: boolean; reason?: string };
+
+// Shown before payment; the buyer confirms them before checkout opens.
+export function orderNotices(company: CompanyReadiness) {
+  const notices: string[] = [];
+  const years = company.actual_years || [];
+  if (years.length && years.length < 3) notices.push(`Only ${years.length === 1 ? "one financial year is" : `${years.length} financial years are`} available for this company (${years.length === 1 ? years[0] : `${years[0]}–${years[years.length - 1]}`}). The valuation relies more on the forecast than on reported history.`);
+  if (company.negative_equity) notices.push("The cash-flow valuation for this company is negative. Shareholders have limited liability, so the report will show an equity value of 0.");
+  return notices;
+}
 
 export function stripeClient() {
   const key = process.env.STRIPE_SECRET_KEY;

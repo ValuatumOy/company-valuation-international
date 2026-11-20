@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { fulfilOrderSession, inputMetadata, readInput, selectedCompanyReady, productTag } from "../src/lib/orders.ts";
+import { fulfilOrderSession, inputMetadata, orderNotices, readInput, selectedCompanyReady, productTag } from "../src/lib/orders.ts";
 
 test("order context survives Stripe metadata chunks, including Unicode", () => {
   const text = "Yritys 😀 " .repeat(600);
@@ -54,4 +54,14 @@ test("only a paid order-country session with an identified company reaches deliv
     assert.equal(payload.business_id, "556983-9805");
     assert.equal(payload.fid, 52623);
   } finally { globalThis.fetch = original; }
+});
+
+test("short history and a negative cash-flow value are disclosed before payment", () => {
+  const base = { fid: 52623, company_code: "556983-9805", company_name: "Husqvarna Stockholm Aktiebolag", eligible: true, currency: "SEK" };
+  assert.deepEqual(orderNotices({ ...base, actual_years: [2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025], negative_equity: false }), []);
+  const notices = orderNotices({ ...base, actual_years: [2024, 2025], negative_equity: true });
+  assert.equal(notices.length, 2);
+  assert.match(notices[0], /Only 2 financial years are available for this company \(2024–2025\)/);
+  assert.match(notices[1], /equity value of 0/);
+  assert.match(orderNotices({ ...base, actual_years: [2025] })[0], /Only one financial year is available for this company \(2025\)/);
 });

@@ -2377,6 +2377,9 @@ h2 {
 .order-search{display:flex;align-items:end;gap:20px;margin:28px 0;}
 .order-search .form-field{flex:1;}
 .order-error{color:#a12e32;background:#fcf1f1;padding:16px;border-radius:12px;}
+.order-notices{background:#fdf6e7;color:#5b4310;padding:16px;border-radius:12px;margin-top:12px;font-size:15px;}
+.order-notices h3{margin:0 0 8px;font-size:1rem;}
+.order-notices ul{margin:0;padding-left:20px;display:grid;gap:6px;}
 .company-results{padding:0;list-style:none;margin:28px 0;}
 .company-results li{border-bottom:1px solid var(--line);}
 .company-results button{display:block;text-align:left;width:100%;background:transparent;border:0;padding:18px 14px;}
